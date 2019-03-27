@@ -19,29 +19,99 @@
 
     <!-- Custom styles for this template -->
     <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
+    <style>
+        .event-cards {
+            margin-top:1.0em;
+        }
+
+
+        .card-story-counter {
+            float: right;
+        }
+
+        .red {
+            color: red;
+        }
+
+
+    </style>
 </head>
 
 <body>
 
-<% include template/header.ejs%>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Eventure</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="/">Home</a>
+                <a class="nav-item nav-link disabled" href="#">New Account</a>
+                <a class="nav-item nav-link" href="story_new">New Story</a>
+                <a class="nav-item nav-link" href="event_new">New Event</a>
+                <a class="nav-item nav-link" href="event_nearby">Map (events nearby)</a>
+            </div>
+        </div>
+    </nav>
+</header>
 
 <!-- Begin page content -->
-
 <main role="main" class="container">
-    <h1>Create a new story</h1>
-    <form id=“xForm" onsubmit="onSubmit()">
-    <label for='eventname'>Name:</label>
-    <input type="text" name="eventname" id="eventname">
-        <p><label for='eventtitle'>Event:</label>
-            <input type="text" name="eventtitle" id="eventtitle">
-        </p>
-        <p>
-            <input type="submit" name="g" value="Submit" id="g">
-        </p>
-    </form>
-</main>
+    <div class="card">
+        <div class="card-header">
+            Create a new story
+        </div>
+    </div>
+    <div class="card event-cards">
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <label for="eventName">Title</label>
+                    <input type="email" class="form-control" id="eventName" aria-describedby="eventHelp" placeholder="Story name">
+                    </input>
+                </div>
+                <div class="form-group">
+                    <label for="inputState">Event association</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Beginning of Avaiation</option>
+                        <option selected>Sputnik 1</option>
+                    </select>
+                </div>
 
-<% include template/footer.ejs%>
+                <div class = "form-group">
+                    <label for="inputState">Event location</label>
+                    <input class="form-control" type="text" placeholder="Paris" readonly>
+                </div>
+
+                <div class = "form-group">
+                    <label for="inputState">Event date</label>
+                    <input class="form-control" type="text" placeholder="02/01/1993" readonly>
+                </div>
+
+
+
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Story photo</label>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                </form>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+
+</main>
+<br></br>
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+    </div>
+</footer>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

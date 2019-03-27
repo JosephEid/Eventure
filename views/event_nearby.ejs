@@ -12,25 +12,121 @@
 
     <title>Eventure</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/"></link>
 
     <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"></link>
 
     <!-- Custom styles for this template -->
-    <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet"></link>
+    <style>
+        .event-cards {
+            margin-top:1.0em;
+        }
+
+
+        .card-story-counter {
+            float: right;
+        }
+
+        .red {
+            color: red;
+        }
+
+        #map {
+            height: 425px;
+        }
+
+
+
+
+    </style>
 </head>
 
 <body>
 
-<% include template/header.ejs%>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Eventure</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="/">Home</a>
+                <a class="nav-item nav-link disabled" href="#">New Account</a>
+                <a class="nav-item nav-link" href="story_new">New Story</a>
+                <a class="nav-item nav-link" href="event_new">New Event</a>
+                <a class="nav-item nav-link" href="event_nearby">Map (events nearby)</a>
+            </div>
+        </div>
+    </nav>
+</header>
 
 <!-- Begin page content -->
 <main role="main" class="container">
-    <h1>Events nearby</h1>
-</main>
+    <div class="card">
+        <div class="card-header">
+            Nearby Events
+        </div>
+    </div>
+    <div class="card event-cards">
+        <div class="card-body">
+            <div id="map"></div>
+        </div>
+    </div>
 
-<% include template/footer.ejs%>
+
+    <script>
+        // Note: This example requires that you consent to location sharing when
+        // prompted by your browser. If you see the error "The Geolocation service
+        // failed.", it means you probably did not give permission for the browser to
+        // locate you.
+        var map, infoWindow;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 12
+            });
+            infoWindow = new google.maps.InfoWindow;
+
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent('You are here.');
+                    infoWindow.open(map);
+                    map.setCenter(pos);
+                }, function() {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+        }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(browserHasGeolocation ?
+                'Error: The Geolocation service failed.' :
+                'Error: Your browser doesn\'t support geolocation.');
+            infoWindow.open(map);
+        }
+    </script>
+
+</main>
+<br></br>
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+    </div>
+</footer>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -39,6 +135,8 @@
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
 <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm5EmU8b35j-9fhgd7nll5IePADt_0z88&callback=initMap"></script>
 <!--Navigation bar-->
 </body>
 </html>
