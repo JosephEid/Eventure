@@ -21,6 +21,11 @@ router.get('/event_nearby', function(req, res, next) {
   res.render('event_nearby', { title: 'Event nearby' });
 });
 
+/* GET event page. */
+router.get('/event_view/:id/:name', function(req, res, next) {
+  res.render('event_view', { title: req.params.name });
+});
+
 /**
  *  POST the data about the weather.
  *  parameters in body:
