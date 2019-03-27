@@ -1,64 +1,82 @@
+<!--
+ Copyright 2016 Google Inc.
 
-<!doctype html>
-<html lang="en">
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="../../../../favicon.ico">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="canonical" href="https://weather-pwa-sample.firebaseapp.com/final/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather PWA</title>
+  <link rel="stylesheet" href="/styles/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="styles/inline.css">
 
-  <title>Sticky Footer Navbar Template for Bootstrap</title>
+  <!-- TODO add manifest here -->
+  <link rel="manifest" href="/manifest.json">
+  <!-- Add to home screen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Weather PWA">
+  <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+  <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#2F3BA2">
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
+  <script src="/scripts/jquery.min.js"></script>
 
-  <!-- Bootstrap core CSS -->
-  <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
+  <!-- Latest compiled JavaScript -->
+  <script src="/scripts/bootstrap.min.js"></script>
 </head>
+<body onload="initWeatherForecasts()">
+<div class="container" style="width: 100%">
+  <div class="row">
+    <div class="col-xs-10"><h1><%= title %></h1></div>
+    <div class="col-xs-2">
+      <div class="form-group">
+        <h1>
+          <button class="btn btn-primary btn-lg buttonField roundishShape " id="swap_button"
+                  onclick="loadData()">
+            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+          </button>
+          <button class="btn btn-primary btn-lg buttonField roundishShape " id="swap_button"
+                  onclick="showCityList()">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          </button>
+        </h1>
+        <div class="list-group pop_up_list" id='city_list' style="display:none">
+          <button class="list-group-item " onclick="selectCity('London', new Date().getTime());">London</button>
+          <button class="list-group-item" onclick="selectCity('Madrid', new Date().getTime());">Madrid</button>
+          <button class="list-group-item" onclick="selectCity('Paris', new Date().getTime());">Paris</button>
+          <button class="list-group-item" onclick="selectCity('Rome', new Date().getTime());">Rome</button>
+        </div>
 
-<body>
-
-<header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Eventure</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="#">New Account</a>
-        <a class="nav-item nav-link" href="#">Login</a>
-        <a class="nav-item nav-link" href="#">Logout</a>
-        <a class="nav-item nav-link" href="#">New Post</a>
-        <a class="nav-item nav-link" href="#">Posts</a>
       </div>
     </div>
-  </nav>
-</header>
-
-<!-- Begin page content -->
-<main role="main" class="container">
-  <h1 class="mt-5">Sticky footer with fixed navbar</h1>
-  <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>body &gt; .container</code>.</p>
-  <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <span class="text-muted">Place sticky footer content here.</span>
   </div>
-</footer>
+  <div class="offline_div" id="offline_div" style="display: none">You are offline</div>
+</div>
+<div id="results" style="text-align: center">
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
-<script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
-</body>
-</html>
+</div>
+</div>
+</div>
+
+        </div>
+<script src="/scripts/app.js" ></script>
+<script src="/scripts/database.js"></script>
+
+        </body>
+        </html>

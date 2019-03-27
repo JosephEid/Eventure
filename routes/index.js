@@ -6,6 +6,21 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Weather Forecast' });
 });
 
+/* GET event new page. */
+router.get('/event_new', function(req, res, next) {
+  res.render('event_new', { title: 'New event' });
+});
+
+/* GET new story page. */
+router.get('/story_new', function(req, res, next) {
+  res.render('story_new', { title: 'New story'});
+});
+
+/* GET event nearby page. */
+router.get('/event_nearby', function(req, res, next) {
+  res.render('event_nearby', { title: 'Event nearby' });
+});
+
 /**
  *  POST the data about the weather.
  *  parameters in body:
