@@ -31,8 +31,8 @@ body {
     margin-left: 0.5em;
 }
 
-.nav-item, .card{
-    font-family: 'Sriracha', cursive;
+.card-body, .nav-item, *{
+    font-family: 'Space Mono', monospace;
 }
 
 
