@@ -11,6 +11,7 @@ router.get('/list_events', function(req, res, next) {
  *  POST the data about the event.
  */
 router.post('/new_event', function(req, res, next) {
+    res.render('new_event', { title: 'New Event' });
     const event = getEvent(req.body.name);
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(event));
@@ -19,7 +20,7 @@ router.post('/new_event', function(req, res, next) {
 
 /* GET events nearby page. */
 router.get('/list_nearby_events', function(req, res, next) {
-    res.render('list_nearby_events', { title: 'Events nearby' });
+    res.render('list_nearby_events', { title: 'Events Nearby' });
 });
 
 /* GET event page. */

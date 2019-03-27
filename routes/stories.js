@@ -11,6 +11,7 @@ router.get('/list_stories', function(req, res, next) {
  *  POST the data about the story.
  */
 router.post('/new_story', function(req, res, next) {
+    res.render('new_story', { title: 'New Story' });
     const story = getStory(req.body.name);
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(story));
