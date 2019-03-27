@@ -6,24 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="images/main.ico">
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
     <title>Eventure</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/"></link>
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Karla|Press+Start+2P" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"></link>
 
     <!-- Custom styles for this template -->
-    <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet"></link>
+    <style>
+
+
+
+        .event-cards {
+            margin-top:1.0em;
+        }
+
+
+        .card-story-counter {
+            float: right;
+        }
+
+        .red {
+            color: red;
+        }
+
+        #map {
+            height: 425px;
+        }
+
+
+
+
+    </style>
 </head>
 
 <body>
+
 <header>
+    <div class="top-bar"></div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <img src="images/Asset 13@288x.png" width="19" height="30" alt="logo" class="logo-nav">
         <a class="navbar-brand" href="#">Eventure</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -31,15 +60,14 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="/">Home</a>
-                <a class="nav-item nav-link disabled" href="#">New Account</a>
                 <a class="nav-item nav-link" href="story_new">New Story</a>
                 <a class="nav-item nav-link" href="event_new">New Event</a>
-                <a class="nav-item nav-link" href="event_nearby">Map (events nearby)</a>
+                <a class="nav-item nav-link active" href="event_nearby">Map (events nearby)</a>
+                <a class="nav-item nav-link disabled" href="#">New Account</a>
             </div>
         </div>
     </nav>
 </header>
-
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
@@ -47,6 +75,8 @@
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
 <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm5EmU8b35j-9fhgd7nll5IePADt_0z88&callback=initMap"></script>
 <!--Navigation bar-->
 </body>
 </html>
