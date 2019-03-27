@@ -1,1 +1,1 @@
-# Eventure2
+# Eventure - Progressive Web App
