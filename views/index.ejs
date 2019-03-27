@@ -10,6 +10,22 @@
   <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Karla|Press+Start+2P" rel="stylesheet">
 
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/scripts/displayEvents.js"></script>
+
+  <script type="text/javascript">
+    var socket = io();
+    /**When socket returns results redraw page. If they've been filtered redraw the map as well.
+     * If only sorted no need to draw map
+     */
+    socket.on('results', function(results, fromFilter){
+      drawResults(results);
+      if (fromFilter){
+        drawMap(results);
+      }
+      storeCachedData('results', results);
+    });
+  </script>
 
   <title>Eventure</title>
 
