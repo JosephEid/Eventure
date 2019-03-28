@@ -45,6 +45,19 @@ body {
     text-decoration: underline;
 }
 
+.wide-btn {
+    width:100%;
+}
+
+/*.btn {*/
+    /*background-color: #0099FF !important;*/
+/*}*/
+
+input {
+    border-width: 0px !important;
+    border-bottom-width: 1px !important;
+    border-radius: 0px !important;
+}
 
 /* Custom page CSS
 -------------------------------------------------- */

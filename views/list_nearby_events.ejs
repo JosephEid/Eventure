@@ -12,11 +12,11 @@
 
     <title>Eventure</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/"></link>
+    <!--<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/"></link>-->
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Karla|Press+Start+2P" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"></link>
+    <!--<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"></link>-->
 
     <!-- Custom styles for this template -->
     <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet"></link>
@@ -55,7 +55,7 @@
 <main role="main" class="container">
     <div class="card">
         <div class="card-header">
-            Nearby Events
+            🧭 Nearby Events
         </div>
     </div>
     <div class="card event-cards">
@@ -63,6 +63,8 @@
             <div id="map"></div>
         </div>
     </div>
+
+
 
 
     <script>
@@ -77,18 +79,6 @@
                 zoom: 10,
                 center: myLatLng
             });
-
-            // var marker = new google.maps.Marker({
-            //     position: myLatLng,
-            //     map: map,
-            //     title: 'Hello World!'
-            // });
-            //
-            // var marker2 = new google.maps.Marker({
-            //     position: {lat: 53.383565, lng: -1.463979},
-            //     map: map,
-            //     title: 'Hello World!'
-            // });
 
             var southWest = new google.maps.LatLng(53.081130, -1.470085);
             var northEast = new google.maps.LatLng(53.921022, -1.571773);
@@ -114,9 +104,9 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
-<script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+
+<!--<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>-->
+<!--<script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>-->
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm5EmU8b35j-9fhgd7nll5IePADt_0z88&callback=initMap"></script>
 <!--Navigation bar-->

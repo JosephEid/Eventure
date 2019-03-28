@@ -29,4 +29,8 @@ router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Eventure'});
 });
 
+router.get('/register', function(req, res, next) {
+  res.render('register', { title: 'Eventure'});
+});
+
 module.exports = router;
