@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Karla|Press+Start+2P" rel="stylesheet">
 
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/scripts/displayEvents.js"></script>
 
   <title>Eventure</title>
 
@@ -54,26 +56,7 @@
 </head>
 
 <body>
-
-<header>
-  <div class="top-bar"></div>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <img src="images/Asset 13@288x.png" width="19" height="30" alt="logo" class="logo-nav">
-    <a class="navbar-brand" href="#">Eventure</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="/">Home</a>
-        <a class="nav-item nav-link" href="story_new">New Story</a>
-        <a class="nav-item nav-link" href="event_new">New Event</a>
-        <a class="nav-item nav-link" href="event_nearby">Map (events nearby)</a>
-        <a class="nav-item nav-link disabled" href="#">New Account</a>
-      </div>
-    </div>
-  </nav>
-</header>
+<% include template/header.ejs%>
 
 <!-- Begin page content -->
 <main role="main" class="container">
@@ -111,6 +94,9 @@
       🎉 Current events
     </div>
   </div>
+  <script type="text/javascript">
+    drawEvents();
+  </script>
   <a href=""><div class="card event-cards">
     <div class="card-body">
       Greco-Persian Wars, Athens
@@ -153,11 +139,7 @@
 
 </main>
 <br></br>
-<footer class="footer">
-  <div class="container">
-    <span class="text-muted">Place sticky footer content here.</span>
-  </div>
-</footer>
+<%include template/footer.ejs%>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

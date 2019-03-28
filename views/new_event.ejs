@@ -9,7 +9,7 @@
     <link rel="icon" href="images/main.ico">
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
+    <script src="/scripts/newEvent.js"></script>
     <title>Eventure</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
@@ -39,26 +39,7 @@
 </head>
 
 <body>
-
-<header>
-    <div class="top-bar"></div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <img src="images/Asset 13@288x.png" width="19" height="30" alt="logo" class="logo-nav">
-        <a class="navbar-brand" href="#">Eventure</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/">Home</a>
-                <a class="nav-item nav-link" href="story_new">New Story</a>
-                <a class="nav-item nav-link active" href="event_new">New Event</a>
-                <a class="nav-item nav-link" href="event_nearby">Map (events nearby)</a>
-                <a class="nav-item nav-link disabled" href="#">New Account</a>
-            </div>
-        </div>
-    </nav>
-</header>
+<% include template/header.ejs%>
 
 <!-- Begin page content -->
 <main role="main" class="container">
@@ -69,10 +50,10 @@
     </div>
     <div class="card event-cards">
         <div class="card-body">
-            <form>
+            <form onsubmit="addEvent()">
                 <div class="form-group">
                     <label for="eventName">Title</label>
-                    <input type="email" class="form-control" id="eventName" aria-describedby="eventHelp" placeholder="Event name">
+                    <input type="name" class="form-control" id="eventName" placeholder="Event name">
 
                 </div>
                 <div class="form-group">
@@ -80,16 +61,16 @@
                     <input type="name" class="form-control" id="eventLocation" placeholder="Event location">
                 </div>
                 <div class="form-group">
-                    <label for="eventLocation">Date of event</label>
-                    <input type="date" class="form-control" id="eventLocation" placeholder="Location">
+                    <label for="eventDate">Date of event</label>
+                    <input type="date" class="form-control" id="eventLocation" placeholder="Event Date">
                 </div>
 
-                <form>
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Event photo</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                    </div>
-                </form>
+
+                <div class="form-group">
+                    <label for="eventPhoto">Event photo</label>
+                    <input type="file" class="form-control-file" id="eventPhoto">
+                </div>
+
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -100,11 +81,7 @@
 
 </main>
 <br></br>
-<footer class="footer">
-<div class="container">
-    <span class="text-muted">Place sticky footer content here.</span>
-</div>
-</footer>
+<%include template/footer.ejs%>
 
         <!-- Bootstrap core JavaScript
         ================================================== -->
