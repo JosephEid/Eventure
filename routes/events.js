@@ -25,9 +25,9 @@ router.get('/list_nearby_events', function(req, res, next) {
   res.render('list_nearby_events', { title: 'Events Nearby' });
 });
 
-/* GET event page. */
-router.get('/view_event/:id/:name', function(req, res, next) {
-  res.render('view_event', { title: req.params.name });
+/* GET view event page. */
+router.get('/view_event', function(req, res, next) {
+    res.render('view_event', { title: 'Eventure'});
 });
 
 module.exports = router;

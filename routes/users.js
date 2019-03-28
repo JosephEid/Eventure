@@ -25,4 +25,8 @@ router.get('/view_user/:id/:name', function(req, res, next) {
   res.render('view_user', { title: req.params.name });
 });
 
+router.get('/login', function(req, res, next) {
+  res.render('login', { title: 'Eventure'});
+});
+
 module.exports = router;

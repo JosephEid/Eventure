@@ -11,17 +11,5 @@ router.get('/map', function(req, res, next) {
   res.render('map', { title: 'Eventure'});
 });
 
-
-/* GET view event page. */
-router.get('/view_event', function(req, res, next) {
-  res.render('view_event', { title: 'Eventure'});
-});
-
-router.get('/login', function(req, res, next) {
-  res.render('login', { title: 'Eventure'});
-});
-
-
-
 module.exports = router;
 
