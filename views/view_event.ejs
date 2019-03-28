@@ -13,13 +13,13 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="/scripts/displayEvents.js"></script>
 
-    <title>Eventure</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
-
-    <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <title>Eventure</title>
+
+
+
+    <!-- Bootstrap core CSS -->
     <!-- Custom styles for this template -->
     <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
     <style>
@@ -140,6 +140,16 @@
             float: left !important;
         }
 
+        .desc {
+            float: left;
+            text-align: left;
+
+        }
+
+        .card.event-cards {
+            border-radius: 0.5em !important;
+        }
+
     </style>
 </head>
 
@@ -157,8 +167,8 @@
         </div>
     </div>
 
-    <a><div class="card event-cards">
-        <div class="card-body">
+    <a><div class="card event-cards card-body-story">
+        <div class="card-body card-body-story">
             Our favourite
             <div class="container-fluid">
                 <div class="row center">
@@ -196,7 +206,7 @@
         drawEvents();
     </script>
     <a><div class="card event-cards">
-    <div class="card-body">
+    <div class="card-body card-body-story">
         <div class="row">
             <div class="col-md-12">
                 <div class="carousel slide" id="carousel-702912">
@@ -212,14 +222,15 @@
                         </div>
                     </div>
                 </div>
-            </div>
                 <div class="row description-container">
-                    <div class="col-md-12">
-                        Some pictures
-                        <p>
-                            By James
-                        </p>
+
+                    <div class="col-md-12 desc">
+                        <hr></hr>
+                        <b>Some pictures</b> <br></br>By James<br>Today, 20:12</br>
                     </div>
+                </div>
+            </div>
+
                 </div>
             </div>
         </div>
@@ -237,8 +248,11 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+
 <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
 <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/holder.min.js"></script>
+
 <script>
 
 
@@ -246,9 +260,7 @@
         $(".carousel").carousel("next");
     });
 
-    $('.carousel').carousel({
-        interval: 0
-    })
+
 
 
 

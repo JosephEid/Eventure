@@ -1,150 +1,201 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="images/main.ico">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  <meta content="" name="description">
+  <meta content="" name="author">
+  <link href="images/main.ico" rel="icon">
+  <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Karla|Press+Start+2P" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.10.2.js">
+  </script>
+  <script src="/socket.io/socket.io.js">
+  </script>
+  <script src="/scripts/displayEvents.js">
+  </script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="/scripts/newEvent.js"></script>
+  <title>Eventure</title>
   <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Karla|Press+Start+2P" rel="stylesheet">
 
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="/scripts/displayEvents.js"></script>
-
-  <title>Eventure</title>
-
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
-
   <!-- Bootstrap core CSS -->
-  <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 
   <!-- Custom styles for this template -->
   <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
-          <style>
-            .event-cards {
-              margin-top:1.0em;
-            }
+  <title>Eventure</title>
+  <!--<link href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/" rel="canonical">&lt;!&ndash; Bootstrap core CSS &ndash;&gt;-->
+  <!--<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">&lt;!&ndash; Custom styles for this template &ndash;&gt;-->
+  <!--<link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">-->
+  <style>
 
-            .card-story-counter {
-              float: right;
-            }
+    .event-cards {
+      margin-top:1.0em;
+    }
 
+    .card-story-counter {
+      float: right;
+    }
 
+    .top-bar {
+      height:0.1em;
+      background-color:red;
+    }
 
-            .top-bar {
-              height:0.1em;
-              background-color:red;
-            }
+    .card-internal {
+      background-color: red;
+      width:50%;
+    }
 
-            .card-internal {
-              background-color: red;
-              width:50%;
+    .padding {
+      padding:0.5em;
+    }
 
-            }
+    .story-preview {
+      border-radius: 90%;
+    }
 
-            .padding {
-              padding:0.5em;
-            }
+    .thumbnail-story img {
+      width: 5.5em;
+      height: 5.5em;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      border-width: 1px;
+      border-style: solid;
+      border-color: ghostwhite;
+      box-shadow: 2px 2px;
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
 
-            .story-preview {
-              border-radius: 90%;
-            }
+    .thumbnail-story-container {
+      margin: auto;
+      padding: 10px;
+    }
 
-            .thumbnail-story img {
-              width: 5.5em; /* You can set the dimensions to whatever you want */
-              height: 5.5em;
-              border-radius: 50%;
-              object-fit: cover;
-              display: block;
-              margin-left: auto;
-              margin-right: auto;
-              border-width: 1px;
-              border-style: solid;
-              border-color: ghostwhite;
-              box-shadow: 2px 2px;
-              margin-top: 1em;
-              margin-bottom: 1em;
-            }
+    @media only screen and (max-width: 750px)  {
+      .thumbnail-story img{
+        width: 13em !important;
+        height: 13em !important;
 
-            .thumbnail-story-container {
-              margin: auto;
-              padding: 10px;
-            }
+      }
+    }
 
-            @media only screen and (max-width: 750px)  {
-              .thumbnail-story img{
-                width: 13em !important;
-                height: 13em !important;
+    .padding-override {
+      padding: 0em !important;
+    }
 
-              }
-            }
+    .row {
+      margin-right: -5px !important;
+      margin-left: -5px !important;
+    }
 
-            .padding-override {
-              padding: 0em !important;
-            }
+    a.link-remove-color {
+      color:black !important;
+    }
 
-            .row {
-              margin-right: -5px !important;
-              margin-left: -5px !important;
-            }
+    .search-box-margin {
+      margin-bottom: 1em;
+    }
 
-            a.link-remove-color {
-              color:black !important;
-            }
+    input {
+      background: white !important;
+    }
 
+    .mainSearch {
+      width: 50% !important;
+    }
 
+    .form-control-borderless {
+      border-left-width: 1px !important;
+      border-top-width: 1px !important;
+    }
 
+    .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+      outline: none;
+      box-shadow: none;
+    }
 
+    .no-border-radius {
+      margin-right:10px;
+      border-top-left-radius: 0px !important;
+      border-bottom-left-radius: 0px !important;
+    }
 
-          </style>
+    form.card.card-sm {
+      border-width: 0px !important;
+      font-size: 5pt !important;
+    }
+
+    #map {
+      height: 425px;
+    }
+
+  </style>
 </head>
-
 <body onload="loadEvents()">
-<% include template/header.ejs%>
+<header>
+  <%include template/header.ejs%>
+</header>
+<main class="container" role="main">
+    <div class="card event-cards search-box-margin">
+      <div class="col-12">
+        <form class="card card-sm">
+          <div class="card-body row no-gutters align-items-center">
+            <!--end of col-->
+            <div class="col">
+              <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search event names, dates, locations">
+            </div>
+            <!--end of col-->
+            <div class="col-auto">
+              <button class="btn btn-lg btn-primary no-border-radius" type="submit">Search</button>
+              <button class="btn btn-success btn-lg" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Map
+              </button>
+            </div>
+            <!--end of col-->
+          </div>
+        </form>
+      </div>
+    </div>
+  <div class="collapse search-box-margin" id="collapseExample">
+    <div class="card card-body">
+      <div id="map"></div>
+    </div>
+  </div>
 
-<!-- Begin page content -->
-<main role="main" class="container">
+
   <div class="card">
     <div class="card-header">
       ⚡ Featured event
     </div>
-  </div>
-
-<a href = "/view_event" class="link-remove-color"><div class="card event-cards">
+  </div><a class="link-remove-color" href="/view_event">
+  <div class="card event-cards">
     <div class="card-body">
       Apollo 13, Moscow
-      <div class = "card-story-counter red">&nbsp; <span class="w3-badge w3-red">6</span></div>
-      <div class = "card-story-counter">Stories:</div>
+      <div class="card-story-counter red">
+        &nbsp; <span class="w3-badge w3-red">6</span>
+      </div>
+      <div class="card-story-counter">
+        Stories:
+      </div>
+
       <div class="container-fluid">
         <div class="row center">
-          <div class="col-md-2 thumbnail-story padding-override">
-            <img src = "images/si2.jpg"></img>
-          </div>
-          <div class="col-md-2 thumbnail-story padding-override">
-            <img src = "images/festival.jpg"></img>
-          </div>
-          <div class="col-md-2 thumbnail-story padding-override">
-            <img src = "images/3.jpg"></img>
-          </div>
-          <div class="col-md-2 thumbnail-story padding-override">
-            <img src = "images/1.jpg"></img>
-          </div>
-          <div class="col-md-2 thumbnail-story padding-override">
-            <img src = "images/2.jpg"></img>
-          </div>
-          <div class="col-md-2 thumbnail-story padding-override">
-            <img src = "images/4.jpg"></img>
-          </div>
+          <div class="col-md-2 thumbnail-story padding-override"><img src="images/si2.jpg"></div>
+          <div class="col-md-2 thumbnail-story padding-override"><img src="images/festival.jpg"></div>
+          <div class="col-md-2 thumbnail-story padding-override"><img src="images/3.jpg"></div>
+          <div class="col-md-2 thumbnail-story padding-override"><img src="images/1.jpg"></div>
+          <div class="col-md-2 thumbnail-story padding-override"><img src="images/2.jpg"></div>
+          <div class="col-md-2 thumbnail-story padding-override"><img src="images/4.jpg"></div>
         </div>
       </div>
     </div>
-  </div>
-</a>
-
-  </div>
-  <hr></hr>
+  </div></a>
+  <hr>
   <div class="card">
     <div class="card-header">
       🎉 Current events
@@ -153,57 +204,104 @@
   <script type="text/javascript">
     drawEvents();
   </script>
-  <a href=""><div class="card event-cards">
+  <a href="">
+  <div class="card event-cards">
     <div class="card-body">
       Greco-Persian Wars, Athens
-      <div class = "card-story-counter red">&nbsp; <span class="w3-badge w3-red">3</span></div>
-      <div class = "card-story-counter">Stories:</div>
+      <div class="card-story-counter red">
+        &nbsp; <span class="w3-badge w3-red">3</span>
+      </div>
+      <div class="card-story-counter">
+        Stories:
+      </div>
     </div>
-  </div></a>
-
-  <a href=""><div class="card event-cards">
+  </div></a> <a href="">
+  <div class="card event-cards">
     <div class="card-body">
       Beginning of Aviation, Paris
-      <div class = "card-story-counter red">&nbsp; <span class="w3-badge w3-red">2</span></div>
-      <div class = "card-story-counter">Stories:</div>
+      <div class="card-story-counter red">
+        &nbsp; <span class="w3-badge w3-red">2</span>
+      </div>
+      <div class="card-story-counter">
+        Stories:
+      </div>
     </div>
-  </div></a>
-
-  <a href=""> <div class="card event-cards">
+  </div></a> <a href="">
+  <div class="card event-cards">
     <div class="card-body">
       Apollo 11, Berlin
-      <div class = "card-story-counter red">&nbsp; <span class="w3-badge w3-black">0</span></div>
-      <div class = "card-story-counter">Stories:</div>
-    </div></a>
-  </div>
-
-  <a href=""><div class="card event-cards">
+      <div class="card-story-counter red">
+        &nbsp; <span class="w3-badge w3-black">0</span>
+      </div>
+      <div class="card-story-counter">
+        Stories:
+      </div>
+    </div>
+  </div></a> <a href="">
+  <div class="card event-cards">
     <div class="card-body">
       Sputnik 1, London
-      <div class = "card-story-counter red">&nbsp; <span class="w3-badge w3-black">0</span></div>
-      <div class = "card-story-counter">Stories:</div>
+      <div class="card-story-counter red">
+        &nbsp; <span class="w3-badge w3-black">0</span>
+      </div>
+      <div class="card-story-counter">
+        Stories:
+      </div>
     </div>
-  </div></a>
-
-<a href=""><div class="card event-cards">
+  </div></a> <a href="">
+  <div class="card event-cards">
     <div class="card-body">
       Victory in Europe Day, New York
-      <div class = "card-story-counter red">&nbsp; <span class="w3-badge w3-black">0</span></div>
-      <div class = "card-story-counter">Stories:</div>
+      <div class="card-story-counter red">
+        &nbsp; <span class="w3-badge w3-black">0</span>
+      </div>
+      <div class="card-story-counter">
+        Stories:
+      </div>
     </div>
   </div></a>
-
+  <br></br>
 </main>
-<br></br>
 <%include template/footer.ejs%>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
+<!-- Bootstrap core JavaScript ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js">
+</script>
+<script>
+
+  function initMap() {
+
+
+
+    var myLatLng = {lat: 53.381130, lng: -1.470085};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: myLatLng
+    });
+
+    var southWest = new google.maps.LatLng(53.081130, -1.470085);
+    var northEast = new google.maps.LatLng(53.921022, -1.571773);
+    var lngSpan = northEast.lng() - southWest.lng();
+    var latSpan = northEast.lat() - southWest.lat();
+
+    for (var i = 0; i < 35; i++) {
+      // init markers
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(southWest.lat() + latSpan * Math.random(), southWest.lng() + lngSpan * Math.random()),
+        map: map,
+        title: 'Click Me ' + i
+      });
+    }
+  }
+</script>
+<script>
+
+</script>
 <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
-<!--Navigation bar-->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm5EmU8b35j-9fhgd7nll5IePADt_0z88&callback=initMap"></script>
 </body>
+
 </html>
