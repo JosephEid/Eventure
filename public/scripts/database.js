@@ -28,6 +28,7 @@ function initDatabase(){
 function storeUserData(userObject) {
     console.log('inserting: '+JSON.stringify(userObject));
     if (dbPromise) {
+        console.log('madeit');gh
         dbPromise.then(async db => {
             var tx = db.transaction(USER_STORE_NAME, 'readwrite');
             var store = tx.objectStore(USER_STORE_NAME);
