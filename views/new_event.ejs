@@ -9,7 +9,7 @@
     <link rel="icon" href="images/main.ico">
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
+    <script src="/scripts/newEvent.js"></script>
     <title>Eventure</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
@@ -58,23 +58,20 @@
                 <div class="form-group">
                     <label for="eventDescription">Title</label>
                     <input type="name" class="form-control" id="eventDescription" aria-describedby="eventHelp" placeholder="Event description">
-
                 </div>
                 <div class="form-group">
-                    <label for="eventDate">Location</label>
-                    <input type="date" class="form-control" id="eventLocation" placeholder="Event date">
+                    <label for="eventLocation">Location</label>
+                    <input type="name" class="form-control" id="eventLocation" placeholder="Event location">
                 </div>
                 <div class="form-group">
-                    <label for="eventLocation">Date of event</label>
-                    <input type="name" class="form-control" id="eventLocation" placeholder="Location">
+                    <label for="eventDate">Date of event</label>
+                    <input type="date" class="form-control" id="eventDate" placeholder="Event Date">
+                </div>
+                <div class="form-group">
+                    <label for="eventPhoto">Event photo</label>
+                    <input type="file" class="form-control-file" id="eventPhoto">
                 </div>
 
-                <form>
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Event photo</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                    </div>
-                </form>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

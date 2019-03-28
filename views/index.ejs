@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Karla|Press+Start+2P" rel="stylesheet">
 
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/scripts/displayEvents.js"></script>
 
   <title>Eventure</title>
 
@@ -47,9 +49,6 @@
             .padding {
               padding:0.5em;
             }
-
-
-
           </style>
 </head>
 
@@ -63,25 +62,24 @@
       ⚡ Featured event
     </div>
   </div>
-  <div class="row">
-  <div class="col-md-12">
-    <div class = "card event-cards">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-4 padding"><img src="images/portrait.jpg" width="100%"></img>
-          </div>
-          <div class="col-md-4 padding"><img src="images/portrait2.jpg" width="100%"></img>
-          </div>
-          <div class="col-md-4 padding"><img src="images/si2.jpg" width="100%"></img>
-          </div>
-        </div>
-      </div>
-      </div>
-    </div>
-  </div>
+  <!--<div class="row">-->
+  <!--<div class="col-md-12">-->
+    <!--<div class = "card event-cards">-->
+      <!--<div class="container-fluid">-->
+        <!--<div class="row">-->
+           <!--<div class="col-md-4 padding"><img src="images/portrait.jpg" width="100%"></img>-->
+          <!--</div>-->
+          <!--<div class="col-md-4 padding"><img src="images/portrait2.jpg" width="100%"></img>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
   <a href=""><div class="card event-cards">
     <div class="card-body">
       Apollo 13, Moscow
+      <img src="images/festival.jpg" class="img-fluid" alt="Responsive image">
       <div class = "card-story-counter red">&nbsp; 2</div>
       <div class = "card-story-counter">Stories:</div>
     </div>
@@ -94,6 +92,9 @@
       🎉 Current events
     </div>
   </div>
+  <script type="text/javascript">
+    drawEvents();
+  </script>
   <a href=""><div class="card event-cards">
     <div class="card-body">
       Greco-Persian Wars, Athens
