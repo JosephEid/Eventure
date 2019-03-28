@@ -63,6 +63,7 @@ function getAllEventData() {
     //check for support
     if ('indexedDB' in window) {
         initDatabase();
+        console.log('initialised');
     }
     else {
         console.log('This browser doesn\'t support IndexedDB');

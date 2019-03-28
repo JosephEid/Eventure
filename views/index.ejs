@@ -7,19 +7,12 @@
   <meta content="" name="author">
   <link href="images/main.ico" rel="icon">
   <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Karla|Press+Start+2P" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-1.10.2.js">
-  </script>
-  <script src="/socket.io/socket.io.js">
-  </script>
-  <script src="/scripts/displayEvents.js">
-  </script>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/scripts/eventScripts.js"></script>
   <script src="/scripts/database.js"></script>
   <script src="/scripts/idb.js"></script>
   <title>Eventure</title>
-  <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Karla|Press+Start+2P" rel="stylesheet">
 
   <!-- Bootstrap core CSS -->
 
@@ -141,7 +134,10 @@
 </head>
 
 <body onload="getAllEventData()">
-<% include template/header.ejs%>
+
+<header>
+  <% include template/header.ejs%>
+</header>
 
 <!-- Begin page content -->
 <main role="main" class="container" id="eventList">
@@ -217,8 +213,8 @@
         Stories:
       </div>
     </div>
-  </div></a> <a href="">
-  <div class="card event-cards">
+  </div></a>
+  <a href=""><div class="card event-cards">
     <div class="card-body">
       Beginning of Aviation, Paris
       <div class="card-story-counter red">
@@ -228,8 +224,8 @@
         Stories:
       </div>
     </div>
-  </div></a> <a href="">
-  <div class="card event-cards">
+  </div></a>
+  <a href=""><div class="card event-cards">
     <div class="card-body">
       Apollo 11, Berlin
       <div class="card-story-counter red">
@@ -239,8 +235,8 @@
         Stories:
       </div>
     </div>
-  </div></a> <a href="">
-  <div class="card event-cards">
+  </div></a>
+  <a href=""><div class="card event-cards">
     <div class="card-body">
       Sputnik 1, London
       <div class="card-story-counter red">
@@ -250,8 +246,8 @@
         Stories:
       </div>
     </div>
-  </div></a> <a href="">
-  <div class="card event-cards">
+  </div></a>
+  <a href=""><div class="card event-cards">
     <div class="card-body">
       Victory in Europe Day, New York
       <div class="card-story-counter red">
@@ -262,7 +258,6 @@
       </div>
     </div>
   </div></a>
-  <br></br>
 </main>
 <%include template/footer.ejs%>
 <!-- Bootstrap core JavaScript ================================================== -->
