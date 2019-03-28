@@ -13,20 +13,6 @@
   <script src="/socket.io/socket.io.js"></script>
   <script src="/scripts/displayEvents.js"></script>
 
-  <script type="text/javascript">
-    var socket = io();
-    /**When socket returns results redraw page. If they've been filtered redraw the map as well.
-     * If only sorted no need to draw map
-     */
-    socket.on('results', function(results, fromFilter){
-      drawResults(results);
-      if (fromFilter){
-        drawMap(results);
-      }
-      storeCachedData('results', results);
-    });
-  </script>
-
   <title>Eventure</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
@@ -110,6 +96,9 @@
       🎉 Current events
     </div>
   </div>
+  <script type="text/javascript">
+    drawEvents();
+  </script>
   <a href=""><div class="card event-cards">
     <div class="card-body">
       Greco-Persian Wars, Athens

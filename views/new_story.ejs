@@ -9,6 +9,7 @@
     <link rel="icon" href="images/main.ico">
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="/scripts/newPhoto.js"></script>
 
     <title>Eventure</title>
 
@@ -75,14 +76,47 @@
                     <input class="form-control" type="text" placeholder="02/01/1993" readonly>
                 </div>
 
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Story photo</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                    </div>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Story photo</label>
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+                <button type="button" class="btn btn-success" data-toggle="modal"
+                        data-target="#photo">Take Photo</button>
                 </form>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+
+            <!-- Photo input modal -->
+            <div class="modal fade" id="photo" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Add Photo</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body" id="photoSize">
+                            <div id="camera">
+                                <video id="video" style="display:none;" autoplay></video>
+                                <img id="takenPhoto" src="">
+                                <canvas id="canvas" style="display:none;"></canvas>
+                            </div>
+                            <!-- Buttons to open the camera and then take the photo -->
+                            <button id="load" type="button" onclick="takePhoto()" class="btn btn-success btn-block">Open Camera</button>
+                            <button id="take" style="display:none;" type="button" class="btn btn-success btn-block">Take Photo</button>
+                            <div id="noSupport" class="row" style="display: none">
+                                <div class="text-center mt-1">
+                                    <p style="color: red;">This function is not supported by your device.</p>
+                                </div>
+                            </div>
+                            <form class="mt-2" id="newImage" action="#">
+                                <input type="file" class="btn btn-outline-success col-8" name="fileupload" value="fileupload" id="fileupload">
+                                <input type="submit" class="btn btn-success pb-2 col-3 float-right" value="Submit">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
