@@ -15,9 +15,8 @@ router.get('/new_event', function(req, res, next) {
  *  POST the data about the event.
  */
 router.post('/post_event', function(req, res, next) {
-  const event = getEvent(req.body.name);
-  res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify(event));
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(eventData));
 });
 
 /* GET events nearby page. */

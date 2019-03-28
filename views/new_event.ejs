@@ -50,19 +50,23 @@
     </div>
     <div class="card event-cards">
         <div class="card-body">
-            <form>
+            <form action="post_event" method="POST">
                 <div class="form-group">
                     <label for="eventName">Title</label>
-                    <input type="email" class="form-control" id="eventName" aria-describedby="eventHelp" placeholder="Event name">
+                    <input type="name" class="form-control" id="eventName" aria-describedby="eventHelp" placeholder="Event name">
+                </div>
+                <div class="form-group">
+                    <label for="eventDescription">Title</label>
+                    <input type="name" class="form-control" id="eventDescription" aria-describedby="eventHelp" placeholder="Event description">
 
                 </div>
                 <div class="form-group">
-                    <label for="eventLocation">Location</label>
-                    <input type="name" class="form-control" id="eventLocation" placeholder="Event location">
+                    <label for="eventDate">Location</label>
+                    <input type="date" class="form-control" id="eventLocation" placeholder="Event date">
                 </div>
                 <div class="form-group">
                     <label for="eventLocation">Date of event</label>
-                    <input type="date" class="form-control" id="eventLocation" placeholder="Location">
+                    <input type="name" class="form-control" id="eventLocation" placeholder="Location">
                 </div>
 
                 <form>
