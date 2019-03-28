@@ -7,10 +7,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="images/main.ico">
-
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="/scripts/newEvent.js"></script>
+    <script src="/scripts/eventScripts.js"></script>
+    <script src="/scripts/database.js"></script>
+    <script src="/scripts/idb.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/scripts/jquery.min.js"></script>
     <title>Eventure</title>
+
+    <script>
+        $(document).ready(function() {
+            console.log($.ajax);
+        });
+    </script>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Karla|Press+Start+2P" rel="stylesheet">
@@ -50,32 +58,29 @@
     </div>
     <div class="card event-cards">
         <div class="card-body">
-            <form id="new_event" onsubmit="newEvent()">
+            <form id=“xForm" onsubmit="newEvent()">
                 <div class="form-group">
                     <label for="eventName">Title</label>
-                    <input type="name" class="form-control" id="eventName" aria-describedby="eventHelp" placeholder="Event name">
+                    <input type="name" class="form-control" name ="eventName" id="eventName" aria-describedby="eventHelp" placeholder="Event name">
                 </div>
                 <div class="form-group">
                     <label for="eventDescription">Title</label>
-                    <input type="name" class="form-control" id="eventDescription" aria-describedby="eventHelp" placeholder="Event description">
+                    <input type="name" class="form-control" name = "eventDescription" id="eventDescription" aria-describedby="eventHelp" placeholder="Event description">
                 </div>
                 <div class="form-group">
                     <label for="eventLocation">Location</label>
-                    <input type="name" class="form-control" id="eventLocation" placeholder="Event location">
+                    <input type="name" class="form-control" name = "eventLocation" id="eventLocation" placeholder="Event location">
                 </div>
                 <div class="form-group">
                     <label for="eventDate">Date of event</label>
-                    <input type="date" class="form-control" id="eventDate" placeholder="Event Date">
+                    <input type="date" class="form-control" name = "eventDate" id="eventDate" placeholder="Event Date">
                 </div>
                 <div class="form-group">
                     <label for="eventPhoto">Event photo</label>
-                    <input type="file" class="form-control-file" id="eventPhoto">
+                    <input type="file" class="form-control-file" name = "eventPhoto" id="eventPhoto">
                 </div>
-
-
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <p><input type="submit" name="g" value="Submit" id="g"></p>
             </form>
-            <div id="results" style="margin-top:30px"></div>
         </div>
     </div>
 
@@ -88,8 +93,7 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
 <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
         <!--Navigation bar-->

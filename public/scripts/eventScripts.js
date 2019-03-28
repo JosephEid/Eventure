@@ -1,18 +1,18 @@
 function newEvent() {
-    var formArray= $("#new_event").serializeArray();
+    var formArray= $("form").serializeArray();
     var data={};
     //var url="/post_event";
     for (index in formArray){
         data[formArray[index].name] = formArray[index].value;
     }
-    console.log(data);
-    sendAjaxQuery('/new_user', data);
+    console.log(formArray);
+    sendAjaxQuery('/post_event', data);
     event.preventDefault();
 }
 
 function sendAjaxQuery(url, data) {
     $.ajax({
-        url: url ,
+        url: url,
         data: data,
         dataType: 'json',
         type: 'POST',
@@ -23,7 +23,7 @@ function sendAjaxQuery(url, data) {
             storeEventData(dataR);
             // in order to have the object printed by alert
             // we need to JSON stringify the object;
-            document.getElementById('results').innerHTML= JSON.stringify(dataR);
+            //document.getElementById('results').innerHTML= JSON.stringify(dataR);
         },
         error: function (xhr, status, error) {
             alert('Error: ' + error.message);
@@ -31,6 +31,21 @@ function sendAjaxQuery(url, data) {
     });
 }
 
-function loadEvents() {
 
+function addToResults(dataR) {
+    if (document.getElementById('eventList') != null) {
+        const row = document.createElement('div');
+        const body = document.createElement('div');
+
+        // appending a new row
+        document.getElementById('eventList').appendChild(row);
+        row.appendChild(body);
+        // formatting the row by applying css classes
+        row.classList.add('card');
+        row.classList.add('event-cards');
+        body.classList.add('card-body');
+        // the following is far from ideal. we should really create divs using javascript
+        // rather than assigning innerHTML
+        body.innerHTML = dataR.eventName + ", " + dataR.eventLocation;
+    }
 }

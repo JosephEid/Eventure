@@ -60,31 +60,24 @@ function storeEventData(eventObject) {
 }
 
 function getAllEventData() {
+    //check for support
+    if ('indexedDB' in window) {
+        initDatabase();
+    }
+    else {
+        console.log('This browser doesn\'t support IndexedDB');
+    }
     if (dbPromise) {
         dbPromise.then(function (db) {
-            console.log('fetching all events:');
             var tx = db.transaction(EVENT_STORE_NAME, 'readonly');
             var store = tx.objectStore(EVENT_STORE_NAME);
-            //var index = store.index('location');
             return store.getAll();
         }).then(function (readingsList) {
+            console.log(readingsList);
             if (readingsList && readingsList.length>0){
-                var max;
                 for (var elem of readingsList)
-                    if (!max || elem.date>max.date)
-                        max= elem;
-                if (max) addToResults(max);
-            } else {
-                const value = localStorage.getItem(city);
-                if (value == null)
-                    addToResults({city: city, date: date});
-                else addToResults(value);
+                    addToResults(elem);
             }
         });
-    } else {
-        const value = localStorage.getItem(city);
-        if (value == null)
-            addToResults( {city: city, date: date});
-        else addToResults(value);
     }
 }
