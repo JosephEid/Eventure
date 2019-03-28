@@ -50,7 +50,7 @@
     </div>
     <div class="card event-cards">
         <div class="card-body">
-            <form action="post_event" method="POST">
+            <form id="new_event" onsubmit="newEvent()">
                 <div class="form-group">
                     <label for="eventName">Title</label>
                     <input type="name" class="form-control" id="eventName" aria-describedby="eventHelp" placeholder="Event name">
@@ -75,6 +75,7 @@
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            <div id="results" style="margin-top:30px"></div>
         </div>
     </div>
 

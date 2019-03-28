@@ -19,6 +19,6 @@ function initUsers() {
     }
 }
 
-function loadData() {
+function loadUsers() {
 
 }

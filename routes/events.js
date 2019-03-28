@@ -15,6 +15,7 @@ router.get('/new_event', function(req, res, next) {
  *  POST the data about the event.
  */
 router.post('/post_event', function(req, res, next) {
+    var eventData = req.body;
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(eventData));
 });
