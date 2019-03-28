@@ -7,7 +7,13 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
+    background-color: #E9F0F7;
+
 }
+
+
+
+
 .footer {
     position: absolute;
     bottom: 0;

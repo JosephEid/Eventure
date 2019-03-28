@@ -31,9 +31,7 @@
               float: right;
             }
 
-            .red {
-              color: red;
-            }
+
 
             .top-bar {
               height:0.1em;
@@ -49,6 +47,57 @@
             .padding {
               padding:0.5em;
             }
+
+            .story-preview {
+              border-radius: 90%;
+            }
+
+            .thumbnail-story img {
+              width: 5.5em; /* You can set the dimensions to whatever you want */
+              height: 5.5em;
+              border-radius: 50%;
+              object-fit: cover;
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+              border-width: 1px;
+              border-style: solid;
+              border-color: ghostwhite;
+              box-shadow: 2px 2px;
+              margin-top: 1em;
+              margin-bottom: 1em;
+            }
+
+            .thumbnail-story-container {
+              margin: auto;
+              padding: 10px;
+            }
+
+            @media only screen and (max-width: 750px)  {
+              .thumbnail-story img{
+                width: 13em !important;
+                height: 13em !important;
+
+              }
+            }
+
+            .padding-override {
+              padding: 0em !important;
+            }
+
+            .row {
+              margin-right: -5px !important;
+              margin-left: -5px !important;
+            }
+
+            a.link-remove-color {
+              color:black !important;
+            }
+
+
+
+
+
           </style>
 </head>
 
@@ -62,28 +111,37 @@
       ⚡ Featured event
     </div>
   </div>
-  <!--<div class="row">-->
-  <!--<div class="col-md-12">-->
-    <!--<div class = "card event-cards">-->
-      <!--<div class="container-fluid">-->
-        <!--<div class="row">-->
-           <!--<div class="col-md-4 padding"><img src="images/portrait.jpg" width="100%"></img>-->
-          <!--</div>-->
-          <!--<div class="col-md-4 padding"><img src="images/portrait2.jpg" width="100%"></img>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-  <a href=""><div class="card event-cards">
+
+<a href = "/view_event" class="link-remove-color"><div class="card event-cards">
     <div class="card-body">
       Apollo 13, Moscow
-      <img src="images/festival.jpg" class="img-fluid" alt="Responsive image">
-      <div class = "card-story-counter red">&nbsp; 2</div>
+      <div class = "card-story-counter red">&nbsp; <span class="w3-badge w3-red">6</span></div>
       <div class = "card-story-counter">Stories:</div>
+      <div class="container-fluid">
+        <div class="row center">
+          <div class="col-md-2 thumbnail-story padding-override">
+            <img src = "images/si2.jpg"></img>
+          </div>
+          <div class="col-md-2 thumbnail-story padding-override">
+            <img src = "images/festival.jpg"></img>
+          </div>
+          <div class="col-md-2 thumbnail-story padding-override">
+            <img src = "images/3.jpg"></img>
+          </div>
+          <div class="col-md-2 thumbnail-story padding-override">
+            <img src = "images/1.jpg"></img>
+          </div>
+          <div class="col-md-2 thumbnail-story padding-override">
+            <img src = "images/2.jpg"></img>
+          </div>
+          <div class="col-md-2 thumbnail-story padding-override">
+            <img src = "images/4.jpg"></img>
+          </div>
+        </div>
+      </div>
     </div>
-  </div></a>
+  </div>
+</a>
 
   </div>
   <hr></hr>
@@ -98,7 +156,7 @@
   <a href=""><div class="card event-cards">
     <div class="card-body">
       Greco-Persian Wars, Athens
-      <div class = "card-story-counter red">&nbsp; 0</div>
+      <div class = "card-story-counter red">&nbsp; <span class="w3-badge w3-red">3</span></div>
       <div class = "card-story-counter">Stories:</div>
     </div>
   </div></a>
@@ -106,7 +164,7 @@
   <a href=""><div class="card event-cards">
     <div class="card-body">
       Beginning of Aviation, Paris
-      <div class = "card-story-counter red">&nbsp; 0</div>
+      <div class = "card-story-counter red">&nbsp; <span class="w3-badge w3-red">2</span></div>
       <div class = "card-story-counter">Stories:</div>
     </div>
   </div></a>
@@ -114,7 +172,7 @@
   <a href=""> <div class="card event-cards">
     <div class="card-body">
       Apollo 11, Berlin
-      <div class = "card-story-counter red">&nbsp; 0</div>
+      <div class = "card-story-counter red">&nbsp; <span class="w3-badge w3-black">0</span></div>
       <div class = "card-story-counter">Stories:</div>
     </div></a>
   </div>
@@ -122,7 +180,7 @@
   <a href=""><div class="card event-cards">
     <div class="card-body">
       Sputnik 1, London
-      <div class = "card-story-counter red">&nbsp; 0</div>
+      <div class = "card-story-counter red">&nbsp; <span class="w3-badge w3-black">0</span></div>
       <div class = "card-story-counter">Stories:</div>
     </div>
   </div></a>
@@ -130,7 +188,7 @@
 <a href=""><div class="card event-cards">
     <div class="card-body">
       Victory in Europe Day, New York
-      <div class = "card-story-counter red">&nbsp; 0</div>
+      <div class = "card-story-counter red">&nbsp; <span class="w3-badge w3-black">0</span></div>
       <div class = "card-story-counter">Stories:</div>
     </div>
   </div></a>

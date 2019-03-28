@@ -1,0 +1,258 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/main.ico">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Karla|Press+Start+2P" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/scripts/displayEvents.js"></script>
+
+    <title>Eventure</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
+    <style>
+        .event-cards {
+            margin-top:1.0em;
+        }
+
+        .card-story-counter {
+            float: right;
+        }
+
+
+
+        .top-bar {
+            height:0.1em;
+            background-color:red;
+        }
+
+        .card-internal {
+            background-color: red;
+            width:50%;
+
+        }
+
+        .padding {
+            padding:0.5em;
+        }
+
+        .story-preview {
+            border-radius: 90%;
+        }
+
+        .thumbnail-story img {
+            width: 5.5em; /* You can set the dimensions to whatever you want */
+            height: 5.5em;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-width: 1px;
+            border-style: solid;
+            border-color: ghostwhite;
+            box-shadow: 2px 2px;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+
+        .thumbnail-story-container {
+            margin: auto;
+            padding: 10px;
+        }
+
+        .card-body *{
+            text-align: center;
+            align-content: center;
+        }
+
+        .carousel {
+            color: transparent !important;
+        }
+
+        .author-blue {
+            color: #00B7FF;
+        }
+
+
+
+        @media only screen and (max-width: 750px)  {
+            .thumbnail-story img{
+                width: 13em !important;
+                height: 13em !important;
+            }
+        }
+
+
+        .fit {
+            width: 100%; /* You can set the dimensions to whatever you want */
+            height: 25em;
+            object-fit: cover;
+            display: block;
+            box-shadow: 2px 2px;
+            margin-top: 1em;
+            margin-bottom: 1em;
+
+        }
+
+        @media only screen and (min-width: 751px)  {
+            .fit {
+                height: 35em !important;
+                object-fit: contain;
+                /*transform: scale(0.6, 0.6);*/
+
+            }
+        }
+
+        .padding-override {
+            padding: 0em !important;
+        }
+
+        .row {
+            margin-right: -5px !important;
+            margin-left: -5px !important;
+        }
+
+        .description p {
+            text-align: left !important;
+            align-content: left !important;
+            margin: 0 auto !important;
+        }
+
+        .title {
+            font-weight: 800 !important;
+        }
+
+        .description-container {
+            width: 100% !important;
+            float: left !important;
+        }
+
+    </style>
+</head>
+
+<body>
+<% include template/header.ejs%>
+
+<!-- Begin page content -->
+<main role="main" class="container">
+    <div class="card">
+        <div class="card-header">
+            🎉 Apollo 13, Moscow
+            <div class = "card-story-counter red">&nbsp; <span class="w3-badge w3-red">6</span></div>
+
+            <div class = "card-story-counter">Stories:</div>
+        </div>
+    </div>
+
+    <a><div class="card event-cards">
+        <div class="card-body">
+            Our favourite
+            <div class="container-fluid">
+                <div class="row center">
+                    <div class="col-md-2 thumbnail-story padding-override">
+                        <img src = "images/si2.jpg"></img>
+                    </div>
+                    <div class="col-md-2 thumbnail-story padding-override">
+                        <img src = "images/festival.jpg"></img>
+                    </div>
+                    <div class="col-md-2 thumbnail-story padding-override">
+                        <img src = "images/3.jpg"></img>
+                    </div>
+                    <div class="col-md-2 thumbnail-story padding-override">
+                        <img src = "images/1.jpg"></img>
+                    </div>
+                    <div class="col-md-2 thumbnail-story padding-override">
+                        <img src = "images/2.jpg"></img>
+                    </div>
+                    <div class="col-md-2 thumbnail-story padding-override">
+                        <img src = "images/4.jpg"></img>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <hr></hr>
+    <div class="card">
+        <div class="card-header">
+            All stories
+        </div>
+    </div>
+    <script type="text/javascript">
+        drawEvents();
+    </script>
+    <a><div class="card event-cards">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="carousel slide" id="carousel-702912">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100 fit" alt="Carousel Bootstrap First" src="images/3.jpg" />
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100 fit" alt="Carousel Bootstrap First" src="images/2.jpg" />
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100 fit" alt="Carousel Bootstrap First" src="images/1.jpg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="row description-container">
+                    <div class="col-md-12">
+                        Some pictures
+                        <p>
+                            By James
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</main>
+<br></br>
+<%include template/footer.ejs%>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+<script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+<script>
+
+
+    $("img").click(function(){
+        $(".carousel").carousel("next");
+    });
+
+    $('.carousel').carousel({
+        interval: 0
+    })
+
+
+
+</script>
+<!--Navigation bar-->
+</body>
+        </html>
