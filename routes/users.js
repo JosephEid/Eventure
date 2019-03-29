@@ -14,10 +14,10 @@ router.get('/new_user', function(req, res, next) {
 /**
  *  POST the data about the user.
  */
-router.post('/new_user', function(req, res, next) {
-  var userData = req.body;
+router.post('/post_user', function(req, res, next) {
+  var eventData = req.body;
   res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify(userData));
+  res.send(JSON.stringify(eventData));
 });
 
 /* GET user page. */
