@@ -51,13 +51,11 @@ function addToResults(dataR) {
             "      </div>"
 
 
-            // <div class="card-story-counter red">
-            // &nbsp; <span class="w3-badge w3-red">3</span>
-            // </div>
-        // the following is far from ideal. we should really create divs using javascript
-        // rather than assigning innerHTML
-        //body.innerHTML = dataR.eventName + ", " + dataR.eventLocation;
-        // link to event page
-
     }
+}
+
+function displayEvent(dataR) {
+    document.getElementById('nameAndLocation').innerHTML = dataR.eventName + ", " + dataR.eventLocation;
+    document.getElementById('description').innerHTML = dataR.eventDescription;
+    document.getElementById('dateAndAuthor').innerHTML = dataR.eventDate;
 }
