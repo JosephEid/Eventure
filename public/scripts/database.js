@@ -23,7 +23,7 @@ function initDatabase(){
         console.log(dbPromise);
         if (!upgradeDb.objectStoreNames.contains(USER_STORE_NAME)) {
             var eventureDB = upgradeDb.createObjectStore(USER_STORE_NAME, {keyPath: 'id', autoIncrement: true});
-            //eventureDB.createIndex('location', 'location', {unique: false, multiEntry: true});
+            eventureDB.createIndex('email', 'email', {unique: true});
         }
         if (!upgradeDb.objectStoreNames.contains(EVENT_STORE_NAME)) {
             var eventureDB = upgradeDb.createObjectStore(EVENT_STORE_NAME, {keyPath: 'id', autoIncrement: true});
@@ -124,6 +124,31 @@ function getEvent(id) {
         }).then(function (readingsList) {
             console.log(readingsList);
             displayEvent(readingsList)
+        });
+    }
+}
+
+function getLogin(email, password) {
+    initialise();
+    if (dbPromise) {
+        dbPromise.then(function (db) {
+            console.log("Checking: " + email);
+            var tx = db.transaction(USER_STORE_NAME, 'readonly');
+            var store = tx.objectStore(USER_STORE_NAME);
+            return store.getAll();
+        }).then(function (readingsList) {
+            for (var elem of readingsList) {
+                if (elem.loginEmail == email) {
+                    emailFound = elem;
+                }
+            }
+            if (emailFound && emailFound.loginPassword == password) {
+                alert("YEA FUCKING BOI");
+            }
+            else {
+                alert("you fucked it");
+            }
+
         });
     }
 }

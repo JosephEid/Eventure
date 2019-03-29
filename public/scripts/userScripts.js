@@ -58,3 +58,21 @@ function validatePassword(password, confirm_password){
         return true;
     }
 }
+
+function login() {
+    var formArray= $("form").serializeArray();
+    var data={};
+    //var url="/post_event";
+    for (index in formArray){
+        if (formArray[index].name == 'loginPassword') {
+            password = formArray[index].value;
+        }
+        if (formArray[index].name == 'loginEmail') {
+            email = formArray[index].value;
+        }
+
+
+    }
+    getLogin(email, password);
+    event.preventDefault();
+}

@@ -9,7 +9,10 @@
     <link rel="icon" href="images/main.ico">
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="/scripts/newEvent.js"></script>
+
+    <script src="/scripts/database.js"></script>
+    <script src="/scripts/idb.js"></script>
+    <script src="/scripts/userScripts.js"></script>
     <title>Eventure</title>
 
 
@@ -53,16 +56,16 @@
     </div>
     <div class="card event-cards">
         <div class="card-body">
-            <form onsubmit="addEvent()">
+            <form id=“xForm" onsubmit="login()">
                 <div class="form-group">
-                    <label for="eventName">Username</label>
-                    <input type="name" class="form-control" id="loginUsername" placeholder="Username">
+                    <label for="loginEmail">Login Email</label>
+                    <input type="name" class="form-control" name="loginEmail" id="loginEmail" placeholder="Username" required>
                 </div>
                 <div class="form-group">
-                    <label for="eventLocation">Password</label>
-                    <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" class="form-control" name="loginPassword" id="loginPassword" placeholder="Password" required>
                 </div>
-                <button type="submit" class="btn btn-primary wide-btn">Login</button>
+                <p><input type="submit" name="g" value="Submit" id="g"></p>
             </form>
         </div>
     </div>
@@ -73,8 +76,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<!--Navigation bar-->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 </body>
 </html>
