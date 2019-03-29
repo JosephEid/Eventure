@@ -14,15 +14,14 @@ router.get('/new_story', function(req, res, next) {
 /**
  *  POST the data about the story.
  */
-router.post('/new_story', function(req, res, next) {
+router.post('/post_story', function(req, res, next) {
   var storyData = req.body;
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(storyData));
-
 });
 
 /* GET story page. */
-router.get('/view_story/:id/:name', function(req, res, next) {
+router.get('/view_story/:id', function(req, res, next) {
   res.render('view_story', { title: req.params.name });
 });
 
