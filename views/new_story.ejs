@@ -8,6 +8,9 @@
     <meta name="author" content="">
     <link rel="icon" href="images/main.ico">
 
+    <script src="/scripts/storyScripts.js"></script>
+    <script src="/scripts/database.js"></script>
+    <script src="/scripts/idb.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="/scripts/newPhoto.js"></script>
 
@@ -60,39 +63,21 @@
     </div>
     <div class="card event-cards">
         <div class="card-body">
-            <form>
+            <form id=“xForm" onsubmit="newStory()">
                 <div class="form-group">
-                    <label for="eventName">Title</label>
-                    <input type="email" class="form-control" id="eventName" aria-describedby="eventHelp" placeholder="Story name">
-                    </input>
+                    <label for="eventID">Event ID</label>
+                    <input type="number" class="form-control" id="eventID" name="eventID" aria-describedby="eventHelp">
                 </div>
-                <div class="form-group">
-                    <label for="inputState">Event association</label>
-                    <select id="inputState" class="form-control">
-                        <option selected>Beginning of Avaiation</option>
-                        <option selected>Sputnik 1</option>
-                    </select>
-                </div>
-
                 <div class = "form-group">
-                    <label for="inputState">Event location</label>
-                    <input class="form-control" type="text" placeholder="Paris" readonly>
+                    <label for="caption">Caption</label>
+                    <input class="form-control" type="text" id="caption" name="caption">
                 </div>
-
-                <div class = "form-group">
-                    <label for="inputState">Event date</label>
-                    <input class="form-control" type="text" placeholder="02/01/1993" readonly>
-                </div>
-
                 <div class="form-group">
-                    <label for="exampleFormControlFile1">Story photo</label>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    <label for="eventPhoto">Event photo</label>
+                    <input type="file" class="form-control-file" name = "storyPhoto" id="storyPhoto">
                 </div>
-                <button type="button" class="btn btn-success" data-toggle="modal"
-                        data-target="#photo" id="take-photo-button">Take Photo</button>
-                </form>
 
-                <button type="submit" class="btn btn-primary wide-btn">New story</button>
+                <p><input type="submit" name="g" value="Post" id="g"></p>
             </form>
 
             <!-- Photo input modal -->
@@ -137,8 +122,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <!--Navigation bar-->
 </body>
 </html>

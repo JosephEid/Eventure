@@ -15,9 +15,9 @@ router.get('/new_user', function(req, res, next) {
  *  POST the data about the user.
  */
 router.post('/post_user', function(req, res, next) {
-  var eventData = req.body;
+  var userData = req.body;
   res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify(eventData));
+  res.send(JSON.stringify(userData));
 });
 
 /* GET user page. */

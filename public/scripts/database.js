@@ -42,7 +42,7 @@ function storeUserData(userObject) {
     initialise();
     console.log(dbPromise);
     if (dbPromise) {
-        console.log('madeit');gh
+        console.log('madeit');
         dbPromise.then(async db => {
             var tx = db.transaction(USER_STORE_NAME, 'readwrite');
             var store = tx.objectStore(USER_STORE_NAME);
@@ -75,6 +75,26 @@ function storeEventData(eventObject) {
         });
     }
     else localStorage.setItem(JSON.stringify(eventObject));
+}
+
+function storeStoryData(storyObject) {
+    console.log('inserting: '+JSON.stringify(storyObject));
+    console.log("HERE");
+    initialise();
+    console.log(dbPromise);
+    if (dbPromise) {
+        dbPromise.then(async db => {
+            var tx = db.transaction(STORY_STORE_NAME, 'readwrite');
+            var store = tx.objectStore(STORY_STORE_NAME);
+            await store.put(storyObject);
+            return tx.complete;
+        }).then(function () {
+            console.log('added story to the store! '+ JSON.stringify(storyObject));
+        }).catch(function (error) {
+            localStorage.setItem(JSON.stringify(storyObject));
+        });
+    }
+    else localStorage.setItem(JSON.stringify(storyObject));
 }
 
 function getAllEventData() {

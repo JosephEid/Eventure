@@ -1,6 +1,4 @@
 function signUp() {
-
-
     var formArray= $("form").serializeArray();
     var data={};
     //var url="/post_event";
@@ -31,15 +29,12 @@ function signUp() {
 }
 
 function sendAjaxQuery(url, data) {
-    console.log(url);
-    console.log(data);
     $.ajax({
-        url: '/post_user',
+        url: url,
         data: data,
         dataType: 'json',
         type: 'POST',
         success: function (dataR) {
-            console.log("boiboi");
             // no need to JSON parse the result, as we are using
             // dataType:json, so JQuery knows it and unpacks the
             // object for us before returning it
@@ -49,17 +44,10 @@ function sendAjaxQuery(url, data) {
             //document.getElementById('results').innerHTML= JSON.stringify(dataR);
         },
         error: function (xhr, status, error) {
-            console.log("readyState: " + xhr.readyState);
-            console.log("responseText: "+ xhr.responseText);
-            console.log("status: " + xhr.status);
-            console.log("text status: " + status);
-            console.log("error: " + error);
-            console.log("error");
-            //alert('Error: ' + error.message);
+            alert('Error: ' + error.message);
         }
     });
 }
-
 
 function validatePassword(password, confirm_password){
     console.log(password);

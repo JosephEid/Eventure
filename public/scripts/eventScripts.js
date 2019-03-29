@@ -1,7 +1,6 @@
 function newEvent() {
     var formArray= $("form").serializeArray();
     var data={};
-    //var url="/post_event";
     for (index in formArray){
         data[formArray[index].name] = formArray[index].value;
     }
@@ -30,7 +29,6 @@ function sendAjaxQuery(url, data) {
         }
     });
 }
-
 
 function addToResults(dataR) {
     if (document.getElementById('eventList') != null) {
