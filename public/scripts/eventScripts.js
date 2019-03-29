@@ -43,9 +43,21 @@ function addToResults(dataR) {
         // formatting the row by applying css classes
         row.classList.add('card');
         row.classList.add('event-cards');
+
         body.classList.add('card-body');
+        body.innerHTML = "<a href=view_event/" + dataR.id + ">" + dataR.eventName + ", "  + dataR.eventLocaiton + "</a>"
+        body.innerHTML += "<div class='card-story-counter red'>&nbsp; <span class=\"w3-badge w3-red\">"+dataR.id+"</span></div> <div class=\"card-story-counter\">\n" +
+            "        Stories:\n" +
+            "      </div>"
+
+
+            // <div class="card-story-counter red">
+            // &nbsp; <span class="w3-badge w3-red">3</span>
+            // </div>
         // the following is far from ideal. we should really create divs using javascript
         // rather than assigning innerHTML
-        body.innerHTML = dataR.eventName + ", " + dataR.eventLocation;
+        //body.innerHTML = dataR.eventName + ", " + dataR.eventLocation;
+        // link to event page
+
     }
 }

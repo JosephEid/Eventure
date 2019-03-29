@@ -10,6 +10,7 @@ const STORY_STORE_NAME = 'store_stories';
  */
 function initDatabase(){
     dbPromise = idb.openDb(EVENTURE_DB_NAME, 1, function (upgradeDb) {
+        console.log(dbPromise);
         if (!upgradeDb.objectStoreNames.contains(USER_STORE_NAME)) {
             var eventureDB = upgradeDb.createObjectStore(USER_STORE_NAME, {keyPath: 'id', autoIncrement: true});
             //eventureDB.createIndex('location', 'location', {unique: false, multiEntry: true});
@@ -23,10 +24,13 @@ function initDatabase(){
             //eventureDB.createIndex('location', 'location', {unique: false, multiEntry: true});
         }
     });
+    return dbPromise;
 }
 
 function storeUserData(userObject) {
     console.log('inserting: '+JSON.stringify(userObject));
+
+    console.log(dbPromise);
     if (dbPromise) {
         console.log('madeit');gh
         dbPromise.then(async db => {
@@ -45,6 +49,9 @@ function storeUserData(userObject) {
 
 function storeEventData(eventObject) {
     console.log('inserting: '+JSON.stringify(eventObject));
+    console.log("HERE");
+    dbPromise = initDatabase();
+    console.log(dbPromise);
     if (dbPromise) {
         dbPromise.then(async db => {
             var tx = db.transaction(EVENT_STORE_NAME, 'readwrite');
