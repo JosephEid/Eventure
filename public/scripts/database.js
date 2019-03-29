@@ -31,7 +31,7 @@ function initDatabase(){
         }
         if (!upgradeDb.objectStoreNames.contains(STORY_STORE_NAME)) {
             var eventureDB = upgradeDb.createObjectStore(STORY_STORE_NAME, {keyPath: 'id', autoIncrement: true});
-            //eventureDB.createIndex('location', 'location', {unique: false, multiEntry: true});
+            eventureDB.createIndex('eventId', 'eventId', {unique: false, multiEntry: true});
         }
     });
     return dbPromise;
@@ -108,7 +108,26 @@ function getAllEventData() {
             console.log(readingsList);
             if (readingsList && readingsList.length>0){
                 for (var elem of readingsList)
-                    addToResults(elem);
+                    addToEventList(elem);
+            }
+        });
+    }
+}
+
+function getAllStoryData(id) {
+    console.log('getallstories');
+    initialise();
+    if (dbPromise) {
+        dbPromise.then(function (db) {
+            var tx = db.transaction(STORY_STORE_NAME, 'readonly');
+            var store = tx.objectStore(STORY_STORE_NAME);
+            var index = store.index('eventId');
+            return index.getAll(IDBKeyRange.only(id.toString()));
+        }).then(function (readingsList) {
+            console.log(readingsList);
+            if (readingsList && readingsList.length>0){
+                for (var elem of readingsList)
+                    addToStoryList(elem);
             }
         });
     }
@@ -120,10 +139,11 @@ function getEvent(id) {
         dbPromise.then(function (db) {
             var tx = db.transaction(EVENT_STORE_NAME, 'readonly');
             var store = tx.objectStore(EVENT_STORE_NAME);
-            return store.get(id);
+            var index = store.index('id');
+            return index.get(IDBKeyRange.only(id));
         }).then(function (readingsList) {
             console.log(readingsList);
-            displayEvent(readingsList)
+            displayEvent(readingsList);
         });
     }
 }

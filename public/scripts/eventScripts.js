@@ -30,30 +30,29 @@ function sendAjaxQuery(url, data) {
     });
 }
 
-function addToResults(dataR) {
+function addToEventList(dataR) {
     if (document.getElementById('eventList') != null) {
         const row = document.createElement('div');
         const body = document.createElement('div');
 
-        // appending a new row
-        document.getElementById('eventList').appendChild(row);
-        row.appendChild(body);
         // formatting the row by applying css classes
         row.classList.add('card');
         row.classList.add('event-cards');
-
         body.classList.add('card-body');
+
+        // appending a new row
+        document.getElementById('eventList').appendChild(row);
+        row.appendChild(body);
+
         body.innerHTML = "<a href=view_event/" + dataR.id + ">" + dataR.eventName + ", "  + dataR.eventLocation + "</a>"
         body.innerHTML += "<div class='card-story-counter red'>&nbsp; <span class=\"w3-badge w3-red\">"+dataR.id+"</span></div> <div class=\"card-story-counter\">\n" +
             "        Stories:\n" +
             "      </div>"
-
-
     }
 }
 
 function displayEvent(dataR) {
-    document.getElementById('nameAndLocation').innerHTML = dataR.eventName + ", " + dataR.eventLocation;
+    document.getElementById('nameAndLocation').innerHTML = dataR.eventName + ", " + dataR.eventLocation + ", " + dataR.eventDate;
     document.getElementById('description').innerHTML = dataR.eventDescription;
-    document.getElementById('dateAndAuthor').innerHTML = dataR.eventDate;
+    getAllStoryData(dataR.id);
 }

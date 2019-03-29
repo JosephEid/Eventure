@@ -29,3 +29,22 @@ function sendAjaxQuery(url, data) {
         }
     });
 }
+
+function addToStoryList(dataR) {
+    if (document.getElementById('storyList') != null) {
+        const story = document.createElement('div');
+        const body = document.createElement('div');
+
+        // formatting the row by applying css classes
+        story.classList.add('card');
+        story.classList.add('event-cards');
+        body.classList.add('card-body');
+        body.classList.add('card-body-story');
+
+        // appending a new row
+        document.getElementById('storyList').appendChild(story);
+        story.appendChild(body);
+
+        body.innerHTML = "<a href=view_story/" + dataR.id + "></a><br>" + dataR.caption
+    }
+}
