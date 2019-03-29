@@ -68,31 +68,33 @@
 
 
     <script>
-
+        var address_array = ['kt152er', 's101da', 'n147ae', 'tn171as']
         function initMap() {
-
-
-
-            var myLatLng = {lat: 53.381130, lng: -1.470085};
-
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 10,
-                center: myLatLng
+                zoom: 8,
+                center: {lat: -34.397, lng: 150.644}
             });
+            var geocoder = new google.maps.Geocoder();
 
-            var southWest = new google.maps.LatLng(53.081130, -1.470085);
-            var northEast = new google.maps.LatLng(53.921022, -1.571773);
-            var lngSpan = northEast.lng() - southWest.lng();
-            var latSpan = northEast.lat() - southWest.lat();
+            geocodeAddress(geocoder, map);
+        }
 
-            for (var i = 0; i < 35; i++) {
-                // init markers
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(southWest.lat() + latSpan * Math.random(), southWest.lng() + lngSpan * Math.random()),
-                    map: map,
-                    title: 'Click Me ' + i
+        function geocodeAddress(geocoder, resultsMap) {
+            //var address = 'kt152er';
+            for (i = 0; i < address_array.length; i++) {
+                geocoder.geocode({'address': address_array[i]}, function(results, status) {
+                    if (status === 'OK') {
+                        resultsMap.setCenter(results[0].geometry.location);
+                        var marker = new google.maps.Marker({
+                            map: resultsMap,
+                            position: results[0].geometry.location
+                        });
+                    } else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                    }
                 });
             }
+
         }
     </script>
 

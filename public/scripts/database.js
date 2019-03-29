@@ -67,6 +67,7 @@ function storeEventData(eventObject) {
     else localStorage.setItem(JSON.stringify(eventObject));
 }
 
+var all_location_events = []
 function getAllEventData() {
     //check for support
     if ('indexedDB' in window) {
@@ -86,6 +87,13 @@ function getAllEventData() {
             if (readingsList && readingsList.length>0){
                 for (var elem of readingsList)
                     addToResults(elem);
+                    updateMap(elem, readingsList);
+
+
+            } else {
+                noEventResults();
+                updateMap(elem, readingsList);
+
             }
         });
     }

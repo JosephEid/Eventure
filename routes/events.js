@@ -26,7 +26,7 @@ router.get('/list_nearby_events', function(req, res, next) {
 });
 
 /* GET view event page. */
-router.get('/view_event', function(req, res, next) {
+router.get('/view_event/:id', function(req, res, next) {
     res.render('view_event', { title: 'Eventure'});
 });
 
