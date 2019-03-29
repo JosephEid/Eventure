@@ -27,7 +27,7 @@ function initDatabase(){
         }
         if (!upgradeDb.objectStoreNames.contains(EVENT_STORE_NAME)) {
             var eventureDB = upgradeDb.createObjectStore(EVENT_STORE_NAME, {keyPath: 'id', autoIncrement: true});
-            //eventureDB.createIndex('location', 'location', {unique: false, multiEntry: true});
+            eventureDB.createIndex('id', 'id', {unique: true});
         }
         if (!upgradeDb.objectStoreNames.contains(STORY_STORE_NAME)) {
             var eventureDB = upgradeDb.createObjectStore(STORY_STORE_NAME, {keyPath: 'id', autoIncrement: true});
@@ -90,6 +90,20 @@ function getAllEventData() {
                 for (var elem of readingsList)
                     addToResults(elem);
             }
+        });
+    }
+}
+
+function getEvent(id) {
+    initialise();
+    if (dbPromise) {
+        dbPromise.then(function (db) {
+            var tx = db.transaction(EVENT_STORE_NAME, 'readonly');
+            var store = tx.objectStore(EVENT_STORE_NAME);
+            return store.get(id);
+        }).then(function (readingsList) {
+            console.log(readingsList);
+            displayEvent(readingsList)
         });
     }
 }

@@ -11,7 +11,9 @@
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/scripts/displayEvents.js"></script>
+    <script src="/scripts/database.js"></script>
+    <script src="/scripts/idb.js"></script>
+    <script src="/scripts/eventScripts.js"></script>
 
     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -153,17 +155,18 @@
     </style>
 </head>
 
-<body>
+<body onload="getEvent(<%= id %>)">
 <% include template/header.ejs%>
 
 <!-- Begin page content -->
 <main role="main" class="container">
     <div class="card">
-        <div class="card-header">
-            🎉 Apollo 13, Moscow
+        <div class="card-header" id="nameAndLocation">
             <div class = "card-story-counter red">&nbsp; <span class="w3-badge w3-red">6</span></div>
 
             <div class = "card-story-counter">Stories:</div>
+        </div>
+        <div id="description">
         </div>
     </div>
 
@@ -226,7 +229,12 @@
 
                     <div class="col-md-12 desc">
                         <hr></hr>
-                        <b>Some pictures</b> <br></br>By James<br>Today, 20:12</br>
+                        <b>Some pictures</b>
+                        <br></br>
+                        <div id="dateAndAuthor">
+
+                        </div>
+                        <br></br>
                     </div>
                 </div>
             </div>
