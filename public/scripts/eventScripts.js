@@ -45,7 +45,7 @@ function addToResults(dataR) {
         row.classList.add('event-cards');
 
         body.classList.add('card-body');
-        body.innerHTML = "<a href=view_event/" + dataR.id + ">" + dataR.eventName + ", "  + dataR.eventLocaiton + "</a>"
+        body.innerHTML = "<a href=view_event/" + dataR.id + ">" + dataR.eventName + ", "  + dataR.eventLocation + "</a>"
         body.innerHTML += "<div class='card-story-counter red'>&nbsp; <span class=\"w3-badge w3-red\">"+dataR.id+"</span></div> <div class=\"card-story-counter\">\n" +
             "        Stories:\n" +
             "      </div>"

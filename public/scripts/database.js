@@ -5,6 +5,16 @@ const USER_STORE_NAME = 'store_users';
 const EVENT_STORE_NAME = 'store_events';
 const STORY_STORE_NAME = 'store_stories';
 
+function initialise() {
+    //check for support
+    if ('indexedDB' in window) {
+        initDatabase();
+    }
+    else {
+        console.log('This browser doesn\'t support IndexedDB');
+    }
+}
+
 /**
  * it inits the database
  */
@@ -29,7 +39,7 @@ function initDatabase(){
 
 function storeUserData(userObject) {
     console.log('inserting: '+JSON.stringify(userObject));
-
+    initialise();
     console.log(dbPromise);
     if (dbPromise) {
         console.log('madeit');gh
@@ -50,7 +60,7 @@ function storeUserData(userObject) {
 function storeEventData(eventObject) {
     console.log('inserting: '+JSON.stringify(eventObject));
     console.log("HERE");
-    dbPromise = initDatabase();
+    initialise();
     console.log(dbPromise);
     if (dbPromise) {
         dbPromise.then(async db => {
@@ -68,14 +78,7 @@ function storeEventData(eventObject) {
 }
 
 function getAllEventData() {
-    //check for support
-    if ('indexedDB' in window) {
-        initDatabase();
-        console.log('initialised');
-    }
-    else {
-        console.log('This browser doesn\'t support IndexedDB');
-    }
+    initialise();
     if (dbPromise) {
         dbPromise.then(function (db) {
             var tx = db.transaction(EVENT_STORE_NAME, 'readonly');
