@@ -44,7 +44,12 @@ function addToStoryList(dataR) {
         // appending a new row
         document.getElementById('storyList').appendChild(story);
         story.appendChild(body);
-
-        body.innerHTML = "<a href=view_story/" + dataR.id + "></a><br>" + dataR.caption
+        console.log(dataR.photoBlob);
+        body.innerHTML = "<a href=view_story/" + dataR.id + "></a><br>" + dataR.caption +"<br> <img src=\""+dataR.photoBlob + "\" height=\"200\" alt=\"Image preview...\" class=\"imagePreview\">"
     }
+}
+
+function closeModal() {
+    console.log("You here mate");
+    $('#photoModal').modal('hide');
 }

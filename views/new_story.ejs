@@ -14,6 +14,8 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="/scripts/newPhoto.js"></script>
 
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <title>Eventure</title>
 
 
@@ -77,19 +79,19 @@
 <!--                    <input type="file" class="form-control-file" name = "storyPhoto" id="storyPhoto">-->
                     <input type="file" onchange="previewFileSystem()"><br>
                     <img src="" height="200" alt="Image preview..." class="imagePreview">
-                    <button type="button" id="photoButton" class="btn btn-success float-right mt-2" data-toggle="modal" data-target="#photo">Take Photo</button>
+                    <button type="button" id="photoButton" class="btn btn-success float-right mt-2" data-toggle="modal" data-target="#photoModal">Take Photo</button>
                 </div>
-                <input id="photoBlob" name="photoBlob">
+                <input hidden id="photoBlob" name="photoBlob">
                 <p><input type="submit" name="g" value="Post" id="g"></p>
             </form>
 
             <!-- Photo input modal -->
-            <div class="modal fade" id="photo" role="dialog">
+            <div class="modal" id="photoModal" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Add Photo</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <button type="button" class="close" onclick="closeModal()">&times;</button>
                         </div>
                         <div class="modal-body" id="photoSize">
                             <div id="camera">
@@ -122,6 +124,10 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+<script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/holder.min.js"></script>
 <!--Navigation bar-->
 </body>
 </html>
