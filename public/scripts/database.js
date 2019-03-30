@@ -110,10 +110,8 @@ function getAllEventData() {
             if (readingsList && readingsList.length>0){
                 for (var elem of readingsList)
 
-                    addToResults(elem);
+                    addToEventList(elem);
                     updateMap(elem, readingsList);
-
-
             } else {
                 noEventResults();
                 // COME FIX SATURDAYTSHG
@@ -146,6 +144,7 @@ function getAllStoryData(id) {
 
 function getEvent(id) {
     initialise();
+
     if (dbPromise) {
         dbPromise.then(function (db) {
             var tx = db.transaction(EVENT_STORE_NAME, 'readonly');
