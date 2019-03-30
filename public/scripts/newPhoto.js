@@ -74,19 +74,6 @@ function previewFileSystem() {
         reader.readAsDataURL(file);
     }
 }
-function previewFileStream(imageBlob) {
-    var preview = document.querySelector(".imagePreview");
-    var file    = imageBlob;
-    var reader  = new FileReader();
-
-    reader.addEventListener("load", function () {
-        preview.src = reader.result;
-    }, false);
-
-    if (file) {
-        reader.readAsDataURL(file);
-    }
-}
 /**
  * Checks whether the users device is Web RTC compatible
  * @returns {boolean} The devices compatibility

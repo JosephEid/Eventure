@@ -106,7 +106,6 @@ function getAllEventData() {
             var store = tx.objectStore(EVENT_STORE_NAME);
             return store.getAll();
         }).then(function (readingsList) {
-            console.log(readingsList);
             if (readingsList && readingsList.length>0){
                 for (var elem of readingsList)
 

@@ -37,6 +37,7 @@ function addToEventList(dataR) {
         const body = document.createElement('div');
 
         // formatting the row by applying css classes
+        row.classList.add('eventResult');
         row.classList.add('card');
         row.classList.add('event-cards');
         body.classList.add('card-body');
@@ -46,7 +47,7 @@ function addToEventList(dataR) {
         row.appendChild(body);
 
 
-        body.innerHTML = "<a href=view_event/" + dataR.id + ">" + dataR.eventName + ", "  + dataR.eventLocation + "</a>"
+        body.innerHTML = "<a class=\"eventNameResult\" href=view_event/" + dataR.id + ">" + dataR.eventName + ", "  + dataR.eventLocation + "</a>"
         body.innerHTML += "<div class='card-story-counter red'>&nbsp; <span class=\"w3-badge w3-red\">"+dataR.id+"</span></div> <div class=\"card-story-counter\">\n" +
             "        Stories:\n" +
             "      </div>"
@@ -177,7 +178,12 @@ function updateMap(dataR, thing2) {
     }
 }
 
+function updateResults(content) {
+    $('.eventNameResult').parent().hide();
 
+    // Search and show
+    $('.eventNameResult:contains("'+content+'")').parent().show();
+}
 function displayEvent(dataR) {
     document.getElementById('nameAndLocation').innerHTML = dataR.eventName + ", " + dataR.eventLocation + ", " + dataR.eventDate;
     document.getElementById('description').innerHTML = dataR.eventDescription;

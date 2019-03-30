@@ -20,9 +20,9 @@
   <!-- Custom styles for this template -->
   <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
   <title>Eventure</title>
-  <!--<link href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/" rel="canonical">&lt;!&ndash; Bootstrap core CSS &ndash;&gt;-->
-  <!--<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">&lt;!&ndash; Custom styles for this template &ndash;&gt;-->
-  <!--<link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">-->
+  <link href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/" rel="canonical"><!-- Bootstrap core CSS -->
+  <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"><!-- Custom styles for this template -->
+  <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
   <style>
 
     .event-cards {
@@ -152,7 +152,7 @@
         <div class="card-body row no-gutters align-items-center">
           <!--end of col-->
           <div class="col">
-            <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search event names, dates, locations">
+            <input class="form-control form-control-lg form-control-borderless" id="searchBox" type="search" placeholder="Search event names, dates, locations" onkeyup="updateResults(this.value)">
           </div>
           <!--end of col-->
           <div class="col-auto">
