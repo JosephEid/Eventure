@@ -74,9 +74,12 @@
                 </div>
                 <div class="form-group">
                     <label for="eventPhoto">Event photo</label>
-                    <input type="file" class="form-control-file" name = "storyPhoto" id="storyPhoto">
+<!--                    <input type="file" class="form-control-file" name = "storyPhoto" id="storyPhoto">-->
+                    <input type="file" onchange="previewFileSystem()"><br>
+                    <img src="" height="200" alt="Image preview..." class="imagePreview">
+                    <button type="button" id="photoButton" class="btn btn-success float-right mt-2" data-toggle="modal" data-target="#photo">Take Photo</button>
                 </div>
-
+                <input id="photoBlob" name="photoBlob">
                 <p><input type="submit" name="g" value="Post" id="g"></p>
             </form>
 
@@ -102,10 +105,6 @@
                                     <p style="color: red;">This function is not supported by your device.</p>
                                 </div>
                             </div>
-                            <form class="mt-2" id="newImage" action="#">
-                                <input type="file" class="btn btn-outline-success col-8" name="fileupload" value="fileupload" id="fileupload">
-                                <input type="submit" class="btn btn-success pb-2 col-3 float-right" value="Submit">
-                            </form>
                         </div>
                     </div>
                 </div>
