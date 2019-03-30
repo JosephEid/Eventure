@@ -1,6 +1,7 @@
 /**
  * Uses Web RTC to take an image using the devices camera, draws it to canvas and sends to an ajax method
  */
+
 function takePhoto(){
     if (hasGetUserMedia()) {
         document.getElementById('video').setAttribute("style","width:"+$('#photoSize').width()+"px");
@@ -42,10 +43,14 @@ function takePhoto(){
                 canvas.height = $('#video').height();
                 ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
                 document.getElementById('takenPhoto').src = canvas.toDataURL('image/png');
-                document.getElementById('imageUrl').value = canvas.toDataURL();
-                if (document.getElementById('added')!=null)
-                    document.getElementById('added').style.display='block';
-                $('#photo').modal('toggle');
+                document.querySelector(".imagePreview").src = canvas.toDataURL('image/png');
+                document.getElementById('photoBlob').value = canvas.toDataURL('image/png');
+                var current_url = window.location.href.split("/");
+                console.log(current_url);
+                console.log(canvas.toDataURL('image/png'));
+                //var id = current_url[1];
+                var id = 1;
+                imageBlob = canvas.toDataURL();
             }
         }
     } else {
@@ -53,7 +58,35 @@ function takePhoto(){
             document.getElementById('noSupport').style.display='block';
     }
 }
+function previewFileSystem() {
+    var preview = document.querySelector(".imagePreview");
+    var file    = document.querySelector('input[type=file]').files[0];
+    var field   = document.getElementById('photoBlob');
+    var reader  = new FileReader();
 
+    reader.addEventListener("load", function () {
+        console.log(reader.result);
+        preview.src = reader.result;
+        field.value = reader.result;
+    }, false);
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
+function previewFileStream(imageBlob) {
+    var preview = document.querySelector(".imagePreview");
+    var file    = imageBlob;
+    var reader  = new FileReader();
+
+    reader.addEventListener("load", function () {
+        preview.src = reader.result;
+    }, false);
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
 /**
  * Checks whether the users device is Web RTC compatible
  * @returns {boolean} The devices compatibility
@@ -63,4 +96,30 @@ function hasGetUserMedia(){
         navigator.webkitGetUserMedia ||
         navigator.mozGetUserMedia ||
         navigator.msGetUserMedia);
+}
+
+function sendImage(id, imageBlob) {
+    console.log(id);
+    var data = {id: id, imageBlob: imageBlob, fromFile: false};
+    $.ajax({
+        dataType: "json",
+        url: '/image',
+        type: "POST",
+        data: data,
+        success: function (dataR) {
+            var results = JSON.parse(localStorage.results);
+            for (var i = 0; i < results.length; i++) {
+                if(dataR.id == results[i].id){
+                    results[i].images.push(dataR.images[dataR.images.length-1]);
+                    displayImages(results[i])
+                }
+            }
+            localStorage.setItem("results", JSON.stringify(results));
+            $('#photo').modal('toggle');
+        },
+        error: function (err) {
+            addToImageBacklog(data);
+            $('#photo').modal('toggle');
+        }
+    });
 }
