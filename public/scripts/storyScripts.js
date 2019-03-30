@@ -45,7 +45,7 @@ function addToStoryList(dataR) {
         document.getElementById('storyList').appendChild(story);
         story.appendChild(body);
         console.log(dataR.photoBlob);
-        body.innerHTML = "<a href=view_story/" + dataR.id + "></a><br>" + dataR.caption +"<br> <img src=\""+dataR.photoBlob + "\" height=\"200\" alt=\"Image preview...\" class=\"imagePreview\">"
+        body.innerHTML = dataR.storyDate + " " + dataR.storyTime + "<a href=view_story/" + dataR.id + "></a><br>" + dataR.caption +"<br> <img src=\""+dataR.photoBlob + "\" height=\"200\" alt=\"Image preview...\" class=\"imagePreview\">"
     }
 }
 

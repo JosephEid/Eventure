@@ -66,6 +66,8 @@
     <div class="card event-cards">
         <div class="card-body">
             <form id=“xForm" onsubmit="newStory()">
+                <input hidden id="storyDate" name="storyDate">
+                <input hidden id="storyTime" name="storyTime">
                 <div class="form-group">
                     <label for="eventID">Event ID</label>
                     <input type="number" class="form-control" id="eventId" name="eventId" aria-describedby="eventHelp">
@@ -82,6 +84,17 @@
                     <button type="button" id="photoButton" class="btn btn-success float-right mt-2" data-toggle="modal" data-target="#photoModal">Take Photo</button>
                 </div>
                 <input hidden id="photoBlob" name="photoBlob">
+                <script>
+                    n =  new Date();
+                    y = n.getFullYear();
+                    m = n.getMonth() + 1;
+                    d = n.getDate();
+                    h = n.getHours();
+                    mi = n.getMinutes();
+                    s = n.getSeconds();
+                    document.getElementById("storyDate").value = d + "/" + m + "/" + y;
+                    document.getElementById("storyTime").value = h + ":" + mi + ":" + s;
+                </script>
                 <p><input type="submit" name="g" value="Post" id="g"></p>
             </form>
 

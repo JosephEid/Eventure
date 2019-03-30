@@ -30,6 +30,22 @@ function sendAjaxQuery(url, data) {
     });
 }
 
+function fileSystemPhoto() {
+    var preview = document.querySelector(".eventImagePreview");
+    var file    = document.querySelector('input[type=file]').files[0];
+    var field   = document.getElementById('eventPhoto');
+    var reader  = new FileReader();
+
+    reader.addEventListener("load", function () {
+        console.log(reader.result);
+        preview.src = reader.result;
+        field.value = reader.result;
+    }, false);
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
 
 function addToEventList(dataR) {
     if (document.getElementById('eventList') != null) {
@@ -47,7 +63,7 @@ function addToEventList(dataR) {
         row.appendChild(body);
 
 
-        body.innerHTML = "<a class=\"eventNameResult\" href=view_event/" + dataR.id + ">" + dataR.eventName + ", "  + dataR.eventLocation + "</a>"
+        body.innerHTML = "<a class=\"eventNameResult\" href=view_event/" + dataR.id + ">" + dataR.eventName + ", "  + dataR.eventLocation + " " + dataR.eventDate + "</a>"
         body.innerHTML += "<div class='card-story-counter red'>&nbsp; <span class=\"w3-badge w3-red\">"+dataR.id+"</span></div> <div class=\"card-story-counter\">\n" +
             "        Stories:\n" +
             "      </div>"
@@ -187,6 +203,7 @@ function updateResults(content) {
 function displayEvent(dataR) {
     document.getElementById('nameAndLocation').innerHTML = dataR.eventName + ", " + dataR.eventLocation + ", " + dataR.eventDate;
     document.getElementById('description').innerHTML = dataR.eventDescription;
+    document.getElementById('photoHeader').src = dataR.eventPhoto;
     getAllStoryData(dataR.id);
 }
 

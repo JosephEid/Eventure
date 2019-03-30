@@ -72,8 +72,10 @@
                 </div>
                 <div class="form-group">
                     <label for="eventPhoto">Event photo</label>
-                    <input type="file" class="form-control-file" name = "eventPhoto" id="eventPhoto">
+                    <input type="file" class="form-control-file" onchange="fileSystemPhoto()">
                 </div>
+                <img src="" height="200" alt="Image preview..." class="eventImagePreview">
+                <input hidden id="eventPhoto" name="eventPhoto">
 
                 <p><input type="submit" name="g" value="Submit" id="g"></p>
             </form>
