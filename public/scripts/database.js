@@ -100,6 +100,14 @@ function storeStoryData(storyObject) {
 
 function getAllEventData() {
     initialise();
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('./service-worker.js')
+            .then(function() { console.log('Service Worker Registered'); })
+            .catch ( function(error) {
+                console.log(error.message);
+            });
+    }
     if (dbPromise) {
         dbPromise.then(function (db) {
             var tx = db.transaction(EVENT_STORE_NAME, 'readonly');
