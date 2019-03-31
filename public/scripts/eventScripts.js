@@ -1,9 +1,14 @@
 function newEvent() {
+    var address = document.getElementById('line1').value + ' ' + document.getElementById('line2').value + ' ' +
+        document.getElementById('postalCode').value + ' ' + document.getElementById('town').value + ' ' +
+        document.getElementById('city').value + ' ' + document.getElementById('country').value;
+    console.log(address);
     var formArray= $("form").serializeArray();
     var data={};
     for (index in formArray){
         data[formArray[index].name] = formArray[index].value;
     }
+    data['eventLocation'] = address;
     console.log(formArray);
     sendAjaxQuery('/post_event', data);
     event.preventDefault();
