@@ -108,6 +108,7 @@ function getAllEventData() {
                 console.log(error.message);
             });
     }
+
     if (dbPromise) {
         dbPromise.then(function (db) {
             var tx = db.transaction(EVENT_STORE_NAME, 'readonly');
@@ -123,7 +124,26 @@ function getAllEventData() {
                 noEventResults();
                 // COME FIX SATURDAYTSHG
                 updateMap(elem, readingsList);
-                    addToEventList(elem);
+                addToEventList(elem);
+            }
+        });
+    }
+}
+
+function getEventNames() {
+    initialise();
+    if (dbPromise) {
+        dbPromise.then(function (db) {
+            var tx = db.transaction(EVENT_STORE_NAME, 'readonly');
+            var store = tx.objectStore(EVENT_STORE_NAME);
+            return store.getAll();
+        }).then(function (readingsList) {
+            if (readingsList && readingsList.length>0){
+                console.log('gotten events');
+                for (var elem of readingsList)
+                    addToDropdown(elem);
+            } else {
+                dropdownEmpty();
             }
         });
     }
@@ -180,10 +200,10 @@ function getLogin(email, password) {
                 }
             }
             if (emailFound && emailFound.loginPassword == password) {
-                alert("YEA FUCKING BOI");
+                alert("Logged In");
             }
             else {
-                alert("you fucked it");
+                alert("No User Found");
             }
 
         });

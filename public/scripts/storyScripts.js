@@ -1,5 +1,6 @@
 function newStory() {
-    var formArray= $("form").serializeArray();
+    console.log(document.getElementById('eventId').value);
+    var formArray = $("form").serializeArray();
     var data={};
     for (index in formArray){
         data[formArray[index].name] = formArray[index].value;
@@ -46,6 +47,17 @@ function addToStoryList(dataR) {
         story.appendChild(body);
         console.log(dataR.photoBlob);
         body.innerHTML = dataR.storyDate + " " + dataR.storyTime + "<a href=view_story/" + dataR.id + "></a><br>" + dataR.caption +"<br> <img src=\""+dataR.photoBlob + "\" height=\"200\" alt=\"Image preview...\" class=\"imagePreview\">"
+    }
+}
+
+function addToDropdown(event) {
+    if (document.getElementById('eventId') != null) {
+        const option = document.createElement('option');
+        option.value = event.id;
+        console.log(event.id);
+        option.innerHTML = event.eventName;
+
+        document.getElementById('eventId').appendChild(option);
     }
 }
 
