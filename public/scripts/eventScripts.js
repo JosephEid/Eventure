@@ -52,10 +52,12 @@ function fileSystemPhoto() {
     }
 }
 
+
+
 function addToEventList(dataR) {
     if (document.getElementById('eventList') != null) {
-        const row = document.createElement('div');
-        const body = document.createElement('div');
+        var row = document.createElement('div');
+        var body = document.createElement('div');
 
         // formatting the row by applying css classes
         row.classList.add('eventResult');
@@ -67,7 +69,6 @@ function addToEventList(dataR) {
         document.getElementById('eventList').appendChild(row);
         row.appendChild(body);
 
-
         body.innerHTML = "<a class=\"eventNameResult\" href=view_event/" + dataR.id + ">" + dataR.eventName + ", "  + dataR.eventLocation + " " + dataR.eventDate + "</a>"
         body.innerHTML += "<div class='card-story-counter red'>&nbsp; <span class=\"w3-badge w3-red\">"+dataR.id+"</span></div> <div class=\"card-story-counter\">\n" +
             "        Stories:\n" +
@@ -76,31 +77,29 @@ function addToEventList(dataR) {
 }
 
 function noEventResults() {
-    const row = document.createElement('div');
-    const body = document.createElement('div');
+    var row = document.createElement('div');
 
-    // appending a new row
     document.getElementById('eventList').appendChild(row);
-    row.appendChild(body);
-    // formatting the row by applying css classes
     row.classList.add('card');
-    row.classList.add('event-cards');
-    body.innerHTML = "No events."
+    row.classList.add('card-header');
+    row.innerHTML = "😥 No current events"
+
 }
 
 
+// store all the locations from the event
 var address_array = [];
 
-
+// update the google map with new events
 function updateMap(dataR, thing2) {
     var thing3 = thing2;
     var name_array = [];
     var index_array = [];
 
-    const row = document.createElement('div');
-    const body = document.createElement('div');
+    var row = document.createElement('div');
+    var body = document.createElement('div');
     var name;
-    // appending a new row
+
     document.getElementById('map').remove();
     document.getElementById('james_is_the_best').appendChild(body);
     body.innerHTML = "<div id='map'></div>";
@@ -112,15 +111,12 @@ function updateMap(dataR, thing2) {
         index_array.push(thing2[i].id)
     }
 
-
-
     initMap(thing3);
-
 
     var map;
     function initMap(thing3) {
         map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 0, lng: 0},
+            center: {lat: 53, lng: 1},
             zoom: 12
         });
 
@@ -134,19 +130,9 @@ function updateMap(dataR, thing2) {
 
 
         var image = {
-            url: 'images/Asset 13@288x.png',
-            // This marker is 20 pixels wide by 32 pixels high.
-            size: new google.maps.Size(100, 32),
-            // The origin for this image is (0, 0).
-            origin: new google.maps.Point(0, 0),
-            // The anchor for this image is the base of the flagpole at (0, 32).
-            anchor: new google.maps.Point(0, 32)
+            url: '/images/icons/icon.png',
         };
-        //
-        // var shape = {
-        //     coords: [100, 100, 100, 100, 100, 100, 100, 100],
-        //     type: 'poly'
-        // };
+
 
         var labels = ['cat', 'dog', 'chicken'];
         var string = []
@@ -176,6 +162,7 @@ function updateMap(dataR, thing2) {
                         map: resultsMap,
                         position: results[0].geometry.location,
                         animation: google.maps.Animation.DROP,
+                        icon: image
                         //icon: image,
                     });
                     marker.addListener('click', function() {
@@ -187,6 +174,40 @@ function updateMap(dataR, thing2) {
                 }
             });
         }
+
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            var image = {
+                url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+
+            };
+
+            var myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
+            var marker = new google.maps.Marker({
+                map: map,
+                icon: image,
+                position: myLatLng,
+
+                animation: google.maps.Animation.DROP
+            });
+
+            var contentString = "You are here."
+
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+            });
+
+            map.setCenter(pos);
+        });
+
 
     }
 
@@ -206,9 +227,29 @@ function updateResults(content) {
     $('.eventNameResult:contains("'+content+'")').parent().show();
 }
 function displayEvent(dataR) {
-    document.getElementById('nameAndLocation').innerHTML = dataR.eventName + ", " + dataR.eventLocation + ", " + dataR.eventDate;
-    document.getElementById('description').innerHTML = dataR.eventDescription;
-    document.getElementById('photoHeader').src = dataR.eventPhoto;
+
+    if (dataR.eventName != null) {
+        document.getElementById('nameAndLocation').innerHTML = dataR.eventName;
+    } else {
+        document.getElementById('nameAndLocation').innerHTML = "ERROR: no name chosen";
+    }
+
+    var header = document.getElementById('masthead_id');
+
+    if (dataR.eventPhoto != null) {
+        header.style.background = "url('"+dataR.eventPhoto+"')";
+    } else {
+        header.style.background = "url('/images/placeholder_img_prev.jpg')";
+    }
+
+    document.getElementById('address').innerHTML = dataR.eventLocation;
+    document.getElementById('date').innerHTML += dataR.eventDate;
+    document.getElementById('smaller_title_date').innerHTML = dataR.eventDate;
+    document.getElementById('address').innerHTML += "<br><hr><i>" + dataR.eventDescription + "</i>";
+    //document.getElementById('title_of_event_2').innerHTML = dataR.eventLocation;
+    //document.getElementById('photoHeader').src = dataR.eventPhoto;
+
+
     getAllStoryData(dataR.id);
 }
 

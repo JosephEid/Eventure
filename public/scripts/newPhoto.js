@@ -26,8 +26,10 @@ function takePhoto(){
                     maxHeight: 720
                 }
             }
-        };
+        }
+
         document.getElementById("take").addEventListener('click', snapshot, false);
+
         navigator.mediaDevices.getUserMedia(hdConstraints)
             .then(function(stream) {
                 video.srcObject = stream;
@@ -51,6 +53,7 @@ function takePhoto(){
                 //var id = current_url[1];
                 var id = 1;
                 imageBlob = canvas.toDataURL();
+                document.getElementsByClassName("modal-backdrop").remove();
             }
         }
     } else {

@@ -181,8 +181,8 @@
     </div>
   </div><a class="link-remove-color" href="/view_event">
   <div class="card event-cards">
-    <div class="card-body">
-      Apollo 13, Moscow
+    <div class="card-body" id="featured_photo">
+       Nearby: 5 miles
       <div class="card-story-counter red">
         &nbsp; <span class="w3-badge w3-red">6</span>
       </div>
@@ -191,7 +191,7 @@
       </div>
 
       <div class="container-fluid">
-        <div class="row center">
+        <div class="row center" id="feature_thing_1">
           <div class="col-md-2 thumbnail-story padding-override"><img src="images/si2.jpg"></div>
           <div class="col-md-2 thumbnail-story padding-override"><img src="images/festival.jpg"></div>
           <div class="col-md-2 thumbnail-story padding-override"><img src="images/3.jpg"></div>
@@ -203,11 +203,11 @@
     </div>
   </div></a>
   <hr>
-  <div class="card">
-    <div class="card-header">
-      🎉 Current events
-    </div>
-  </div>
+  <!--<div class="card">-->
+  <!--<div class="card-header" id="current-events">-->
+    <!--🎉 Current events-->
+  <!--</div>-->
+<!--</div>-->
   <!--<a href=""><div class="card event-cards">-->
 
     <!--<div class="card-body">-->
@@ -282,10 +282,37 @@
   var map;
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: -34.397, lng: 150.644},
-      zoom: 8
+      center: {lat: -53.3811, lng: 1.4701},
+      zoom: 9
     });
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      var image = {
+        url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+        // This marker is 20 pixels wide by 32 pixels high.
+
+      };
+
+      var myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
+      var marker = new google.maps.Marker({
+        map: map,
+        icon: image,
+        position: myLatLng,
+
+        animation: google.maps.Animation.DROP
+      });
+
+      map.setCenter(pos);
+    });
+
+
   }
+
+
 </script>
 <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
 <script async defer

@@ -119,6 +119,8 @@
             }
         }
 
+
+
         .padding-override {
             padding: 0em !important;
         }
@@ -138,6 +140,7 @@
             font-weight: 800 !important;
         }
 
+
         .description-container {
             width: 100% !important;
             float: left !important;
@@ -146,11 +149,59 @@
         .desc {
             float: left;
             text-align: left;
+        }
 
+        /*#nameAndLocation *{*/
+            /*color:white !important;*/
+        /*}*/
+
+        #description_event {
+            font-style: oblique;
         }
 
         .card.event-cards {
             border-radius: 0.5em !important;
+        }
+
+        #time_of_story {
+            font-size:10px !important;
+        }
+
+        .masthead {
+            height: 17em;
+            /*background-image: url('/images/placeholder_img_prev.jpg');*/
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-bottom: 1em;
+            border-radius: 5px;
+        }
+
+        .right {
+            float:right;
+            color: darkblue;
+            font-size: 14px !important;
+        }
+
+        .event-cards {
+            margin-bottom: 3em !important;
+        }
+
+        #title_of_story {
+            color: red !important;
+            font-size: 20px;
+        }
+
+
+
+        .left {
+            color: #343a40;
+            float: left;
+            font-size: 14px !important;
+        }
+
+        #nameAndLocation {
+            background-color: rgba(42, 54, 59, 0.5);
         }
 
     </style>
@@ -161,44 +212,64 @@
 
 <!-- Begin page content -->
 <main role="main" class="container" id="storyList">
-    <div class="card">
-        <div class="card-header" id="nameAndLocation">
-            <div class = "card-story-counter red">&nbsp; <span class="w3-badge w3-red">6</span></div>
+    <!--<div class="card">-->
+        <!--<div class="card-header" id="nameAndLocation">-->
+            <!--<div class = "card-story-counter red">&nbsp; <span class="w3-badge w3-red">6</span></div>-->
 
-            <div class = "card-story-counter">Stories:</div>
-        </div>
-        <div id="description">
-        </div>
-        <img id="photoHeader" src = "">
-    </div>
-
-    <div class="card event-cards card-body-story">
-        <div class="card-body card-body-story">
-            Our favourite
-            <div class="container-fluid">
-                <div class="row center">
-                    <div class="col-md-2 thumbnail-story padding-override">
-                        <img src = "images/si2.jpg"></img>
-                    </div>
-                    <div class="col-md-2 thumbnail-story padding-override">
-                        <img src = "images/festival.jpg"></img>
-                    </div>
-                    <div class="col-md-2 thumbnail-story padding-override">
-                        <img src = "images/3.jpg"></img>
-                    </div>
-                    <div class="col-md-2 thumbnail-story padding-override">
-                        <img src = "images/1.jpg"></img>
-                    </div>
-                    <div class="col-md-2 thumbnail-story padding-override">
-                        <img src = "images/2.jpg"></img>
-                    </div>
-                    <div class="col-md-2 thumbnail-story padding-override">
-                        <img src = "images/4.jpg"></img>
-                    </div>
+            <!--<div class = "card-story-counter">Stories:</div>-->
+        <!--</div>-->
+        <!--<div id="description">-->
+        <!--</div>-->
+        <!--<img id="photoHeader" src = "">-->
+    <!--</div>-->
+    <header class="masthead" id="masthead_id">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 text-center ">
+                    <h1 class="font-weight-light "style="color:white;" id="nameAndLocation"></h1>
+                    <p class="lead" id="smaller_title"></p>
+                    <p class="lead" id="smaller_title_date"></p>
                 </div>
             </div>
         </div>
+    </header>
+
+    <div class="card" style="margin-bottom: 1em;">
+        <div class="card-header">
+            <div class = "left"  id="address"></div>
+            <div class = "right" id="date"></div>
+        </div>
     </div>
+
+
+
+    <!--<div class="card event-cards card-body-story">-->
+        <!--<div class="card-body card-body-story">-->
+            <!--Our favourite-->
+            <!--<div class="container-fluid">-->
+                <!--<div class="row center">-->
+                    <!--<div class="col-md-2 thumbnail-story padding-override">-->
+                        <!--<img src = "images/si2.jpg"></img>-->
+                    <!--</div>-->
+                    <!--<div class="col-md-2 thumbnail-story padding-override">-->
+                        <!--<img src = "images/festival.jpg"></img>-->
+                    <!--</div>-->
+                    <!--<div class="col-md-2 thumbnail-story padding-override">-->
+                        <!--<img src = "images/3.jpg"></img>-->
+                    <!--</div>-->
+                    <!--<div class="col-md-2 thumbnail-story padding-override">-->
+                        <!--<img src = "images/1.jpg"></img>-->
+                    <!--</div>-->
+                    <!--<div class="col-md-2 thumbnail-story padding-override">-->
+                        <!--<img src = "images/2.jpg"></img>-->
+                    <!--</div>-->
+                    <!--<div class="col-md-2 thumbnail-story padding-override">-->
+                        <!--<img src = "images/4.jpg"></img>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
     <hr></hr>
     <div class="card">
@@ -206,6 +277,31 @@
             All stories
         </div>
     </div>
+
+    <!--<div class="card event-cards">-->
+        <!--<div class="card-body card-body-story">-->
+            <!--<div class="row">-->
+                <!--<div class="col-md-12">-->
+                    <!--<div class="carousel slide" id="carousel-702912">-->
+                        <!--<div class="carousel-inner">-->
+                            <!--<div class="carousel-item active" id="story_image">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="row description-container">-->
+                        <!--<div class="col-md-12 desc">-->
+                            <!--<hr></hr>-->
+                            <!--<b id="title_of_story"></b><br>-->
+                            <!--<b id="time_of_story"></b>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+</div>
 
 
 </main>
@@ -235,4 +331,4 @@
 </script>
 <!--Navigation bar-->
 </body>
-        </html>
+</html>

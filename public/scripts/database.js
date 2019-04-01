@@ -119,12 +119,15 @@ function getAllEventData() {
                 for (var elem of readingsList)
 
                     addToEventList(elem);
+//                    getTheImages(readingsList);
                     updateMap(elem, readingsList);
+                    //getTheImages(readingsList);
             } else {
                 noEventResults();
+                //updateMap(elem, readingsList);
                 // COME FIX SATURDAYTSHG
-                updateMap(elem, readingsList);
-                addToEventList(elem);
+                //updateMap(elem, readingsList);
+                //addToEventList(elem);
             }
         });
     }

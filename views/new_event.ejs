@@ -37,6 +37,53 @@
             width: 25em !important;
         }
 
+        .btn-dark {
+            color: #fff !important;
+            background-color: #343a40 !important;
+            border-color: #343a40 !important;
+            border-radius: 5px !important;
+        }
+
+        .event-cards {
+            margin-top:1.0em;
+        }
+
+
+        .card-story-counter {
+            float: right;
+        }
+
+        .red {
+            color: red;
+        }
+
+        main {
+            width: 25em !important;
+
+        }
+
+        #take-photo-button {
+            margin-bottom: 1em;
+        }
+
+        .btn-dark {
+            color: #fff !important;
+            background-color: #343a40 !important;
+            border-color: #343a40 !important;
+            border-radius: 5px !important;
+        }
+
+        .imagePreview {
+            transform: scale(0.9);
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
 
     </style>
 </head>
@@ -84,20 +131,39 @@
                 </div>
                 <div class="form-group">
                     <label for="country">Country</label>
-                    <input type="name" class="form-control" id="country" placeholder="Country" required>
+                    <input type="name" class="form-control" id="country" placeholder="Country">
                 </div>
                 <div class="form-group">
                     <label for="eventDate">Date of event</label>
                     <input type="date" class="form-control" name = "eventDate" id="eventDate" placeholder="Event Date">
                 </div>
-                <div class="form-group">
-                    <label for="eventPhoto">Event photo</label>
-                    <input type="file" class="form-control-file" onchange="fileSystemPhoto()">
-                </div>
-                <img src="" height="200" alt="Image preview..." class="eventImagePreview">
-                <input hidden id="eventPhoto" name="eventPhoto">
 
-                <p><input type="submit" name="g" value="Submit" id="g"></p>
+            <div class="form-group">
+                <label for="eventPhoto">Event photo</label>
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="custom-file">
+                            <input type="file" onchange="fileSystemPhoto()"><br>
+                            <!--<label class="custom-file-label" for="fi">Choose file</label>-->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img src="images/placeholder_img_prev.jpg" alt="Image preview..." class="eventImagePreview center">
+                        </div>
+                    </div>
+                    <!--                    <input type="file" class="form-control-file" name = "storyPhoto" id="storyPhoto">-->
+                    <!--<input type="file" onchange="previewFileSystem()"><br>-->
+
+
+                    <br>
+
+                </div>
+
+            <!--<p><input type="submit" name="g" value="Submit" id="g"></p>-->
+                <input hidden id="eventPhoto" name="eventPhoto">
+                    <p><input class="btn btn-block btn-dark" type="submit" name="g" value="Submit" id="g"></p>
             </form>
         </div>
     </div>

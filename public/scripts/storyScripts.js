@@ -30,7 +30,7 @@ function sendAjaxQuery(url, data) {
         }
     });
 }
-
+//old
 function addToStoryList(dataR) {
     if (document.getElementById('storyList') != null) {
         const story = document.createElement('div');
@@ -40,15 +40,30 @@ function addToStoryList(dataR) {
         story.classList.add('card');
         story.classList.add('event-cards');
         body.classList.add('card-body');
+        body.innerHTML = "<br> <img style='display: block;\n" +
+            "  margin-left: auto;\n" +
+            "  margin-right: auto;" +
+            "border-radius:5px;'src=\""+dataR.photoBlob + "\" width=\"100%\" alt=\"Image preview...\" class=\"imagePreview\">"+"<div class=\"row description-container\">\n";
         body.classList.add('card-body-story');
 
         // appending a new row
         document.getElementById('storyList').appendChild(story);
         story.appendChild(body);
-        console.log(dataR.photoBlob);
-        body.innerHTML = dataR.storyDate + " " + dataR.storyTime + "<a href=view_story/" + dataR.id + "></a><br>" + dataR.caption +"<br> <img src=\""+dataR.photoBlob + "\" height=\"200\" alt=\"Image preview...\" class=\"imagePreview\">"
+        // document.getElementById('title_of_story').innerHTML = dataR.caption;
+        // document.getElementById('author_of_story').innerHTML = dataR.caption;
+        // document.getElementById('time_of_story').innerHTML = dataR.storyDate + ", " + dataR.storyTime;
+        // document.getElementById('story_image').innerHTML = "<br> <img src=\""+dataR.photoBlob + "\" height=\"400\" alt=\"Image preview...\" class=\"imagePreview\">"
+        body.innerHTML += "<div class=\"col-md-12 desc\">\n" +
+            "                            <hr></hr>\n" +
+            "                            <b id=\"title_of_story\"> " + dataR.caption + "</b><br>\n" +
+            "                            <b id=\"time_of_story\"> " + dataR.storyDate + ", " +  dataR.storyTime + " </b>\n" +
+            "                        </div>\n" +
+            "                    </div>";
     }
 }
+
+
+
 
 function addToDropdown(event) {
     if (document.getElementById('eventId') != null) {

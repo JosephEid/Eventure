@@ -36,6 +36,14 @@
             float: right;
         }
 
+        .btn-dark {
+            color: #fff !important;
+            background-color: #343a40 !important;
+            border-color: #343a40 !important;
+            border-radius: 5px !important;
+
+        }
+
         .red {
             color: red;
         }
@@ -66,25 +74,26 @@
     <div class="card event-cards">
         <div class="card-body">
             <form id=“xForm" onsubmit="newStory()">
-                <input hidden id="storyDate" name="storyDate">
-                <input hidden id="storyTime" name="storyTime">
-                <div class="form-group">
-                    <label for="eventId">Event</label><br>
-                    <select class="form-control" id="eventId" name="eventId">
-                    </select>
-                </div>
-                <div class = "form-group">
-                    <label for="caption">Caption</label>
-                    <input class="form-control" type="text" id="caption" name="caption">
-                </div>
-                <div class="form-group">
-                    <label for="eventPhoto">Event photo</label>
-<!--                    <input type="file" class="form-control-file" name = "storyPhoto" id="storyPhoto">-->
-                    <input type="file" onchange="previewFileSystem()"><br>
-                    <img src="" height="200" alt="Image preview..." class="imagePreview">
-                    <button type="button" id="photoButton" class="btn btn-success float-right mt-2" data-toggle="modal" data-target="#photoModal">Take Photo</button>
-                </div>
-                <input hidden id="photoBlob" name="photoBlob">
+            <input hidden id="storyDate" name="storyDate">
+            <input hidden id="storyTime" name="storyTime">
+            <div class="form-group">
+                <label for="eventId">Event</label><br>
+                <select class="form-control" id="eventId" name="eventId">
+                </select>
+            </div>
+            <div class = "form-group">
+                <label for="caption">Caption</label>
+                <input class="form-control" type="text" id="caption" name="caption">
+            </div>
+            <div class="form-group">
+                <label for="eventPhoto">Event photo</label>
+                <!--                    <input type="file" class="form-control-file" name = "storyPhoto" id="storyPhoto">-->
+                <input type="file" onchange="previewFileSystem()"><br>
+                <img src="" width="100%" alt="Image preview..." class="imagePreview">
+                        <br></br>
+                <button type="button" id="photoButton" class="btn btn-success float-right mt-2" data-toggle="modal" data-target="#photoModal">Take Photo</button>
+            </div>
+            <input hidden id="photoBlob" name="photoBlob">
                 <script>
                     n =  new Date();
                     y = n.getFullYear();
@@ -96,7 +105,9 @@
                     document.getElementById("storyDate").value = d + "/" + m + "/" + y;
                     document.getElementById("storyTime").value = h + ":" + mi + ":" + s;
                 </script>
-                <p><input type="submit" name="g" value="Post" id="g"></p>
+                <br></br>
+                <!--<p><input type="submit" name="g"  id="g"></p>-->
+                <p><input class="btn btn-block btn-dark" type="submit" name="g" value="Post" id="g"></p>
             </form>
 
             <!-- Photo input modal -->
