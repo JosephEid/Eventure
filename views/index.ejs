@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
@@ -12,43 +13,22 @@
   <script src="/scripts/eventScripts.js"></script>
   <script src="/scripts/database.js"></script>
   <script src="/scripts/idb.js"></script>
+
   <title>Eventure</title>
 
+  <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/" rel="canonical">
   <!-- Bootstrap core CSS -->
-
-
-  <!-- Custom styles for this template -->
+  <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
-  <title>Eventure</title>
-  <link href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/" rel="canonical"><!-- Bootstrap core CSS -->
-  <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"><!-- Custom styles for this template -->
-  <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
+
   <style>
-
     .event-cards {
-      margin-top:1.0em;
+      margin-top: 1.0em;
     }
 
     .card-story-counter {
       float: right;
-    }
-
-    .top-bar {
-      height:0.1em;
-      background-color:red;
-    }
-
-    .card-internal {
-      background-color: red;
-      width:50%;
-    }
-
-    .padding {
-      padding:0.5em;
-    }
-
-    .story-preview {
-      border-radius: 90%;
     }
 
     .thumbnail-story img {
@@ -71,21 +51,16 @@
       margin-top: 1em !important;
     }
 
-    .thumbnail-story-container {
-      margin: auto;
-      padding: 10px;
-    }
+    @media only screen and (max-width: 750px) {
 
-    @media only screen and (max-width: 750px)  {
-      .thumbnail-story img{
+      .thumbnail-story img {
         width: 13em !important;
         height: 13em !important;
-
       }
     }
 
     .padding-override {
-      padding: 0em !important;
+      padding: 0 !important;
     }
 
     .row {
@@ -94,7 +69,7 @@
     }
 
     a.link-remove-color {
-      color:black !important;
+      color: black !important;
     }
 
     .search-box-margin {
@@ -105,22 +80,20 @@
       background: white !important;
     }
 
-    .mainSearch {
-      width: 50% !important;
-    }
-
     .form-control-borderless {
       border-left-width: 1px !important;
       border-top-width: 1px !important;
     }
 
-    .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    .form-control-borderless:hover,
+    .form-control-borderless:active,
+    .form-control-borderless:focus {
       outline: none;
       box-shadow: none;
     }
 
     .no-border-radius {
-      margin-right:10px;
+      margin-right: 10px;
       border-top-left-radius: 0px !important;
       border-bottom-left-radius: 0px !important;
     }
@@ -133,7 +106,6 @@
     #map {
       height: 425px;
     }
-
   </style>
 </head>
 
@@ -174,7 +146,6 @@
     </div>
   </div>
 
-
   <div class="card margin-top-featured">
     <div class="card-header">
       ⚡ Featured event
@@ -182,7 +153,7 @@
   </div><a class="link-remove-color" href="/view_event">
   <div class="card event-cards">
     <div class="card-body" id="featured_photo">
-       Nearby: 5 miles
+      Nearby: 5 miles
       <div class="card-story-counter red">
         &nbsp; <span class="w3-badge w3-red">6</span>
       </div>
@@ -201,69 +172,9 @@
         </div>
       </div>
     </div>
-  </div></a>
+  </div>
+</a>
   <hr>
-  <!--<div class="card">-->
-  <!--<div class="card-header" id="current-events">-->
-    <!--🎉 Current events-->
-  <!--</div>-->
-<!--</div>-->
-  <!--<a href=""><div class="card event-cards">-->
-
-    <!--<div class="card-body">-->
-      <!--Greco-Persian Wars, Athens-->
-      <!--<div class="card-story-counter red">-->
-        <!--&nbsp; <span class="w3-badge w3-red">3</span>-->
-      <!--</div>-->
-      <!--<div class="card-story-counter">-->
-        <!--Stories:-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div></a>-->
-  <!--<a href=""><div class="card event-cards">-->
-    <!--<div class="card-body">-->
-      <!--Beginning of Aviation, Paris-->
-      <!--<div class="card-story-counter red">-->
-        <!--&nbsp; <span class="w3-badge w3-red">2</span>-->
-      <!--</div>-->
-      <!--<div class="card-story-counter">-->
-        <!--Stories:-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div></a>-->
-  <!--<a href=""><div class="card event-cards">-->
-    <!--<div class="card-body">-->
-      <!--Apollo 11, Berlin-->
-      <!--<div class="card-story-counter red">-->
-        <!--&nbsp; <span class="w3-badge w3-black">0</span>-->
-      <!--</div>-->
-      <!--<div class="card-story-counter">-->
-        <!--Stories:-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div></a>-->
-  <!--<a href=""><div class="card event-cards">-->
-    <!--<div class="card-body">-->
-      <!--Sputnik 1, London-->
-      <!--<div class="card-story-counter red">-->
-        <!--&nbsp; <span class="w3-badge w3-black">0</span>-->
-      <!--</div>-->
-      <!--<div class="card-story-counter">-->
-        <!--Stories:-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div></a>-->
-  <!--<a href=""><div class="card event-cards">-->
-    <!--<div class="card-body">-->
-      <!--Victory in Europe Day, New York-->
-      <!--<div class="card-story-counter red">-->
-        <!--&nbsp; <span class="w3-badge w3-black">0</span>-->
-      <!--</div>-->
-      <!--<div class="card-story-counter">-->
-        <!--Stories:-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div></a>-->
 </main>
 <br>
 <%include template/footer.ejs%>
@@ -274,15 +185,14 @@
 </script>
 
 <script>
-
-</script>
-
-
-<script>
   var map;
+
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: -53.3811, lng: 1.4701},
+      center: {
+        lat: -53.3811,
+        lng: 1.4701
+      },
       zoom: 9
     });
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -293,11 +203,13 @@
 
       var image = {
         url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
-        // This marker is 20 pixels wide by 32 pixels high.
-
       };
 
-      var myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
+      var myLatLng = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
       var marker = new google.maps.Marker({
         map: map,
         icon: image,
@@ -305,18 +217,12 @@
 
         animation: google.maps.Animation.DROP
       });
-
       map.setCenter(pos);
     });
-
-
   }
-
-
 </script>
 <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm5EmU8b35j-9fhgd7nll5IePADt_0z88&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm5EmU8b35j-9fhgd7nll5IePADt_0z88&callback=initMap"></script>
 </body>
 
 </html>

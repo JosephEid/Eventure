@@ -1,3 +1,6 @@
+/**
+ * When a new event is submitted, will serialise the data and pass it to an ajax request
+ */
 function newEvent() {
     var address = document.getElementById('line1').value + ' ' + document.getElementById('line2').value + ' ' +
         document.getElementById('postalCode').value + ' ' + document.getElementById('town').value + ' ' +
@@ -15,6 +18,10 @@ function newEvent() {
     event.preventDefault();
 }
 
+/**
+ * Given the url for th post story route and the data the new event data will send an ajax request to the server
+ * On success it will pass the data to the store in the database function.
+ */
 function sendAjaxQuery(url, data) {
     $.ajax({
         url: url,
@@ -35,6 +42,10 @@ function sendAjaxQuery(url, data) {
         }
     });
 }
+
+/**
+ *
+ */
 
 function fileSystemPhoto() {
     var preview = document.querySelector(".eventImagePreview");
