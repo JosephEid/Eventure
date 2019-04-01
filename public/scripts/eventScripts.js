@@ -19,8 +19,8 @@ function newEvent() {
 }
 
 /**
- * Given the url for th post story route and the data the new event data will send an ajax request to the server
- * On success it will pass the data to the store in the database function.
+ * Given the url for the post event route and the new event data, will send an ajax request to the server.
+ * On success it will pass the data to the store in database function
  */
 function sendAjaxQuery(url, data) {
     $.ajax({
@@ -44,9 +44,8 @@ function sendAjaxQuery(url, data) {
 }
 
 /**
- *
+ *Converts photo taken from the system into a data url displayable on the image preview, which can be submitted as part of the form
  */
-
 function fileSystemPhoto() {
     var preview = document.querySelector(".eventImagePreview");
     var file = document.querySelector('input[type=file]').files[0];
@@ -63,6 +62,10 @@ function fileSystemPhoto() {
     }
 }
 
+/**
+ * Given an event record, adds the relevant information in it to new html sections that are added to the page
+ * @param dataR
+ */
 function addToEventList(dataR) {
     if (document.getElementById('eventList') != null) {
         var row = document.createElement('div');
@@ -86,6 +89,9 @@ function addToEventList(dataR) {
     }
 }
 
+/**
+ * Creates a no events html div to display
+ */
 function noEventResults() {
     var row = document.createElement('div');
     document.getElementById('eventList').appendChild(row);
@@ -98,7 +104,9 @@ function noEventResults() {
 // store all the locations from the event
 var address_array = [];
 
-// update the google map with new events
+/**
+ * Update the google map with new events
+ */
 function updateMap(dataR, original_data) {
     var dataJ = original_data;
     var name_array = [];
@@ -228,13 +236,22 @@ function updateMap(dataR, original_data) {
     }
 }
 
+/**
+ * Given the contents of the searchbar, filter the events by event details containing the content.
+ * @param content - the contents of the searchbar
+ */
 function updateResults(content) {
+    // hide all results first
     $('.eventNameResult').parent().hide();
 
-    // Search and show
+    // show all results containing the content of the searchbar.
     $('.eventNameResult:contains("' + content + '")').parent().show();
 }
 
+/**
+ * Given a specific event record, adds the relevant information in it to new html sections that are added to the event page
+ * @param dataR
+ */
 function displayEvent(dataR) {
 
     if (dataR.eventName != null) {
