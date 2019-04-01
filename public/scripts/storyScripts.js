@@ -1,3 +1,6 @@
+/**
+ * When a new story form is submitted, will serialize the information and pass it to an ajax request
+ */
 function newStory() {
     console.log(document.getElementById('eventId').value);
     var formArray = $("form").serializeArray();
@@ -10,6 +13,12 @@ function newStory() {
     event.preventDefault();
 }
 
+/**
+ * Given the url for the post story route and the new story data, will send an ajax request to the server.
+ * On success it will pass the data to the store in database function
+ * @param url
+ * @param data
+ */
 function sendAjaxQuery(url, data) {
     $.ajax({
         url: url,
@@ -30,7 +39,11 @@ function sendAjaxQuery(url, data) {
         }
     });
 }
-//old
+
+/**
+ * Given a story record, adds the relevant information in it to new html sections that are added to the page
+ * @param dataR
+ */
 function addToStoryList(dataR) {
     if (document.getElementById('storyList') != null) {
         const story = document.createElement('div');
@@ -62,9 +75,10 @@ function addToStoryList(dataR) {
     }
 }
 
-
-
-
+/**
+ * Given an event record, will add a corresponding option to the html dropdown select box
+ * @param event
+ */
 function addToDropdown(event) {
     if (document.getElementById('eventId') != null) {
         const option = document.createElement('option');
@@ -76,6 +90,9 @@ function addToDropdown(event) {
     }
 }
 
+/**
+ * Closes the camera
+ */
 function closeModal() {
     console.log("You here mate");
     $('#photoModal').modal('hide');
