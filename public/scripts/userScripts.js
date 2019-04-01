@@ -1,3 +1,8 @@
+// userScripts.js - contains functions related to the sign in and register view pages
+
+/**
+ * Serializes and extracts data from form and passes this data as an AJAX request to post the user details.
+ */
 function signUp() {
     var formArray= $("form").serializeArray();
     var data={};
@@ -18,16 +23,14 @@ function signUp() {
     console.log(data);
 
     sendAjaxQuery('/post_user', data);
-    //
-    // if (validatePassword(password, confirm_password)) {
-    //
-    // }
-    // else {
-    //     console.log("no bueno");
-    // }
     event.preventDefault();
 }
 
+/**
+ * Stores the user data if the query is successful.
+ * @param url - the url in which the query is sent to
+ * @param data - the form serialized and processed in the correct format
+ */
 function sendAjaxQuery(url, data) {
     $.ajax({
         url: url,
@@ -49,20 +52,11 @@ function sendAjaxQuery(url, data) {
     });
 }
 
-function validatePassword(password, confirm_password){
-    console.log(password);
-    console.log(confirm_password);
-    if(password != confirm_password) {
-        return false;
-    } else {
-        return true;
-    }
-}
-
+/**
+ * Takes the provided email and password and uses the function getLogin to sign in/ reject the user.
+ */
 function login() {
     var formArray= $("form").serializeArray();
-    var data={};
-    //var url="/post_event";
     for (index in formArray){
         if (formArray[index].name == 'loginPassword') {
             password = formArray[index].value;

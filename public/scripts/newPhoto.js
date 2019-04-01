@@ -1,9 +1,11 @@
-/**
- * Uses Web RTC to take an image using the devices camera, draws it to canvas and sends to an ajax method
- */
+// newPhoto.js - contains the functions which are related to capturing a photo from the webcam and sending it to the views in a way that can be stored.
 
+/**
+ * Uses Web RTC to take an image using the devices camera, draws it to canvas and sends it as a photoBlob for an image preview
+ * and as a value for the photo which is to be posted to the database.
+ */
 function takePhoto(){
-    if (hasGetUserMedia()) {
+    if (checkCompatibility()) {
         document.getElementById('video').setAttribute("style","width:"+$('#photoSize').width()+"px");
         var video = document.querySelector('video');
         var canvas = document.querySelector('canvas');
@@ -44,15 +46,12 @@ function takePhoto(){
                 canvas.width = $('#video').width();
                 canvas.height = $('#video').height();
                 ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                //displays the image as the most recently taken photo
                 document.getElementById('takenPhoto').src = canvas.toDataURL('image/png');
+                //displays the image on the image preview
                 document.querySelector(".imagePreview").src = canvas.toDataURL('image/png');
+                //fills the photoBlob field with the photoBlob to be posted to the database
                 document.getElementById('photoBlob').value = canvas.toDataURL('image/png');
-                var current_url = window.location.href.split("/");
-                console.log(current_url);
-                console.log(canvas.toDataURL('image/png'));
-                //var id = current_url[1];
-                var id = 1;
-                imageBlob = canvas.toDataURL();
                 document.getElementsByClassName("modal-backdrop").remove();
             }
         }
@@ -61,55 +60,44 @@ function takePhoto(){
             document.getElementById('noSupport').style.display='block';
     }
 }
+
+/**
+ * Converts an image selected from the filesystem into a photoBlob which can be stored in the database
+ * and previewed on the views page.
+ */
 function previewFileSystem() {
+    // the preview image tag
     var preview = document.querySelector(".imagePreview");
+
+    // the file selected on the views
     var file    = document.querySelector('input[type=file]').files[0];
+
+    // the input field for the photoBlob
     var field   = document.getElementById('photoBlob');
+
+    // initialise a file reader.
     var reader  = new FileReader();
 
+    // updates the image preview and input field on the form.
     reader.addEventListener("load", function () {
-        console.log(reader.result);
+        //update the preview tags source to display the image.
         preview.src = reader.result;
         field.value = reader.result;
     }, false);
 
+    // read the file in the correct format.
     if (file) {
         reader.readAsDataURL(file);
     }
 }
+
 /**
  * Checks whether the users device is Web RTC compatible
  * @returns {boolean} The devices compatibility
  */
-function hasGetUserMedia(){
+function checkCompatibility(){
     return !!(navigator.getUserMedia ||
         navigator.webkitGetUserMedia ||
         navigator.mozGetUserMedia ||
         navigator.msGetUserMedia);
-}
-
-function sendImage(id, imageBlob) {
-    console.log(id);
-    var data = {id: id, imageBlob: imageBlob, fromFile: false};
-    $.ajax({
-        dataType: "json",
-        url: '/image',
-        type: "POST",
-        data: data,
-        success: function (dataR) {
-            var results = JSON.parse(localStorage.results);
-            for (var i = 0; i < results.length; i++) {
-                if(dataR.id == results[i].id){
-                    results[i].images.push(dataR.images[dataR.images.length-1]);
-                    displayImages(results[i])
-                }
-            }
-            localStorage.setItem("results", JSON.stringify(results));
-            $('#photo').modal('toggle');
-        },
-        error: function (err) {
-            addToImageBacklog(data);
-            $('#photo').modal('toggle');
-        }
-    });
 }
