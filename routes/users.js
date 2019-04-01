@@ -13,6 +13,7 @@ router.get('/new_user', function(req, res, next) {
 
 /**
  *  POST the data about the user.
+ *  User data is received from and ajax request and passed straight back as a response.
  */
 router.post('/post_user', function(req, res, next) {
   var userData = req.body;
