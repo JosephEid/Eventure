@@ -64,9 +64,8 @@ function login() {
         if (formArray[index].name == 'loginEmail') {
             email = formArray[index].value;
         }
-
-
     }
+    // calls getLogin located in database.js
     getLogin(email, password);
     event.preventDefault();
 }
