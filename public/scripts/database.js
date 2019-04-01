@@ -5,6 +5,9 @@ const USER_STORE_NAME = 'store_users';
 const EVENT_STORE_NAME = 'store_events';
 const STORY_STORE_NAME = 'store_stories';
 
+/**
+ * Check for support of indexedDB and if there is initialise the database
+ */
 function initialise() {
     //check for support
     if ('indexedDB' in window) {
@@ -19,24 +22,35 @@ function initialise() {
  * it inits the database
  */
 function initDatabase(){
+    //Opening new idb as a promise
     dbPromise = idb.openDb(EVENTURE_DB_NAME, 1, function (upgradeDb) {
         console.log(dbPromise);
+        //If the database doesn't already contain a user store, create one
         if (!upgradeDb.objectStoreNames.contains(USER_STORE_NAME)) {
             var eventureDB = upgradeDb.createObjectStore(USER_STORE_NAME, {keyPath: 'id', autoIncrement: true});
+            //Create an index for email address in the user store
             eventureDB.createIndex('email', 'email', {unique: true});
         }
+        //If the database doesn't already contain an event store, create one
         if (!upgradeDb.objectStoreNames.contains(EVENT_STORE_NAME)) {
             var eventureDB = upgradeDb.createObjectStore(EVENT_STORE_NAME, {keyPath: 'id', autoIncrement: true});
+            //Create an index for the primary key in the event store
             eventureDB.createIndex('id', 'id', {unique: true});
         }
+        //If the database doesn't already contain a story store, create one
         if (!upgradeDb.objectStoreNames.contains(STORY_STORE_NAME)) {
             var eventureDB = upgradeDb.createObjectStore(STORY_STORE_NAME, {keyPath: 'id', autoIncrement: true});
+            //Create an index for eventId in the story store
             eventureDB.createIndex('eventId', 'eventId', {unique: false, multiEntry: true});
         }
     });
     return dbPromise;
 }
 
+/**
+ * Takes a record containing new user data puts it in the database
+ * @param userObject
+ */
 function storeUserData(userObject) {
     console.log('inserting: '+JSON.stringify(userObject));
     initialise();
@@ -57,6 +71,10 @@ function storeUserData(userObject) {
     else localStorage.setItem(JSON.stringify(userObject));
 }
 
+/**
+ * Takes a record containing new event data puts it in the database
+ * @param eventObject
+ */
 function storeEventData(eventObject) {
     console.log('inserting: '+JSON.stringify(eventObject));
     console.log("HERE");
@@ -77,10 +95,12 @@ function storeEventData(eventObject) {
     else localStorage.setItem(JSON.stringify(eventObject));
 }
 
-
+/**
+ * Takes a record containing new story data puts it in the database
+ * @param storyObject
+ */
 function storeStoryData(storyObject) {
     console.log('inserting: '+JSON.stringify(storyObject));
-    console.log("HERE");
     initialise();
     console.log(dbPromise);
     if (dbPromise) {
@@ -98,6 +118,10 @@ function storeStoryData(storyObject) {
     else localStorage.setItem(JSON.stringify(storyObject));
 }
 
+/**
+ * (This is the first function called when the home page is loaded)
+ * Queries the database to get all events and passes them one by one to a script which adds them to the results list
+ */
 function getAllEventData() {
     initialise();
     if ('serviceWorker' in navigator) {
@@ -119,20 +143,18 @@ function getAllEventData() {
                 for (var elem of readingsList)
 
                     addToEventList(elem);
-//                    getTheImages(readingsList);
+                    //Call a function to add each event to the map
                     updateMap(elem, readingsList);
-                    //getTheImages(readingsList);
             } else {
                 noEventResults();
-                //updateMap(elem, readingsList);
-                // COME FIX SATURDAYTSHG
-                //updateMap(elem, readingsList);
-                //addToEventList(elem);
             }
         });
     }
 }
 
+/**
+ * Queries the database to get all events and passes them one by one to a script which adds them to the new story dropdown box
+ */
 function getEventNames() {
     initialise();
     if (dbPromise) {
@@ -146,12 +168,16 @@ function getEventNames() {
                 for (var elem of readingsList)
                     addToDropdown(elem);
             } else {
-                dropdownEmpty();
+                //dropdownEmpty();
             }
         });
     }
 }
 
+/**
+ * Given an event id, will return all stories with that particular event id and pass them to a script which adds them to the stories results
+ * @param id
+ */
 function getAllStoryData(id) {
     console.log('getallstories');
     initialise();
@@ -172,6 +198,10 @@ function getAllStoryData(id) {
     }
 }
 
+/**
+ * Given an event id, will query the database for the event matching this id, and pass it to a script to display it
+ * @param id
+ */
 function getEvent(id) {
     initialise();
 
@@ -188,6 +218,11 @@ function getEvent(id) {
     }
 }
 
+/**
+ * Given a username and password, queries the database for a user matching them and if found logs them in
+ * @param email
+ * @param password
+ */
 function getLogin(email, password) {
     initialise();
     if (dbPromise) {

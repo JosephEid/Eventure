@@ -13,6 +13,7 @@ router.get('/new_event', function(req, res, next) {
 
 /**
  *  POST the data about the event.
+ *  Event data is received from and ajax request and passed straight back as a response.
  */
 router.post('/post_event', function(req, res, next) {
     var eventData = req.body;
