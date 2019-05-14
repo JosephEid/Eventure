@@ -28,6 +28,7 @@ router.get('/list_nearby_events', function(req, res, next) {
 
 /* GET view event page. */
 router.get('/view_event/:id', function(req, res, next) {
+    console.log("here")
     res.render('view_event', { id: req.params.id});
 });
 

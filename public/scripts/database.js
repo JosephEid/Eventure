@@ -110,7 +110,8 @@ function storeStoryData(storyObject) {
             await store.put(storyObject);
             return tx.complete;
         }).then(function () {
-            console.log('added story to the store! '+ JSON.stringify(storyObject));
+            window.location.replace("/view_event/"+storyObject.eventId);
+            //redirect("/view_event/"+storyObject.eventId);
         }).catch(function (error) {
             localStorage.setItem(JSON.stringify(storyObject));
         });
@@ -155,21 +156,17 @@ function getAllEventData() {
 /**
  * Queries the database to get all events and passes them one by one to a script which adds them to the new story dropdown box
  */
-function getEventNames() {
+function getEventName(id) {
     initialise();
     if (dbPromise) {
         dbPromise.then(function (db) {
             var tx = db.transaction(EVENT_STORE_NAME, 'readonly');
             var store = tx.objectStore(EVENT_STORE_NAME);
-            return store.getAll();
-        }).then(function (readingsList) {
-            if (readingsList && readingsList.length>0){
-                console.log('gotten events');
-                for (var elem of readingsList)
-                    addToDropdown(elem);
-            } else {
-                //dropdownEmpty();
-            }
+            var index = store.index('id');
+            return index.get(IDBKeyRange.only(id));
+        }).then(function (result) {
+            console.log(result.name);
+            $("#eventName").val(result.eventName).html(result.eventName);
         });
     }
 }
@@ -246,4 +243,25 @@ function getLogin(email, password) {
 
         });
     }
+}
+
+function redirect(url) {
+    console.log("redirecting");
+    $.ajax({
+        url: url,
+        type: 'GET',
+        success: function (message) {
+            // no need to JSON parse the result, as we are using
+            // dataType:json, so JQuery knows it and unpacks the
+            // object for us before returning it
+            console.log("Going to event")
+
+            // in order to have the object printed by alert
+            // we need to JSON stringify the object;
+            //document.getElementById('results').innerHTML= JSON.stringify(dataR);
+        },
+        error: function (xhr, status, error) {
+            alert('Error: ' + error.message);
+        }
+    });
 }

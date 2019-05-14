@@ -55,7 +55,7 @@
     </style>
 </head>
 
-<body onload="getEventNames()">
+<body onload="getEventName(<%= id%>)">
 
 <% include template/header.ejs%>
 
@@ -71,10 +71,12 @@
             <form id=“xForm" onsubmit="newStory()">
             <input hidden id="storyDate" name="storyDate">
             <input hidden id="storyTime" name="storyTime">
+            <input hidden type="text" id="eventId" name="eventId" value="<%= id%>">
             <div class="form-group">
                 <label for="eventId">Event</label><br>
-                <select class="form-control" id="eventId" name="eventId">
-                </select>
+<!--                <select class="form-control" id="eventId" name="eventId">-->
+<!--                </select>-->
+                <input type="text" id="eventName" name="eventName" value="" disabled>
             </div>
             <div class = "form-group">
                 <label for="caption">Caption</label>
