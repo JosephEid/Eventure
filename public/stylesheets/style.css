@@ -6,3 +6,107 @@ body {
 a {
   color: #00B7FF;
 }
+
+.event-cards {
+  margin-top:1.0em;
+}
+
+.card-story-counter {
+  float: right;
+}
+
+.top-bar {
+  height:0.1em;
+  background-color:red;
+}
+
+.card-internal {
+  background-color: red;
+  width:50%;
+}
+
+.padding {
+  padding:0.5em;
+}
+
+.story-preview {
+  border-radius: 90%;
+}
+
+.thumbnail-story img {
+  width: 5.5em;
+  height: 5.5em;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-width: 1px;
+  border-style: solid;
+  border-color: ghostwhite;
+  box-shadow: 2px 2px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.thumbnail-story-container {
+  margin: auto;
+  padding: 10px;
+}
+
+@media only screen and (max-width: 750px)  {
+  .thumbnail-story img{
+    width: 13em !important;
+    height: 13em !important;
+  }
+}
+
+.padding-override {
+  padding: 0em !important;
+}
+
+.row {
+  margin-right: -5px !important;
+  margin-left: -5px !important;
+}
+
+a.link-remove-color {
+  color:black !important;
+}
+
+.search-box-margin {
+  margin-bottom: 1em;
+}
+
+input {
+  background: white !important;
+}
+
+.mainSearch {
+  width: 50% !important;
+}
+
+.form-control-borderless {
+  border-left-width: 1px !important;
+  border-top-width: 1px !important;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.no-border-radius {
+  margin-right:10px;
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+}
+
+form.card.card-sm {
+  border-width: 0px !important;
+  font-size: 5pt !important;
+}
+
+#map {
+  height: 425px;
+}
