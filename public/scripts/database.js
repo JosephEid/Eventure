@@ -76,8 +76,6 @@ function storeUserData(userObject) {
  * @param eventObject
  */
 function storeEventData(eventObject) {
-    console.log('inserting: '+JSON.stringify(eventObject));
-    console.log("HERE");
     initialise();
     console.log(dbPromise);
     if (dbPromise) {
@@ -87,7 +85,7 @@ function storeEventData(eventObject) {
             await store.put(eventObject);
             return tx.complete;
         }).then(function () {
-            console.log('added event to the store! '+ JSON.stringify(eventObject));
+            window.location.replace("/");
         }).catch(function (error) {
             localStorage.setItem(JSON.stringify(eventObject));
         });
