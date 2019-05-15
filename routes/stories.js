@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var story = require('../databases/mongostory');
+
 /* GET stories listing. */
 router.get('/list_stories', function(req, res, next) {
     res.render('list_stories', { title: 'Stories' });
@@ -15,11 +17,7 @@ router.get('/new_story', function(req, res, next) {
  *  POST the data about the story.
  *  Story data is received from and ajax request and passed straight back as a response.
  */
-router.post('/post_story', function(req, res, next) {
-  var storyData = req.body;
-  res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify(storyData));
-});
+router.post('/post_story', story.insert);
 
 /* GET story page. */
 router.get('/view_story/:id', function(req, res, next) {

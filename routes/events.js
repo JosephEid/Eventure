@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var event = require('../databases/mongoevent');
+
 /* GET events listing. */
 router.get('/list_events', function(req, res, next) {
   res.render('list_events', { title: 'Events' });
@@ -15,11 +17,7 @@ router.get('/new_event', function(req, res, next) {
  *  POST the data about the event.
  *  Event data is received from and ajax request and passed straight back as a response.
  */
-router.post('/post_event', function(req, res, next) {
-    var eventData = req.body;
-    res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify(eventData));
-});
+router.post('/post_event', event.insert);
 
 /* GET events nearby page. */
 router.get('/list_nearby_events', function(req, res, next) {
