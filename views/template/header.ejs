@@ -2,7 +2,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -11,120 +10,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="images/main.ico">
+
     <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!--<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"></link>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
 
-    <style>
-        .event-cards {
-            margin-top:1.0em;
-        }
-
-        .card-story-counter {
-            float: right;
-        }
-
-        .top-bar {
-            height:0.1em;
-            background-color:red;
-        }
-
-        .card-internal {
-            background-color: red;
-            width:50%;
-        }
-
-        .padding {
-            padding:0.5em;
-        }
-
-        .story-preview {
-            border-radius: 90%;
-        }
-
-        .thumbnail-story img {
-            width: 5.5em;
-            height: 5.5em;
-            border-radius: 50%;
-            object-fit: cover;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            border-width: 1px;
-            border-style: solid;
-            border-color: ghostwhite;
-            box-shadow: 2px 2px;
-            margin-top: 1em;
-            margin-bottom: 1em;
-        }
-
-        .thumbnail-story-container {
-            margin: auto;
-            padding: 10px;
-        }
-
-        @media only screen and (max-width: 750px)  {
-            .thumbnail-story img{
-                width: 13em !important;
-                height: 13em !important;
-            }
-        }
-
-        .padding-override {
-            padding: 0em !important;
-        }
-
-        .row {
-            margin-right: -5px !important;
-            margin-left: -5px !important;
-        }
-
-        a.link-remove-color {
-            color:black !important;
-        }
-
-        .search-box-margin {
-            margin-bottom: 1em;
-        }
-
-        input {
-            background: white !important;
-        }
-
-        .mainSearch {
-            width: 50% !important;
-        }
-
-        .form-control-borderless {
-            border-left-width: 1px !important;
-            border-top-width: 1px !important;
-        }
-
-        .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
-            outline: none;
-            box-shadow: none;
-        }
-
-        .no-border-radius {
-            margin-right:10px;
-            border-top-left-radius: 0px !important;
-            border-bottom-left-radius: 0px !important;
-        }
-
-        form.card.card-sm {
-            border-width: 0px !important;
-            font-size: 5pt !important;
-        }
-
-        #map {
-            height: 425px;
-        }
-
-    </style>
 
     <title>Eventure</title>
 </head>
@@ -140,16 +37,16 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="/">Home</a>
-                <a class="nav-item nav-link active" href="/new_story">New Story</a>
-                <a class="nav-item nav-link active" href="/new_event">New Event</a>
-                <a class="nav-item nav-link active" href="/view_event">View Event</a>
-                <a class="nav-item nav-link active" href="/list_nearby_events">Events Map</a>
-                <a class="nav-item nav-link active" href="/login">Login</a>
-                <a class="nav-item nav-link active" href="/register">New Account</a>
-            </div>
+            <ul class="nav navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/new_event">New Event</a></li>
+            </ul>
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link active" href="/login"><i class="fas fa-user"></i>Login</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/register">New Account</a></li>
+            </ul>
         </div>
+
     </nav>
 </header>
 

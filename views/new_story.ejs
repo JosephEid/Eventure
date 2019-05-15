@@ -55,7 +55,7 @@
     </style>
 </head>
 
-<body onload="getEventNames()">
+<body onload="getEventName(<%= id%>)">
 
 <% include template/header.ejs%>
 
@@ -71,10 +71,12 @@
             <form id=“xForm" onsubmit="newStory()">
             <input hidden id="storyDate" name="storyDate">
             <input hidden id="storyTime" name="storyTime">
+            <input hidden type="text" id="eventId" name="eventId" value="<%= id%>">
             <div class="form-group">
                 <label for="eventId">Event</label><br>
-                <select class="form-control" id="eventId" name="eventId">
-                </select>
+<!--                <select class="form-control" id="eventId" name="eventId">-->
+<!--                </select>-->
+                <input type="text" id="eventName" name="eventName" value="" disabled>
             </div>
             <div class = "form-group">
                 <label for="caption">Caption</label>
@@ -84,8 +86,9 @@
                 <label for="eventPhoto">Event photo</label>
                 <!--                    <input type="file" class="form-control-file" name = "storyPhoto" id="storyPhoto">-->
                 <input type="file" onchange="previewFileSystem()"><br>
-                <img src="" width="100%" alt="Image preview..." class="imagePreview">
-                <br></br>
+<!--                <img src="images/placeholder_img_prev.jpg" alt="Image preview..." class="eventImagePreview center">-->
+                <img src="" width="100%" alt="Image preview..." class="eventImagePreview center">
+                <br>
                 <button type="button" id="photoButton" class="btn btn-success float-right mt-2" data-toggle="modal" data-target="#photoModal">Take Photo</button>
             </div>
             <input hidden id="photoBlob" name="photoBlob">

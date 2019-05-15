@@ -7,6 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="images/main.ico">
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Karla|Press+Start+2P" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/style.css">
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="/socket.io/socket.io.js"></script>
@@ -204,7 +205,9 @@
 </head>
 
 <body onload="getEvent(<%= id %>)">
-<% include template/header.ejs%>
+<header>
+    <% include template/header.ejs%>
+</header>
 
 <!-- Begin page content -->
 <main role="main" class="container" id="storyList">
@@ -231,10 +234,11 @@
     <div class="card">
         <div class="card-header">
             All stories
+            <a href="/new_story/<%= id%>" class="btn btn-primary pull-right">Add Story</a>
         </div>
     </div>
 </main>
-<br></br>
+<br>
 <%include template/footer.ejs%>
 
 <!-- Bootstrap core JavaScript

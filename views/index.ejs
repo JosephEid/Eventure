@@ -9,7 +9,6 @@
   <link href="images/main.ico" rel="icon">
   <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Karla|Press+Start+2P" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
   <script src="/scripts/eventScripts.js"></script>
   <script src="/scripts/database.js"></script>
   <script src="/scripts/idb.js"></script>
@@ -18,9 +17,6 @@
 
   <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
   <link href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/" rel="canonical">
-  <!-- Bootstrap core CSS -->
-  <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
 
   <style>
     .event-cards {
@@ -128,9 +124,13 @@
           </div>
           <!--end of col-->
           <div class="col-auto">
-            <button class="btn btn-lg btn-primary no-border-radius" type="submit">Search</button>
+            <button class="btn btn-lg btn-primary no-border-radius" type="submit">
+              <i class="fas fa-search"></i>
+              Search
+            </button>
             <button class="btn btn-success btn-lg" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-              Map
+              <i class="fas fa-map"></i>
+              View Event Map
             </button>
           </div>
           <!--end of col-->
@@ -145,7 +145,14 @@
       </div>
     </div>
   </div>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+  <script>
+    var socket = io.connect('http://localhost:3001');
+    socket.on('news', function (data) {
+      console.log(data);
+      socket.emit('my other event', { my: 'data'});
+    });
+  </script>
   <div class="card margin-top-featured">
     <div class="card-header">
       ⚡ Featured event

@@ -9,8 +9,9 @@ router.get('/list_stories', function(req, res, next) {
     //res.send('respond with a resource');
 });
 
-router.get('/new_story', function(req, res, next) {
-  res.render('new_story', {title: 'New Story'});
+router.get('/new_story/:id', function(req, res, next) {
+  console.log("here");
+  res.render('new_story', {id: req.params.id});
 });
 
 /**

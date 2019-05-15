@@ -32,6 +32,7 @@ function sendAjaxQuery(url, data) {
             // no need to JSON parse the result, as we are using
             // dataType:json, so JQuery knows it and unpacks the
             // object for us before returning it
+            console.log(dataR);
             storeEventData(dataR);
             // in order to have the object printed by alert
             // we need to JSON stringify the object;
