@@ -145,7 +145,14 @@
       </div>
     </div>
   </div>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+  <script>
+    var socket = io.connect('http://localhost:3001');
+    socket.on('news', function (data) {
+      console.log(data);
+      socket.emit('my other event', { my: 'data'});
+    });
+  </script>
   <div class="card margin-top-featured">
     <div class="card-header">
       ⚡ Featured event
