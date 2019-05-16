@@ -22,7 +22,7 @@ exports.insert = function (req, res) {
 
         event.save(function (err, results) {
             //console.log(results._id);
-            if (err)
+            if (err) {
                 console.log("error THROWN" + err)
                 res.status(500).send('Invalid data!' + err);
 
