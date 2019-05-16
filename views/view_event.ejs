@@ -211,6 +211,23 @@
 
 <!-- Begin page content -->
 <main role="main" class="container" id="storyList">
+    <ul id="messages"></ul>
+    <form action="">
+        <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://localhost:3001');
+        $('form').submit(function(e){
+            e.preventDefault(); // prevents page reloading
+            socket.emit('chat message', $('#m').val());
+            $('#m').val('');
+            return false;
+        });
+        socket.on('chat message', function(msg){
+            $('#messages').append($('<li>').text(msg));
+        });
+    </script>
     <header class="masthead" id="masthead_id">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
