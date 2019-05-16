@@ -11,7 +11,7 @@ function newEvent() {
     console.log(data);
     console.log("testing");
     sendAjaxQuery('/post_event', data);
-    event.preventDefault();
+    e.preventDefault();
 }
 
 /**
@@ -80,9 +80,10 @@ function addToEventList(dataR) {
         // appending a new row
         document.getElementById('eventList').appendChild(row);
         row.appendChild(body);
+        var address = dataR.line1 + ' ' + dataR.line2 + ' ' + dataR.postalCode + ' ' +  dataR.town + ' ' + dataR.city + ' ' + dataR.country;
 
         // add html to the event cards
-        body.innerHTML = "<a class=\"eventNameResult\" href=view_event/" + dataR.id + ">" + dataR.eventName + ", " + dataR.eventLocation + " " + dataR.eventDate + "</a>"
+        body.innerHTML = "<a class=\"eventNameResult\" href=view_event/" + dataR.id + ">" + dataR.eventName + ", " + address + " " + dataR.eventDate + "</a>"
         body.innerHTML += "<div class='card-story-counter red'>&nbsp; <span class=\"w3-badge w3-red\">" + dataR.id + "</span></div> <div class=\"card-story-counter\">\n" +
             "        Stories:\n" +
             "      </div>"
@@ -120,7 +121,9 @@ function updateMap(dataR, original_data) {
 
     var i;
     for (i = 0; i < original_data.length; i++) {
-        address_array.push(original_data[i].eventLocation);
+        ev = original_data[i];
+        var address = ev.line1 + ' ' + ev.line2 + ' ' + ev.postalCode + ' ' +  ev.town + ' ' + ev.city + ' ' + ev.country;
+        address_array.push(address);
         name_array.push(original_data[i].eventName);
         index_array.push(original_data[i].id);
     }
@@ -270,7 +273,8 @@ function displayEvent(dataR) {
         header.style.background = "url('/images/placeholder_img_prev.jpg')";
     }
     // fetch story information
-    document.getElementById('address').innerHTML = dataR.eventLocation;
+    var address = dataR.line1 + ' ' + dataR.line2 + ' ' + dataR.postalCode + ' ' +  dataR.town + ' ' + dataR.city + ' ' + dataR.country;
+    document.getElementById('address').innerHTML = address;
     document.getElementById('date').innerHTML += dataR.eventDate;
     document.getElementById('smaller_title_date').innerHTML = dataR.eventDate;
     document.getElementById('address').innerHTML += "<br><hr><i>" + dataR.eventDescription + "</i>";
