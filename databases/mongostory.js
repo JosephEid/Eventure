@@ -1,4 +1,4 @@
-var story = require('../models/story');
+var Story = require('../models/story');
 
 exports.insert = function (req, res) {
     var storyData = req.body;
@@ -21,7 +21,7 @@ exports.insert = function (req, res) {
                 res.status(500).send('Invalid data!');
 
             res.setHeader('Content-Type', 'application/json');
-            res.send(JSON.stringify(story));
+            res.send(JSON.stringify(storyData));
         });
     } catch (e) {
         res.status(500).send('error ' + e);

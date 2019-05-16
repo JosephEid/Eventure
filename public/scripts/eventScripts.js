@@ -279,3 +279,17 @@ function displayEvent(dataR) {
     // fetch information associated with
     getAllStoryData(dataR.id);
 }
+
+function update_features(dataR) {
+    if (dataR != null) {
+        var row2 = document.createElement('div');
+        var body2 = document.createElement('div');
+        row2.classList.add('col-md-2');
+        row2.classList.add('thumbnail-story');
+        row2.classList.add('padding-override');
+        document.getElementById('feature_thing_1').appendChild(row2);
+        row2.appendChild(body2);
+        body2.innerHTML = "<img src=\'"+ dataR.eventPhoto +"'></img>";
+        body2.innerHTML = "<a href=view_event/" + dataR.id + "><img src=\'"+ dataR.eventPhoto + "'></a>"
+    }
+}

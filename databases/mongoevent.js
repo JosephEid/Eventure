@@ -1,9 +1,10 @@
-var event = require('../models/event');
+var Event = require('../models/event');
+
 
 exports.insert = function (req, res) {
     var eventData = req.body;
     if (eventData == null) {
-        res.status(403).send('No data sent!')
+        // return res.status(403).send('No data sent!');
     }
     try {
         var event = new Event({
@@ -21,14 +22,14 @@ exports.insert = function (req, res) {
         console.log('received: ' + event);
 
         event.save(function (err, results) {
-            console.log(results._id);
-            if (err)
-                res.status(500).send('Invalid data!');
+            if (err) {
+                // return res.status(500).send('Invalid data!');
 
+            }
             res.setHeader('Content-Type', 'application/json');
-            res.send(JSON.stringify(event));
+            return res.send(JSON.stringify(eventData));
         });
     } catch (e) {
-        res.status(500).send('error ' + e);
+        // return res.status(500).send('error ' + e);
     }
 }

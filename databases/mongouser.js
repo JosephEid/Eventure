@@ -1,4 +1,4 @@
-var user = require('../models/user');
+var User = require('../models/user');
 
 exports.insert = function (req, res) {
     var userData = req.body;
@@ -20,7 +20,7 @@ exports.insert = function (req, res) {
                 res.status(500).send('Invalid data!');
 
             res.setHeader('Content-Type', 'application/json');
-            res.send(JSON.stringify(user));
+            res.send(JSON.stringify(userData));
         });
     } catch (e) {
         res.status(500).send('error ' + e);
