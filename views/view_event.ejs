@@ -189,6 +189,10 @@
             font-size: 20px;
         }
 
+        #margin-bottom {
+            margin-bottom: 1.3em !important;
+        }
+
 
 
         .left {
@@ -199,6 +203,24 @@
 
         #nameAndLocation {
             background-color: rgba(42, 54, 59, 0.5);
+        }
+
+        #smaller_title_date {
+            background-color: rgba(42, 54, 59, 0.5);
+            color:white !important;
+        }
+
+        #overflow-thing {
+            height: 1000px !important;
+            overflow: auto !important;
+        }
+
+        body > .container {
+            padding: 60px 200px 0 !important;
+        }
+        
+        .pull-right {
+            float: right;
         }
 
     </style>
@@ -231,11 +253,14 @@
     </div>
 
     <hr></hr>
-    <div class="card">
+    <div class="card" id="margin-bottom">
         <div class="card-header">
-            All stories
-            <a href="/new_story/<%= id%>" class="btn btn-primary pull-right">Add Story</a>
+            <a href="#" class="btn btn-link pull-left">All Stories</a>
+            <a href="/new_story/<%= id%>" class="btn btn-danger pull-right"><i class="fas fa-camera-retro"></i> Add Story</a>
         </div>
+    </div>
+    <div id="overflow-thing">
+
     </div>
 </main>
 <br>

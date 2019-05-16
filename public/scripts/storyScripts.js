@@ -61,7 +61,7 @@ function addToStoryList(dataR) {
         body.classList.add('card-body-story');
 
         // appending a new row
-        document.getElementById('storyList').appendChild(story);
+        document.getElementById('overflow-thing').appendChild(story);
         story.appendChild(body);
         // document.getElementById('title_of_story').innerHTML = dataR.caption;
         // document.getElementById('author_of_story').innerHTML = dataR.caption;
