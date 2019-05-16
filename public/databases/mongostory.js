@@ -16,7 +16,7 @@ exports.insert = function (req, res) {
         console.log('received: ' + story);
 
         story.save(function (err, results) {
-            console.log(results._id);
+            //console.log(results._id);
             if (err)
                 res.status(500).send('Invalid data!');
 
