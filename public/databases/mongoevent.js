@@ -1,4 +1,4 @@
-var Event = require('../models/event');
+var Event = require('../../models/event');
 
 
 exports.insert = function (req, res) {

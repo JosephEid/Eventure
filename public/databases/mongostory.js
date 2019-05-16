@@ -1,4 +1,4 @@
-var Story = require('../models/story');
+var Story = require('../../models/story');
 
 exports.insert = function (req, res) {
     var storyData = req.body;

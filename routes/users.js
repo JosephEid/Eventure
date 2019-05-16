@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var user = require('../databases/mongouser');
+var user = require('../public/databases/mongouser');
 
 /* GET users listing. */
 router.get('/list_users', function(req, res, next) {

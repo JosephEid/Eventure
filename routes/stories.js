@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var story = require('../databases/mongostory');
+var story = require('../public/databases/mongostory');
 
 /* GET stories listing. */
 router.get('/list_stories', function(req, res, next) {
