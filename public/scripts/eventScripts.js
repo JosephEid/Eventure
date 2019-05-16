@@ -2,18 +2,14 @@
  * When a new event is submitted, will serialise the data and pass it to an ajax request
  */
 function newEvent() {
-    var address = document.getElementById('line1').value + ' ' + document.getElementById('line2').value + ' ' +
-        document.getElementById('postalCode').value + ' ' + document.getElementById('town').value + ' ' +
-        document.getElementById('city').value + ' ' + document.getElementById('country').value;
-    console.log(address);
     var formArray = $("form").serializeArray();
     var data = {};
     for (index in formArray) {
         data[formArray[index].name] = formArray[index].value;
     }
 
-    data['eventLocation'] = address;
-    console.log(formArray);
+    console.log(data);
+    console.log("testing");
     sendAjaxQuery('/post_event', data);
     event.preventDefault();
 }
@@ -23,6 +19,7 @@ function newEvent() {
  * On success it will pass the data to the store in database function
  */
 function sendAjaxQuery(url, data) {
+    console.log("sending ajax");
     $.ajax({
         url: url,
         data: data,
@@ -33,12 +30,14 @@ function sendAjaxQuery(url, data) {
             // dataType:json, so JQuery knows it and unpacks the
             // object for us before returning it
             console.log(dataR);
+            console.log("testing");
             storeEventData(dataR);
             // in order to have the object printed by alert
             // we need to JSON stringify the object;
             //document.getElementById('results').innerHTML= JSON.stringify(dataR);
         },
         error: function(xhr, status, error) {
+            console.log(error.message);
             alert('Error: ' + error.message);
         }
     });

@@ -1,4 +1,4 @@
-var event = require('../models/event');
+var Event = require('../../models/event');
 
 exports.insert = function (req, res) {
     var eventData = req.body;
@@ -21,12 +21,13 @@ exports.insert = function (req, res) {
         console.log('received: ' + event);
 
         event.save(function (err, results) {
-            console.log(results._id);
+            //console.log(results._id);
             if (err)
-                res.status(500).send('Invalid data!');
+                console.log("error THROWN" + err)
+                res.status(500).send('Invalid data!' + err);
 
             res.setHeader('Content-Type', 'application/json');
-            res.send(JSON.stringify(event));
+            res.send(JSON.stringify(eventData));
         });
     } catch (e) {
         res.status(500).send('error ' + e);
