@@ -20,9 +20,15 @@ server.listen(3001);
 // });
 
 io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world'});
-  socket.on('my other event', function (data) {
-    console.log(data);
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+  socket.on('join', function(room){
+    socket.join(room);
+  });
+  socket.on('chat message', function(room, msg){
+    io.to(room).emit('chat message', msg);
   });
 });
 
