@@ -48,7 +48,8 @@ function sendAjaxQuery(url, data) {
 }
 
 /**
- * Takes the provided email and password and uses the function getLogin to sign in/ reject the user.
+ * Takes the provided username and password and checks the database for a match, if so redirect back to the previous page.
+ * provides an alert when there is no match.
  */
 function login() {
 
@@ -82,6 +83,9 @@ function login() {
     event.preventDefault();
 }
 
+/**
+ * Logs the user out, and redirects the user back to the homepage.
+ */
 function logout() {
     var data = {};
     data["logout"] = 1;

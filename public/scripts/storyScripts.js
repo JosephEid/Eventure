@@ -96,6 +96,9 @@ function closeModal() {
     $('#photoModal').modal('hide');
 }
 
+/**
+ * Creates the appropriate card to be displayed on the client when there are no stories for an event.
+ */
 function noStoryResults() {
     var row = document.createElement('div');
     document.getElementById('overflow-thing').appendChild(row);

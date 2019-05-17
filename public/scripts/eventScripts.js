@@ -63,7 +63,7 @@ function fileSystemPhoto() {
 
 /**
  * Given an event record, adds the relevant information in it to new html sections that are added to the page
- * @param dataR
+ * @param dataR - An array containing the data values of the event.
  */
 function addToEventList(dataR) {
 
@@ -77,6 +77,7 @@ function addToEventList(dataR) {
 
         row.classList.add('col-md-4');
 
+        // Style the event card based on whether or not the event came with a folder.
         if (dataR.eventPhoto != "") {
             row.innerHTML = "        <div class=\"card mb-4 box-shadow\">\n" +
                 "          <img class=\"card-img-top\"  alt=\"image\" style=\"height: 225px; object-fit: contain; background-image: url("+dataR.eventPhoto+"); display: block;\" src='"+ dataR.eventPhoto +"' data-holder-rendered=\"true\">\n" +
@@ -121,7 +122,7 @@ function addToEventList(dataR) {
 }
 
 /**
- * Creates a no events html div to display
+ * Adds a card to the event list if no events exist
  */
 function noEventResults() {
     var row = document.createElement('div');
@@ -137,6 +138,7 @@ var address_array = [];
 
 /**
  * Update the google map with new events
+ * @param original_data - contains the existing map data
  */
 function updateMap(original_data) {
     var dataJ = original_data;
@@ -316,7 +318,11 @@ function displayEvent(dataR) {
     getAllStoryData(dataR.id);
 }
 
-function update_features(dataR) {
+/**
+ * Updates the feature events which are displayed on the homepage.
+ * @param dataR - Contains the data for each featured event.
+ */
+function updateFeatures(dataR) {
     if (dataR != null) {
         var row2 = document.createElement('div');
         var body2 = document.createElement('div');

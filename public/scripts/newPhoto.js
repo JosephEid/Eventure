@@ -32,6 +32,7 @@ function takePhoto(){
 
         document.getElementById("take").addEventListener('click', snapshot, false);
 
+        // Starts webcam recording.
         navigator.mediaDevices.getUserMedia(hdConstraints)
             .then(function(stream) {
                 video.srcObject = stream;
@@ -41,6 +42,9 @@ function takePhoto(){
             .catch(function(err) {
                 errorCallback();
             });
+
+        // Takes a snapshot of the current webcam display, sets the value of the image preview and photoBlob
+        // field to be posted to the value of the photoBlob in png data format.
         function snapshot() {
             if (ready) {
                 canvas.width = $('#video').width();
