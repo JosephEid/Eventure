@@ -41,6 +41,8 @@ exports.insert = function (req, res) {
                 return res.send(false);
             } else {
                 console.log("you here2");
+                console.log(user.username);
+                req.session.username = user.username;
                 req.session.userId = user._id;
                 req.session.loggedIn = true;
                 return res.send(true);
@@ -49,6 +51,15 @@ exports.insert = function (req, res) {
     }
     else if (userData.checkLoggedIn) {
         if (req.session.loggedIn) {
+            return res.send(true);
+        }
+        else {
+            return res.send(false);
+        }
+    }
+    else if (userData.logout) {
+        if (req.session.loggedIn) {
+            req.session.loggedIn = false;
             return res.send(true);
         }
         else {
