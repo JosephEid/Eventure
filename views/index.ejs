@@ -22,23 +22,20 @@
       margin-top: 1.0em;
     }
 
+
     .thumbnail-story img {
-      width: 5.9em;
-      height: 5.9em;
+      width: 4em;
+      height: 4em;
       border-radius: 50%;
       object-fit: cover;
       display: block;
       margin-left: auto;
       margin-right: auto;
-      border-width: 1px;
-      border-style: solid;
-
-      /*box-shadow: 2px 2px;*/
-      border-width: 0.5px;
-      border-color: grey;
-      border-style: solid;
-      margin-top: 1em;
-      margin-bottom: 1em;
+      margin-top: 0em;
+      margin-bottom: 0.3em;
+      -webkit-box-shadow: 3px 7px 22px -9px rgba(166,0,0,1);
+      -moz-box-shadow: 3px 7px 22px -9px rgba(166,0,0,1);
+      box-shadow: 3px 7px 22px -9px rgba(166,0,0,1);
     }
 
     .margin-top-featured {
@@ -99,6 +96,11 @@
       border-top-left-radius: 0px !important;
       border-bottom-left-radius: 0px !important;
     }
+    #featured_photo {
+      padding: 0;
+      border-width: 2px !important;
+
+    }
 
     #main-container-features, #features_id, #all_events_id {
       display: none;
@@ -106,23 +108,33 @@
     }
 
     #featured_photo *{
+
       color:black !important;
     }
 
+    .border1 {
+      border-width: 1px !important;
+      margin-top: 0 !important;
+    }
+
     #main-container-features {
-      margin-top: 0em !important;
-      border-top-width: 0px !important;
-      border-top-left-radius: 0px !important;
-      border-top-right-radius: 0px !important;
+      margin-top: 0 !important;
+      border-top-width: 0 !important;
+      border-top-left-radius: 0 !important;
+      border-top-right-radius: 0 !important;
     }
 
     #features_id {
-      border-bottom-width: 0px !important;
+      border-bottom-width: 0 !important;
     }
 
     form.card.card-sm {
       border-width: 0px !important;
       font-size: 5pt !important;
+    }
+
+    #featured_photo {
+      border-width: 0px !important;
     }
 
     /*input *{*/
@@ -149,7 +161,7 @@
   </style>
 </head>
 
-<body onload="getAllEventData(); checkLoggedIn()">
+<body onload="getAllEventData()">
 
 <header>
   <% include template/header.ejs%>
@@ -157,6 +169,24 @@
 
 <!-- Begin page content -->
 <main role="main" class="container" id="eventList">
+  <div class="card margin-top-featured" id="features_id">
+    <div class="card-header" style="color:red; text-align: center ">
+      <i>⚡ Featured</i>
+      <div class="card event-cards" id="main-container-features" style="background-color: #f7f7f7;border-width: 0 !important;">
+        <div class="card-body" id="featured_photo">
+          <div class="container-fluid">
+            <div class="row center" id="feature_thing_1">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Button trigger modal -->
+
+
+
   <div class="card event-cards search-box-margin">
     <div class="col-12">
       <form class="card card-sm">
@@ -167,10 +197,10 @@
           </div>
           <!--end of col-->
           <div class="col-auto">
-            <button class="btn btn-lg btn-primary no-border-radius" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
-            <button class="btn btn-info btn-lg" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <!--<button class="btn btn-lg btn-primary no-border-radius" type="submit">-->
+              <!--<i class="fas fa-search"></i>-->
+            <!--</button>-->
+            <button class="btn btn-info btn-lg" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" style="margin-left: 20px !important;" aria-controls="collapseExample">
               <i class="fas fa-map"></i>
             </button>
           </div>
@@ -218,32 +248,10 @@
     <!--});-->
   <!--</script>-->
 
-  <div class="card margin-top-featured" id="features_id">
-    <div class="card-header" style="color:red; text-align: center">
-      <i>⚡ Featured events</i>
-    </div>
-  </div>
-
-  <!-- Button trigger modal -->
 
 
-  <div class="card event-cards" id="main-container-features">
-    <div class="card-body" id="featured_photo">
-      <!--<div class="card-story-counter red">-->
-        <!--&nbsp; <span class="w3-badge w3-red">6</span>-->
-      <!--</div>-->
-      <!--<div class="card-story-counter">-->
-        <!--Stories:-->
-      <!--</div>-->
-      <div class="container-fluid">
-        <div class="row center" id="feature_thing_1">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <hr>
-  <div class="card margin-top-featured" id="featured_photo" style="margin-bottom: 1em;">
+  <br>
+  <div class="card margin-top-featured border1" style="margin-bottom: 1em; border-width: 1px !important; margin-bottom:2em !important;">
     <div class="card-header" style="border-bottom-width: 0 !important;">
       <a class="btn btn-link pull-left">All Events</a>
       <a href="/new_event" class="btn btn-dark pull-right" style="float: right; color: white !important;"><i style="color: white !important;" class="fas fa-calendar-day"></i> Create event</a>

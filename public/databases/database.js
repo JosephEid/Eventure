@@ -124,6 +124,41 @@ function storeStoryData(storyObject) {
  * Queries the database to get all events and passes them one by one to a script which adds them to the results list
  */
 function getAllEventData() {
+    $.ajax({
+        url: '/list_events',
+        type: 'GET',
+        success: function(dataR) {
+            // no need to JSON parse the result, as we are using
+            // dataType:json, so JQuery knows it and unpacks the
+            // object for us before returning it
+            console.log(dataR);
+            console.log("testing");
+            if (dataR.length>0) {
+                for (i = 0; i < 6; i++) {
+                    update_features(dataR[i])
+                }
+
+                for (var elem of dataR)
+                    addToEventList(elem);
+
+                updateMap(dataR);
+            }
+            else {
+                getIndexedEvents();
+            }
+            // in order to have the object printed by alert
+            // we need to JSON stringify the object;
+            //document.getElementById('results').innerHTML= JSON.stringify(dataR);
+        },
+        error: function(xhr, status, error) {
+            console.log(error.message);
+            alert('Error, you are offline: ' + error.message);
+        }
+    });
+}
+
+function getIndexedEvents() {
+    console.log("got from indexed instead")
     initialise();
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
@@ -148,7 +183,7 @@ function getAllEventData() {
 
                     addToEventList(elem);
                     //Call a function to add each event to the map
-                    updateMap(elem, readingsList);
+                updateMap(readingsList);
             } else {
                 noEventResults();
             }
@@ -179,7 +214,7 @@ function getEventName(id) {
  * @param id
  */
 function getAllStoryData(id) {
-    console.log('getallstories');
+    console.log('get all stories from indexeddb');
     initialise();
     if (dbPromise) {
         dbPromise.then(function (db) {
@@ -192,7 +227,6 @@ function getAllStoryData(id) {
             if (readingsList && readingsList.length>0){
                 for (var elem of readingsList)
                     addToStoryList(elem);
-
             }
         });
     }

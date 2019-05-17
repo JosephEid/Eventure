@@ -80,8 +80,8 @@ function addToEventList(dataR) {
         row.innerHTML = "        <div class=\"card mb-4 box-shadow\">\n" +
             "          <img class=\"card-img-top\"  alt=\"image\" style=\"height: 225px; object-fit: contain; background-image: url("+dataR.eventPhoto+"); display: block;\" src='"+ dataR.eventPhoto +"' data-holder-rendered=\"true\">\n" +
             "          <div class=\"card-body\">\n" +
-            "            <i><h5 style='marigin-bottom:0px !important; font-size: 12px;' class=\"card-text\"><b> "+ dataR.eventName.toUpperCase() + "</h5></i>\n" +
-            "            <b><h4 style='color: red; margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.city.toUpperCase() + "</h4></b>\n" +
+            "            <i><h5 style='margin-bottom:0px !important; font-size: 12px;' class=\"card-text\"><b> "+ dataR.city.toUpperCase() + "</h5></i>\n" +
+            "            <b><h5 style='color: red; font-size: 15px; margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.eventName.toUpperCase() + "</h5></b>\n" +
             "            <p class=\"card-text\"> "+ dataR.eventDescription.slice(0, 70) + "</p>\n" +
             "            <div class=\"d-flex justify-content-between align-items-center\">\n" +
             "              <div class=\"btn-group\">\n" +
@@ -116,7 +116,7 @@ var address_array = [];
 /**
  * Update the google map with new events
  */
-function updateMap(dataR, original_data) {
+function updateMap(original_data) {
     var dataJ = original_data;
     var name_array = [];
     var index_array = [];
@@ -275,6 +275,7 @@ function displayEvent(dataR) {
     if (dataR.eventPhoto != null) {
         // use event header
         document.getElementById("master-image").src = dataR.eventPhoto;
+
     } else {
         // use placeholder header
         document.getElementById("master-image").src = 'images/1.jpg';
