@@ -106,6 +106,7 @@
       border-top-width: 0px !important;
       border-top-right-radius: 0 !important;
       border-top-left-radius: 0 !important;
+      margin-bottom: 0 !important;
     }
 
 
@@ -227,12 +228,16 @@
       </div>
     </div>
   </div>
-    <ul id="messages" class="card">
-      <li style="color:red;">You can't view any messages older than your join time.</li>
+    <ul id="messages" style="border-bottom-width: 0 !important;" class="card">
+      <i><li style="color:red; font-size: 10px;">You can't view any messages older than your join time.</li></i>
     </ul>
 
+  <div class = 'card'>
+
+  </div>
+
   <form action="">
-    <input id="m" autocomplete="off" /><button>Send</button>
+    <input style='border-top-width:0;  padding:15px;height: 30px; width: 100%;' id="m" autocomplete="off" placeholder="Type message here and press enter"/>
   </form>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
   <script>
