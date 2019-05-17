@@ -7,8 +7,9 @@
     <meta name="author" content="">
     <link rel="icon" href="images/main.ico">
     <script src="/scripts/eventScripts.js"></script>
-    <script src="/scripts/database.js"></script>
-    <script src="/scripts/idb.js"></script>
+
+    <script src="/databases/database.js"></script>
+    <script src="/databases/idb.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <title>Eventure</title>
 
@@ -70,33 +71,15 @@
             <label for="eventDescription">Description</label>
             <input type="name" class="form-control" name = "eventDescription" id="eventDescription" aria-describedby="eventHelp" placeholder="Event description">
         </div>
-        <div class="form-group">
-            <!--<label for="line1">Address Line 1</label>-->
 
-        </div>
         <div class="form-group">
             <label for="line2">Location</label>
-            <input type="name" class="form-control" id="line1" placeholder="Address line 1">
-            <input type="name" class="form-control" id="line2" placeholder="Address line 2">
-            <input type="name" class="form-control" id="postalCode" placeholder="Post code">
-            <input type="name" class="form-control" id="city" placeholder="City">
+            <input type="name" class="form-control" name = "line1" id="line1" placeholder="Address line 1" required>
+            <input type="name" class="form-control" name = "line2" id="line2" placeholder="Address line 2">
+            <input type="name" class="form-control" name = "postalCode" id="postalCode" placeholder="Post code" required>
+            <input type="name" class="form-control" name = "city" id="city" placeholder="City">
         </div>
-        <div class="form-group">
-            <!--<label for="postalCode">Postal Code</label>-->
 
-        </div>
-        <div class="form-group">
-            <!--<label for="city">City</label>-->
-            <!--<input type="name" class="form-control" id="city" placeholder="City">-->
-        </div>
-        <div class="form-group">
-            <!--<label for="town">Town</label>-->
-            <!--<input type="name" class="form-control" id="town" placeholder="Town">-->
-        </div>
-        <div class="form-group">
-            <!--<label for="country">Country</label>-->
-            <!--<input type="name" class="form-control" id="country" placeholder="Country">-->
-        </div>
         <div class="form-group">
             <label for="eventDate">Date</label>
             <input type="date" class="form-control" name = "eventDate" id="eventDate" placeholder="Event Date">

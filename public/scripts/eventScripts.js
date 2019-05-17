@@ -2,18 +2,11 @@
  * When a new event is submitted, will serialise the data and pass it to an ajax request
  */
 function newEvent() {
-    var address = document.getElementById('line1').value + ' ' + document.getElementById('line2').value + ' ' +
-        document.getElementById('postalCode').value + ' ' + document.getElementById('town').value + ' ' +
-        document.getElementById('city').value + ' ' + document.getElementById('country').value;
-    console.log(address);
-
     var city_caps = document.getElementById('city').value;
     city_caps = city_caps.toUpperCase();
 
     var event_desc_short = document.getElementById('eventDescription').value;
     event_desc_short = event_desc_short.slice(0, 70);
-
-
 
     var event_name_caps = document.getElementById('eventName').value;
     event_name_caps = event_name_caps.toUpperCase();
@@ -25,11 +18,11 @@ function newEvent() {
         data[formArray[index].name] = formArray[index].value;
     }
 
-    data['eventLocation'] = address;
-    data['city_caps'] = city_caps;
-    data['event_name_caps'] = event_name_caps;
-    data['event_desc_short'] = event_desc_short;
-    console.log("sdfdsfafdsdafs");
+    //data['city_caps'] = city_caps;
+    //data['event_name_caps'] = event_name_caps;
+    //data['event_desc_short'] = event_desc_short;
+    console.log(data);
+    console.log("testing");
     sendAjaxQuery('/post_event', data);
     event.preventDefault();
 
@@ -40,6 +33,7 @@ function newEvent() {
  * On success it will pass the data to the store in database function
  */
 function sendAjaxQuery(url, data) {
+    console.log("sending ajax");
     $.ajax({
         url: url,
         data: data,
@@ -50,12 +44,14 @@ function sendAjaxQuery(url, data) {
             // dataType:json, so JQuery knows it and unpacks the
             // object for us before returning it
             console.log(dataR);
+            console.log("testing");
             storeEventData(dataR);
             // in order to have the object printed by alert
             // we need to JSON stringify the object;
             //document.getElementById('results').innerHTML= JSON.stringify(dataR);
         },
         error: function(xhr, status, error) {
+            console.log(error.message);
             alert('Error: ' + error.message);
         }
     });
@@ -93,6 +89,7 @@ function addToEventList(dataR) {
         var row = document.createElement('div');
         var body = document.createElement('div');
 
+
         row.classList.add('col-md-4');
 
         row.innerHTML = "        <div class=\"card mb-4 box-shadow\">\n" +
@@ -114,6 +111,7 @@ function addToEventList(dataR) {
             "        </div>\n" +
             "      </div>";
         document.getElementById('main_row').appendChild(row);
+
 
 }
 
@@ -148,7 +146,9 @@ function updateMap(dataR, original_data) {
 
     var i;
     for (i = 0; i < original_data.length; i++) {
-        address_array.push(original_data[i].eventLocation);
+        ev = original_data[i];
+        var address = ev.line1 + ' ' + ev.line2 + ' ' + ev.postalCode + ' ' +  ev.town + ' ' + ev.city + ' ' + ev.country;
+        address_array.push(address);
         name_array.push(original_data[i].eventName);
         index_array.push(original_data[i].id);
     }
@@ -299,15 +299,16 @@ function displayEvent(dataR) {
 
     } else {
         // use placeholder header
-        document.getElementById("master-image").src = '"+ dataR.eventPhoto + "';
+        document.getElementById("master-image").src = 'images/1.jpg';
     }
 
 
 
     // fetch story information
-    document.getElementById('address').innerHTML = dataR.eventLocation;
+    var address = dataR.line1 + ' ' + dataR.line2 + ' ' + dataR.postalCode + ' ' + ' ' + dataR.city;
+    document.getElementById('address').innerHTML = address;
     document.getElementById('date').innerHTML += "<br>" + dataR.eventDate + "</br>";
-    // document.getElementById('smaller_title_date').innerHTML = dataR.eventDate;
+    document.getElementById('smaller_title_date').innerHTML = dataR.eventDate;
     document.getElementById('address').innerHTML += "<br><hr><i>" + dataR.eventDescription + "</i>";
 
     // fetch information associated with

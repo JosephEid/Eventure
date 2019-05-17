@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var event = require('../databases/mongoevent');
+var event = require('../public/databases/mongoevent');
 
 /* GET events listing. */
 router.get('/list_events', function(req, res, next) {
