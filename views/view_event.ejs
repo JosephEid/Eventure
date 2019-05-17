@@ -143,17 +143,7 @@
         <div class="card-header" id="description_event">
         </div>
     </div>
-    <hr></hr>
-    <div class="card" id="margin-bottom">
-        <div class="card-header">
-            <a class="btn btn-link pull-left">All Stories</a>
-            <a href="/new_story/<%= id%>" class="btn btn-danger pull-right">Add new story</a>
-        </div>
-    </div>
-    <div class="container-fluid col-md-12" id="hold_all_the_events" style="margin-bottom: 1em; height:500px; overflow: auto">
-        <div class="row" id="main_row2">
-        </div>
-    </div>
+    <hr>
     <div class="card margin-top-featured" id="">
         <div class="card-header" id="live_chat" style="border-bottom-width:0px;color:red;border-bottom-left-radius: 0; border-bottom-right-radius: 0 !important; text-align: center">
             <i style="border-bottom-right-radius: 0">Live chat</i>
@@ -166,6 +156,17 @@
     <form action="">
         <input style='margin-bottom:1em; border-top-width:0;  padding:15px;height: 30px; width: 100%; border-color: lightgrey !important; border-left-width: 0px !important;border-right-width: 0px !important; border-top-width: 1px !important;' id="m" autocomplete="off" placeholder="Type message here and press enter"/>
     </form>
+    <hr>
+    <div class="card" id="margin-bottom">
+        <div class="card-header">
+            <a class="btn btn-link pull-left">All Stories</a>
+            <a href="/new_story/<%= id%>" class="btn btn-danger pull-right">Add new story</a>
+        </div>
+    </div>
+    <div class="container-fluid col-md-12" id="hold_all_the_events" style="margin-bottom: 1em; height:500px; overflow: auto">
+        <div class="row" id="main_row2">
+        </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
     <script>
         var socket = io.connect('http://localhost:3001');
@@ -179,7 +180,10 @@
             return false;
         });
         socket.on('chat message', function(msg){
-            msg = "Anon: " + msg;
+            chatUser = window.username;
+            var today = new Date();
+            var time = today.getHours() + ":" + today.getMinutes();
+            msg = chatUser + "(" + time +  "): " + msg;
             $('#messages').append($('<li>').text(msg));
             var elem = document.getElementById('messages');
             elem.scrollTop = elem.scrollHeight;

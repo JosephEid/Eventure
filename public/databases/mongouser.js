@@ -51,10 +51,16 @@ exports.insert = function (req, res) {
     }
     else if (userData.checkLoggedIn) {
         if (req.session.loggedIn) {
-            return res.send(true);
+            data = {};
+            data["username"] = req.session.username;
+            data["loggedIn"] = req.session.loggedIn;
+            return res.send(data);
         }
         else {
-            return res.send(false);
+            data = {};
+            data["username"] = "anon";
+            data["loggedIn"] = req.session.loggedIn;
+            return res.send(data);
         }
     }
     else if (userData.logout) {
