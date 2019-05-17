@@ -22,16 +22,6 @@
       margin-top: 1.0em;
     }
 
-    .card-story-counter {
-      float: right;
-    }
-
-    .card-img-top {
-      width: 100%;
-      height: 17vw;
-      object-fit: cover;
-    }
-
     .thumbnail-story img {
       width: 5.9em;
       height: 5.9em;
@@ -55,8 +45,6 @@
       margin-top: 1em !important;
     }
 
-
-
     @media only screen and (max-width: 750px) {
 
       .thumbnail-story img {
@@ -70,8 +58,10 @@
       }
     }
 
-    .padding-override {
-      padding: 1px !important;
+    @media only screen and (min-width: 1000px) {
+      #eventList {
+        padding: 60px 65px 0;
+      }
     }
 
     .row {
@@ -79,38 +69,9 @@
       margin-left: -5px !important;
     }
 
-    a.link-remove-color {
-      color: black !important;
-    }
-
     .search-box-margin {
       margin-bottom: 0em !important;
     }
-
-    .col-md-4 {
-      margin-bottom: 1.2em;
-    }
-
-    #messages {
-      height: 150px;
-      overflow: auto;
-      background-color: white;
-      margin-top:0em;
-      list-style: none;
-      margin-left: 0;
-      padding-left: 0.5em;
-      padding-top: 0.5em;
-      color:darkblue;
-      padding-bottom: 1em;
-      border-top-width: 0px !important;
-      border-top-right-radius: 0 !important;
-      border-top-left-radius: 0 !important;
-      margin-bottom: 0 !important;
-    }
-
-
-
-
 
     input {
       background: white !important;
@@ -164,6 +125,10 @@
       font-size: 5pt !important;
     }
 
+    /*input *{*/
+      /*border-width: 1px !important;*/
+    /*}*/
+
     /*#featured_photo img:hover {*/
       /*border-width: 3px !important;*/
       /*border-color: powderblue;*/
@@ -192,7 +157,6 @@
 
 <!-- Begin page content -->
 <main role="main" class="container" id="eventList">
-
   <div class="card event-cards search-box-margin">
     <div class="col-12">
       <form class="card card-sm">
@@ -215,11 +179,6 @@
       </form>
     </div>
   </div>
-  <div class="card margin-top-featured" id="">
-    <div class="card-header" id="live_chat" style="border-bottom-width:0px;color:red;border-bottom-left-radius: 0; border-bottom-right-radius: 0 !important; text-align: center">
-      <i style="border-bottom-right-radius: 0">Live chat</i>
-    </div>
-  </div>
   <div class="collapse search-box-margin" id="collapseExample">
     <div class="card event-cards">
       <div class="card-body" id="james_is_the_best">
@@ -227,36 +186,37 @@
       </div>
     </div>
   </div>
-    <ul id="messages" style="border-bottom-width: 0 !important;" class="card">
-      <i><li style="color:red; font-size: 10px;">You can't view any messages older than your join time.</li></i>
-    </ul>
+  <!--<div class="card margin-top-featured" id="">-->
+    <!--<div class="card-header" id="live_chat" style="border-bottom-width:0px;color:red;border-bottom-left-radius: 0; border-bottom-right-radius: 0 !important; text-align: center">-->
+      <!--<i style="border-bottom-right-radius: 0">Live chat</i>-->
+    <!--</div>-->
+  <!--</div>-->
+    <!--<ul id="messages" style="border-bottom-width: 0 !important; border-bottom-left-radius: 0; border-bottom-right-radius: 0;" class="card">-->
+      <!--<i><li style="color:red; font-size: 10px;">You can't view any messages older than your join time.</li></i>-->
+    <!--</ul>-->
 
-  <div class = 'card'>
+  <!--<form action="">-->
+    <!--<input style='border-top-width:0;  padding:15px;height: 30px; width: 100%; border-color: lightgrey !important; border-left-width: 0px !important;border-right-width: 0px !important; border-top-width: 1px !important;' id="m" autocomplete="off" placeholder="Type message here and press enter"/>-->
+  <!--</form>-->
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>-->
+  <!--<script>-->
+    <!--var socket = io.connect('http://localhost:3001');-->
+    <!--socket.emit('join', 'homeRoom');-->
+    <!--console.log(socket.rooms);-->
+    <!--$('form').submit(function(e){-->
+      <!--e.preventDefault(); // prevents page reloading-->
+      <!--socket.emit('chat message', 'homeRoom', $('#m').val());-->
+      <!--$('#m').val('');-->
 
-  </div>
-
-  <form action="">
-    <input style='border-top-width:0;  padding:15px;height: 30px; width: 100%;' id="m" autocomplete="off" placeholder="Type message here and press enter"/>
-  </form>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
-  <script>
-    var socket = io.connect('http://localhost:3001');
-    socket.emit('join', 'homeRoom');
-    console.log(socket.rooms);
-    $('form').submit(function(e){
-      e.preventDefault(); // prevents page reloading
-      socket.emit('chat message', 'homeRoom', $('#m').val());
-      $('#m').val('');
-
-      return false;
-    });
-    socket.on('chat message', function(msg){
-      msg = "Anon: " + msg;
-      $('#messages').append($('<li>').text(msg));
-      var elem = document.getElementById('messages');
-      elem.scrollTop = elem.scrollHeight;
-    });
-  </script>
+      <!--return false;-->
+    <!--});-->
+    <!--socket.on('chat message', function(msg){-->
+      <!--msg = "Anon: " + msg;-->
+      <!--$('#messages').append($('<li>').text(msg));-->
+      <!--var elem = document.getElementById('messages');-->
+      <!--elem.scrollTop = elem.scrollHeight;-->
+    <!--});-->
+  <!--</script>-->
 
   <div class="card margin-top-featured" id="features_id">
     <div class="card-header" style="color:red; text-align: center">
@@ -339,6 +299,28 @@
 <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm5EmU8b35j-9fhgd7nll5IePADt_0z88&callback=initMap"></script>
+<script>
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  function main() {
+    var user_email = getCookie("username");
+    form_info = document.getElementById('new_account_thing');
+    form_info.innerHTML = user_email;
+  }
+</script>
 </body>
 
 </html>

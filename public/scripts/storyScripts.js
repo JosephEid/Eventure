@@ -60,7 +60,6 @@ function addToStoryList(dataR) {
         "      object-fit: cover; height: 225px; width: 100%; display: block;\" src='"+ dataR.photoBlob +"' data-holder-rendered=\"true\">\n" +
         "          <div class=\"card-body\" style='height: 70px;'>\n" +
         "            <p style='float: left;color: red; margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.caption + "</p>\n" +
-                    
         "            <div class=\"d-flex justify-content-between align-items-center\" style='float: right'>\n" +
         "            </div>\n" +
         "          </div>\n" +

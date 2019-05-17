@@ -1,5 +1,3 @@
-
-<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -24,6 +22,7 @@
         .event-cards {
             margin-top:1.0em;
         }
+
 
 
         .card-story-counter {
@@ -69,15 +68,35 @@
         </div>
     </div>
 </main>
-<br>
+<body>
 <%include template/footer.ejs%>
+
+    <script>
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            var expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function main() {
+            form_info = document.getElementById('loginEmail').value;
+            setCookie("username", form_info,5);
+            console.log(form_info);
+        }
+
+    </script>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
     <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+<script>
+
+</script>
 
 </body>
 </html>

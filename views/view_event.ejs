@@ -5,74 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="images/main.ico">
+    <link href="/images/main.ico" rel="icon">
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Karla|Press+Start+2P" rel="stylesheet">
     <link rel="stylesheet" href="stylesheets/style.css">
-
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/scripts/eventScripts.js"></script>
     <script src="/scripts/storyScripts.js"></script>
-
     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
 
     <title>Eventure</title>
 
-
-    <!-- Bootstrap core CSS -->
-    <!-- Custom styles for this template -->
-    <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
     <style>
-        .event-cards {
-            margin-top:1.0em;
-        }
-
-        .card-story-counter {
-            float: right;
-        }
-
-
-
-        .top-bar {
-            height:0.1em;
-            background-color:red;
-        }
-
-        .card-internal {
-            background-color: red;
-            width:50%;
-
-        }
-
-        .padding {
-            padding:0.5em;
-        }
-
-        .story-preview {
-            border-radius: 90%;
-        }
-
-        .thumbnail-story img {
-            width: 5.5em; /* You can set the dimensions to whatever you want */
-            height: 5.5em;
-            border-radius: 50%;
-            object-fit: cover;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            border-width: 1px;
-            border-style: solid;
-            border-color: ghostwhite;
-            box-shadow: 2px 2px;
-            margin-top: 1em;
-            margin-bottom: 1em;
-        }
-
-        .thumbnail-story-container {
-            margin: auto;
-            padding: 10px;
-        }
-
         .card-body *{
             text-align: center;
             align-content: center;
@@ -82,46 +27,11 @@
             color: transparent !important;
         }
 
-        .author-blue {
-            color: #00B7FF;
-        }
-
-
-
         @media only screen and (max-width: 750px)  {
             .thumbnail-story img{
                 width: 13em !important;
                 height: 13em !important;
             }
-            .card-img-top {
-                width: 100% !important;
-                height: 500px !important;
-            }
-        }
-
-
-        .fit {
-            width: 100%; /* You can set the dimensions to whatever you want */
-            height: 25em;
-            object-fit: cover;
-            display: block;
-            box-shadow: 2px 2px;
-            margin-top: 1em;
-            margin-bottom: 1em;
-
-        }
-
-        @media only screen and (min-width: 751px)  {
-            .fit {
-                height: 35em !important;
-                object-fit: contain;
-                /*transform: scale(0.6, 0.6);*/
-
-            }
-        }
-
-        .padding-override {
-            padding: 0 !important;
         }
 
         .row {
@@ -135,43 +45,8 @@
             margin: 0 auto !important;
         }
 
-        .title {
-            font-weight: 800 !important;
-        }
-
-
-        .description-container {
-            width: 100% !important;
-            float: left !important;
-        }
-
-        .desc {
-            float: left;
-            text-align: left;
-        }
-
-        /*#nameAndLocation *{*/
-            /*color:white !important;*/
-        /*}*/
-
         #description_event {
             font-style: oblique;
-        }
-
-        .card.event-cards {
-            border-radius: 0.5em !important;
-        }
-
-        #time_of_story {
-            font-size:10px !important;
-        }
-
-        .masthead {
-            height: 18em;
-            /*background-image: url('/images/placeholder_img_prev.jpg');*/
-            margin-bottom: 1em;
-            border-radius: 5px;
-
         }
 
         .right {
@@ -180,37 +55,9 @@
             font-size: 14px !important;
         }
 
-        .event-cards {
-            margin-bottom: 3em !important;
-        }
-
-        #title_of_story {
-            color: red !important;
-            font-size: 20px;
-        }
-
         #margin-bottom {
             margin-bottom: 1.3em !important;
         }
-
-        /* Container holding the image and the text */
-        .container2 {
-            position: relative;
-            height: 100px;
-        }
-
-        /* Bottom right text */
-        .text-block {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background-color: black;
-            color: white;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-
 
         .left {
             color: #343a40;
@@ -218,85 +65,70 @@
             font-size: 14px !important;
         }
 
-        #nameAndLocation {
-            background-color: rgba(42, 54, 59, 0.5);
-        }
-
-        #smaller_title_date {
-            background-color: rgba(42, 54, 59, 0.5);
-            color:white !important;
-        }
-
-        #overflow-thing {
-            height: 1000px !important;
-            overflow: auto !important;
-        }
-
-        /*body > .container {*/
-            /*padding: 60px 200px 0 !important;*/
-        /*}*/
-        
         .pull-right {
             float: right;
         }
 
-
-
-        #masthead_id2 {
-
+       #title-event{
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight:700; font-style: italic;
         }
 
+        #messages {
+            height: 150px;
+            overflow: auto;
+            background-color: white;
+            margin-top:0em;
+            list-style: none;
+            margin-left: 0;
+            padding-left: 0.5em;
+            padding-top: 0.5em;
+            color:darkblue;
+            padding-bottom: 1em;
+            border-top-width: 0px !important;
+            border-top-right-radius: 0 !important;
+            border-top-left-radius: 0 !important;
+            margin-bottom: 0 !important;
+        }
 
+        #master-image {
+            filter: blur(12px);
+            opacity: 0.9;
+            height: 300px;
+            object-position: 30% 30%;
+            object-fit:fill;
+        }
+
+        #title-event {
+            -webkit-text-stroke: 1px black;
+            font-family: initial !important;
+            font-weight: bold !important;
+        }
+
+        .margin-bottom-1em {
+            margin-bottom: 1em;
+        }
 
     </style>
+
 </head>
 
 <body onload="getEvent(<%= id %>)">
+
 <header>
     <% include template/header.ejs%>
 </header>
 
 <!-- Begin page content -->
 <main role="main" class="container" id="storyList">
-    <ul id="messages"></ul>
-    <form action="">
-        <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
-    <script>
-        var socket = io.connect('http://localhost:3001');
-        $('form').submit(function(e){
-            e.preventDefault(); // prevents page reloading
-            socket.emit('chat message', $('#m').val());
-            $('#m').val('');
-            return false;
-        });
-        socket.on('chat message', function(msg){
-            $('#messages').append($('<li>').text(msg));
-        });
-    </script>
-    <!--<header class="masthead" id="masthead_id" style="object-fit: scale-down !important;">-->
-        <!--<div class="container h-100">-->
-            <!--<div class="row h-100 align-items-center">-->
-                <!--<div class="col-12 text-center ">-->
-                    <!--<h1 class="font-weight-light "style="color:white;" id="nameAndLocation"></h1>-->
-                    <!--<p class="lead" id="smaller_title"></p>-->
-                    <!--<p class="lead" id="smaller_title_date"></p>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</header>-->
-
-    <div class="col-md-12" style="margin-bottom: 1em">
+    <div class="col-md-12 margin-bottom-2">
         <div class="carousel slide"  id="carousel-438672">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" style="filter: blur(3px); opacity: 0.9; height: 300px; object-position: 30% 30%;object-fit:cover" alt="Carousel Bootstrap First" id="master-image"/>
+                    <img class="d-block w-100" alt="Carousel Bootstrap First" id="master-image"/>
                     <div class="carousel-caption">
                         <h1 id="title-event">
-
                         </h1>
-                        <p id="date">
+                        <p id="date" style="">
                         </p>
                     </div>
                 </div>
@@ -307,12 +139,13 @@
     <div class="card" style="margin-bottom: 1em;">
         <div class="card-header">
             <div class = "left"  id="address"></div>
-            <div class = "right" id="date"></div>
+            <div class = "right" id="date_small"></div>
         </div>
     </div>
-
-
-
+    <div class="card margin-bottom-2">
+        <div class="card-header" id="description_event">
+        </div>
+    </div>
     <hr></hr>
     <div class="card" id="margin-bottom">
         <div class="card-header">
@@ -324,7 +157,37 @@
         <div class="row" id="main_row2">
         </div>
     </div>
+    <div class="card margin-top-featured" id="">
+        <div class="card-header" id="live_chat" style="border-bottom-width:0px;color:red;border-bottom-left-radius: 0; border-bottom-right-radius: 0 !important; text-align: center">
+            <i style="border-bottom-right-radius: 0">Live chat</i>
+        </div>
+    </div>
+    <ul id="messages" style="border-bottom-width: 0 !important; border-bottom-left-radius: 0; border-bottom-right-radius: 0;" class="card">
+        <i><li style="color:red; font-size: 10px;">You can't view any messages older than your join time.</li></i>
+    </ul>
 
+    <form action="">
+        <input style='margin-bottom:1em; border-top-width:0;  padding:15px;height: 30px; width: 100%; border-color: lightgrey !important; border-left-width: 0px !important;border-right-width: 0px !important; border-top-width: 1px !important;' id="m" autocomplete="off" placeholder="Type message here and press enter"/>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://localhost:3001');
+        socket.emit('join', 'homeRoom');
+        console.log(socket.rooms);
+        $('form').submit(function(e){
+            e.preventDefault(); // prevents page reloading
+            socket.emit('chat message', 'homeRoom', $('#m').val());
+            $('#m').val('');
+
+            return false;
+        });
+        socket.on('chat message', function(msg){
+            msg = "Anon: " + msg;
+            $('#messages').append($('<li>').text(msg));
+            var elem = document.getElementById('messages');
+            elem.scrollTop = elem.scrollHeight;
+        });
+    </script>
 </main>
 <br>
 <%include template/footer.ejs%>
