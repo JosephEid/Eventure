@@ -93,6 +93,10 @@
                 width: 13em !important;
                 height: 13em !important;
             }
+            .card-img-top {
+                width: 100% !important;
+                height: 500px !important;
+            }
         }
 
 
@@ -163,13 +167,11 @@
         }
 
         .masthead {
-            height: 17em;
+            height: 18em;
             /*background-image: url('/images/placeholder_img_prev.jpg');*/
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
             margin-bottom: 1em;
             border-radius: 5px;
+
         }
 
         .right {
@@ -189,6 +191,23 @@
 
         #margin-bottom {
             margin-bottom: 1.3em !important;
+        }
+
+        /* Container holding the image and the text */
+        .container2 {
+            position: relative;
+            height: 100px;
+        }
+
+        /* Bottom right text */
+        .text-block {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: black;
+            color: white;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
 
@@ -213,13 +232,21 @@
             overflow: auto !important;
         }
 
-        body > .container {
-            padding: 60px 200px 0 !important;
-        }
+        /*body > .container {*/
+            /*padding: 60px 200px 0 !important;*/
+        /*}*/
         
         .pull-right {
             float: right;
         }
+
+
+
+        #masthead_id2 {
+
+        }
+
+
 
     </style>
 </head>
@@ -248,17 +275,34 @@
             $('#messages').append($('<li>').text(msg));
         });
     </script>
-    <header class="masthead" id="masthead_id">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12 text-center ">
-                    <h1 class="font-weight-light "style="color:white;" id="nameAndLocation"></h1>
-                    <p class="lead" id="smaller_title"></p>
-                    <p class="lead" id="smaller_title_date"></p>
+    <!--<header class="masthead" id="masthead_id" style="object-fit: scale-down !important;">-->
+        <!--<div class="container h-100">-->
+            <!--<div class="row h-100 align-items-center">-->
+                <!--<div class="col-12 text-center ">-->
+                    <!--<h1 class="font-weight-light "style="color:white;" id="nameAndLocation"></h1>-->
+                    <!--<p class="lead" id="smaller_title"></p>-->
+                    <!--<p class="lead" id="smaller_title_date"></p>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</header>-->
+
+    <div class="col-md-12" style="margin-bottom: 1em">
+        <div class="carousel slide"  id="carousel-438672">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" style="filter: blur(3px); opacity: 0.9; height: 300px; object-position: 30% 30%;object-fit:cover" alt="Carousel Bootstrap First" id="master-image"/>
+                    <div class="carousel-caption">
+                        <h1 id="title-event">
+
+                        </h1>
+                        <p id="date">
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
 
     <div class="card" style="margin-bottom: 1em;">
         <div class="card-header">
@@ -267,16 +311,20 @@
         </div>
     </div>
 
+
+
     <hr></hr>
     <div class="card" id="margin-bottom">
         <div class="card-header">
-            <a href="#" class="btn btn-link pull-left">All Stories</a>
-            <a href="/new_story/<%= id%>" class="btn btn-danger pull-right"><i class="fas fa-camera-retro"></i> Add Story</a>
+            <a class="btn btn-link pull-left">All Stories</a>
+            <a href="/new_story/<%= id%>" class="btn btn-danger pull-right">Add new story</a>
         </div>
     </div>
-    <div id="overflow-thing">
-
+    <div class="container-fluid col-md-12" id="hold_all_the_events" style="margin-bottom: 1em; height:500px; overflow: auto">
+        <div class="row" id="main_row2">
+        </div>
     </div>
+
 </main>
 <br>
 <%include template/footer.ejs%>

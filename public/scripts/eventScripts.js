@@ -4,6 +4,7 @@
 function newEvent() {
     var formArray = $("form").serializeArray();
     var data = {};
+
     for (index in formArray) {
         data[formArray[index].name] = formArray[index].value;
     }
@@ -11,7 +12,8 @@ function newEvent() {
     console.log(data);
     console.log("testing");
     sendAjaxQuery('/post_event', data);
-    e.preventDefault();
+    event.preventDefault();
+
 }
 
 /**
@@ -67,27 +69,38 @@ function fileSystemPhoto() {
  * @param dataR
  */
 function addToEventList(dataR) {
-    if (document.getElementById('eventList') != null) {
+
+        document.getElementById("features_id").style.display = "block";
+        document.getElementById("main-container-features").style.display = "block";
+        document.getElementById("hold_all_the_events").style.display = "block";
+        // #main-container-features, #features_id
         var row = document.createElement('div');
         var body = document.createElement('div');
 
-        // formatting the row by applying css classes
-        row.classList.add('eventResult');
-        row.classList.add('card');
-        row.classList.add('event-cards');
-        body.classList.add('card-body');
 
-        // appending a new row
-        document.getElementById('eventList').appendChild(row);
-        row.appendChild(body);
-        var address = dataR.line1 + ' ' + dataR.line2 + ' ' + dataR.postalCode + ' ' +  dataR.town + ' ' + dataR.city + ' ' + dataR.country;
+        row.classList.add('col-md-4');
 
-        // add html to the event cards
-        body.innerHTML = "<a class=\"eventNameResult\" href=view_event/" + dataR.id + ">" + dataR.eventName + ", " + address + " " + dataR.eventDate + "</a>"
-        body.innerHTML += "<div class='card-story-counter red'>&nbsp; <span class=\"w3-badge w3-red\">" + dataR.id + "</span></div> <div class=\"card-story-counter\">\n" +
-            "        Stories:\n" +
-            "      </div>"
-    }
+        row.innerHTML = "        <div class=\"card mb-4 box-shadow\">\n" +
+            "          <img class=\"card-img-top\"  alt=\"image\" style=\"height: 225px; width: 100%; display: block;\" src='"+ dataR.eventPhoto +"' data-holder-rendered=\"true\">\n" +
+            "          <div class=\"card-body\">\n" +
+            "            <i><h5 style='marigin-bottom:0px !important; font-size: 12px;' class=\"card-text\"><b> "+ dataR.eventName.toUpperCase() + "</h5></i>\n" +
+            "            <b><h3 style='color: red; margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.city.toUpperCase() + "</h3></b>\n" +
+            "            <p class=\"card-text\"> "+ dataR.event_desc_short + "</p>\n" +
+            "            <div class=\"d-flex justify-content-between align-items-center\">\n" +
+            "              <div class=\"btn-group\">\n" +
+            "                <a href=view_event/" + dataR.id + " role='button' class='btn btn-sm btn-outline-danger' style='font-size: 12px;'>View event</a>\n" +
+            "                <a href=new_story/" + dataR.id + " role='button' class='btn btn-sm btn-danger btn-block' style='float: right;font-size: 12px;'>Add a story</a>\n" +
+            "              </div>\n" +
+            "            </div>\n" +
+            "          </div>\n" +
+            "<div class=\"card-footer text-muted\">\n" +
+            "    " + dataR.eventDate + "\n" +
+            "  </div>\n" +
+            "        </div>\n" +
+            "      </div>";
+        document.getElementById('main_row').appendChild(row);
+
+
 }
 
 /**
@@ -99,7 +112,7 @@ function noEventResults() {
     row.classList.add('card');
     row.classList.add('card-header');
     // inside card information
-    row.innerHTML = "😥 No current events"
+    row.innerHTML = "😥 No current events";
 }
 
 // store all the locations from the event
@@ -122,7 +135,7 @@ function updateMap(dataR, original_data) {
     var i;
     for (i = 0; i < original_data.length; i++) {
         ev = original_data[i];
-        var address = ev.line1 + ' ' + ev.line2 + ' ' + ev.postalCode + ' ' +  ev.town + ' ' + ev.city + ' ' + ev.country;
+        var address = ev.line1 + ' ' + ev.line2 + ' ' + ev.postalCode + ' ' + ev.city;
         address_array.push(address);
         name_array.push(original_data[i].eventName);
         index_array.push(original_data[i].id);
@@ -246,6 +259,7 @@ function updateMap(dataR, original_data) {
 function updateResults(content) {
     // hide all results first
     $('.eventNameResult').parent().hide();
+    content = content.toUpperCase();
 
     // show all results containing the content of the searchbar.
     $('.eventNameResult:contains("' + content + '")').parent().show();
@@ -258,24 +272,30 @@ function updateResults(content) {
 function displayEvent(dataR) {
 
     if (dataR.eventName != null) {
-        document.getElementById('nameAndLocation').innerHTML = dataR.eventName;
+        document.getElementById('title-event').innerHTML = dataR.eventName;
     } else {
-        document.getElementById('nameAndLocation').innerHTML = "ERROR: no name chosen";
+        document.getElementById('title-event').innerHTML = "ERROR: no name chosen";
     }
 
-    var header = document.getElementById('masthead_id');
+    var header = document.getElementById('masthead_id2');
+
 
     if (dataR.eventPhoto != null) {
         // use event header
-        header.style.background = "url('" + dataR.eventPhoto + "')";
+        document.getElementById("master-image").src = dataR.eventPhoto;
+
+
     } else {
         // use placeholder header
-        header.style.background = "url('/images/placeholder_img_prev.jpg')";
+        document.getElementById("master-image").src = 'images/1.jpg';
     }
+
+
+
     // fetch story information
-    var address = dataR.line1 + ' ' + dataR.line2 + ' ' + dataR.postalCode + ' ' +  dataR.town + ' ' + dataR.city + ' ' + dataR.country;
+    var address = dataR.line1 + ' ' + dataR.line2 + ' ' + dataR.postalCode + ' ' + dataR.city;
     document.getElementById('address').innerHTML = address;
-    document.getElementById('date').innerHTML += dataR.eventDate;
+    document.getElementById('date').innerHTML += "<br>" + dataR.eventDate + "</br>";
     document.getElementById('smaller_title_date').innerHTML = dataR.eventDate;
     document.getElementById('address').innerHTML += "<br><hr><i>" + dataR.eventDescription + "</i>";
 
@@ -292,7 +312,12 @@ function update_features(dataR) {
         row2.classList.add('padding-override');
         document.getElementById('feature_thing_1').appendChild(row2);
         row2.appendChild(body2);
-        body2.innerHTML = "<img src=\'"+ dataR.eventPhoto +"'></img>";
-        body2.innerHTML = "<a href=view_event/" + dataR.id + "><img src=\'"+ dataR.eventPhoto + "'></a>"
+        if (dataR.eventPhoto == "") {
+            body2.innerHTML = "<a href=view_event/\" + dataR.id + \"><img src='images/Asset 13@288x.png'></img></a>";
+        } else {
+            body2.innerHTML = "<img src=\'"+ dataR.eventPhoto +"'></img>";
+            body2.innerHTML = "<a href=view_event/" + dataR.id + "><img src=\'"+ dataR.eventPhoto + "'></a>"
+        }
+
     }
 }

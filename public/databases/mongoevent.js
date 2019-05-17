@@ -13,8 +13,6 @@ exports.insert = function (req, res) {
             address_2: eventData.line2,
             postcode: eventData.postalCode,
             city: eventData.city,
-            town: eventData.town,
-            country: eventData.country,
             date: eventData.eventDate,
             photo: eventData.eventPhoto
         });

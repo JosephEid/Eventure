@@ -46,36 +46,34 @@ function sendAjaxQuery(url, data) {
  * @param dataR
  */
 function addToStoryList(dataR) {
-    if (document.getElementById('storyList') != null) {
-        const story = document.createElement('div');
-        const body = document.createElement('div');
+    // #main-container-features, #features_id
+    var row = document.createElement('div');
 
-        // formatting the row by applying css classes
-        story.classList.add('card');
-        story.classList.add('event-cards');
-        body.classList.add('card-body');
-        body.innerHTML = "<br> <img style='display: block;\n" +
-            "  margin-left: auto;\n" +
-            "  margin-right: auto;" +
-            "border-radius:5px;'src=\""+dataR.photoBlob + "\" width=\"100%\" alt=\"Image preview...\" class=\"imagePreview\">"+"<div class=\"row description-container\">\n";
-        body.classList.add('card-body-story');
+    row.classList.add('col-md-4');
 
-        // appending a new row
-        document.getElementById('overflow-thing').appendChild(story);
-        story.appendChild(body);
-        // document.getElementById('title_of_story').innerHTML = dataR.caption;
-        // document.getElementById('author_of_story').innerHTML = dataR.caption;
-        // document.getElementById('time_of_story').innerHTML = dataR.storyDate + ", " + dataR.storyTime;
-        // document.getElementById('story_image').innerHTML = "<br> <img src=\""+dataR.photoBlob + "\" height=\"400\" alt=\"Image preview...\" class=\"imagePreview\">"
-        body.innerHTML += "<div class=\"col-md-12 desc\">\n" +
-            "                            <hr></hr>\n" +
-            "                            <b id=\"title_of_story\"> " + dataR.caption + "</b><br>\n" +
-            "                            <b id=\"time_of_story\"> " + dataR.storyDate + ", " +  dataR.storyTime + " </b>\n" +
-            "                        </div>\n" +
-            "                    </div>";
-    }
+    // formatting the row by applying css classes
+
+    // row.classList.add('col   -md-4');
+    row.innerHTML = "        <div class=\"card mb-4 box-shadow\">\n" +
+        "          <img class=\"card-img-top\"  alt=\"image\" style=\"      width: 100%;\n" +
+        "      height: 17vw;\n" +
+        "      object-fit: cover; height: 225px; width: 100%; display: block;\" src='"+ dataR.photoBlob +"' data-holder-rendered=\"true\">\n" +
+        "          <div class=\"card-body\" style='height: 70px;'>\n" +
+        "            <p style='float: left;color: red; margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.caption + "</p>\n" +
+                    
+        "            <div class=\"d-flex justify-content-between align-items-center\" style='float: right'>\n" +
+        "            </div>\n" +
+        "          </div>\n" +
+        "<div class=\"card-footer text-muted\">\n" +
+        " <a href=# role='button' class='btn btn-sm btn-outline-primary btn-block' onclick=document.getElementById('"+dataR.id+"').style.display='block'>View</a>\n" +
+        "  </div>\n" +
+        "        </div>\n" +
+        "      </div>\n";
+
+    document.getElementById('main_row2').appendChild(row);
+
+
 }
-
 /**
  * Given an event record, will add a corresponding option to the html dropdown select box
  * @param event
@@ -86,7 +84,6 @@ function addToDropdown(event) {
         option.value = event.id;
         console.log(event.id);
         option.innerHTML = event.eventName;
-
         document.getElementById('eventId').appendChild(option);
     }
 }
@@ -96,4 +93,13 @@ function addToDropdown(event) {
  */
 function closeModal() {
     $('#photoModal').modal('hide');
+}
+
+function noStoryResults() {
+    var row = document.createElement('div');
+    document.getElementById('overflow-thing').appendChild(row);
+    row.classList.add('card');
+    row.classList.add('card-header');
+    // inside card information
+    row.innerHTML = "😥 No current stories"
 }
