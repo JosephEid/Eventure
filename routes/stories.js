@@ -8,7 +8,7 @@ router.post('/list_stories', story.getAllMongoStories);
 
 router.get('/new_story/:id', function(req, res, next) {
   console.log("here");
-  res.render('new_story', {id: req.params.id});
+  res.render('new_story', {id: req.params.id, username: "adam"});
 });
 
 /**
