@@ -4,16 +4,13 @@
 function newEvent() {
     var formArray = $("form").serializeArray();
     var data = {};
-
     for (index in formArray) {
         data[formArray[index].name] = formArray[index].value;
     }
-
-    console.log(data);
-    console.log("testing");
+    // console.log(data);
+    // console.log("testing");
     sendAjaxQuery('/post_event', data);
     event.preventDefault();
-
 }
 
 /**
@@ -81,10 +78,10 @@ function addToEventList(dataR) {
         row.classList.add('col-md-4');
 
         row.innerHTML = "        <div class=\"card mb-4 box-shadow\">\n" +
-            "          <img class=\"card-img-top\"  alt=\"image\" style=\"height: 225px; width: 100%; display: block;\" src='"+ dataR.eventPhoto +"' data-holder-rendered=\"true\">\n" +
+            "          <img class=\"card-img-top\"  alt=\"image\" style=\"height: 225px; object-fit: contain; background-image: url("+dataR.eventPhoto+"); display: block;\" src='"+ dataR.eventPhoto +"' data-holder-rendered=\"true\">\n" +
             "          <div class=\"card-body\">\n" +
             "            <i><h5 style='marigin-bottom:0px !important; font-size: 12px;' class=\"card-text\"><b> "+ dataR.eventName.toUpperCase() + "</h5></i>\n" +
-            "            <b><h3 style='color: red; margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.city.toUpperCase() + "</h3></b>\n" +
+            "            <b><h5 style='color: red; margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.city.toUpperCase() + "</h5></b>\n" +
             "            <p class=\"card-text\"> "+ dataR.eventDescription.slice(0, 70) + "</p>\n" +
             "            <div class=\"d-flex justify-content-between align-items-center\">\n" +
             "              <div class=\"btn-group\">\n" +
@@ -99,8 +96,6 @@ function addToEventList(dataR) {
             "        </div>\n" +
             "      </div>";
         document.getElementById('main_row').appendChild(row);
-
-
 }
 
 /**
@@ -258,11 +253,11 @@ function updateMap(original_data) {
  */
 function updateResults(content) {
     // hide all results first
-    $('.eventNameResult').parent().hide();
+    $('.mb-4').parent().hide();
     content = content.toUpperCase();
 
     // show all results containing the content of the searchbar.
-    $('.eventNameResult:contains("' + content + '")').parent().show();
+    $('.mb-4:contains("' + content + '")').parent().show();
 }
 
 /**
@@ -272,7 +267,7 @@ function updateResults(content) {
 function displayEvent(dataR) {
 
     if (dataR.eventName != null) {
-        document.getElementById('title-event').innerHTML = dataR.eventName;
+        document.getElementById('title-event').innerHTML = "<b><h1 style='font-family:initial; font-size: 55px;'> " + dataR.eventName.toUpperCase() + "</h1></b>";
     } else {
         document.getElementById('title-event').innerHTML = "ERROR: no name chosen";
     }
@@ -280,20 +275,21 @@ function displayEvent(dataR) {
     if (dataR.eventPhoto != null) {
         // use event header
         document.getElementById("master-image").src = dataR.eventPhoto;
+<<<<<<< HEAD
 
+=======
+>>>>>>> d3e192bd4c306d9b90f66df1276cf4a692264cfd
     } else {
         // use placeholder header
         document.getElementById("master-image").src = 'images/1.jpg';
     }
 
-
-
     // fetch story information
     var address = dataR.line1 + ' ' + dataR.line2 + ' ' + dataR.postalCode + ' ' + dataR.city;
-    document.getElementById('address').innerHTML = address;
+    document.getElementById('address').innerHTML = address.toUpperCase();
     document.getElementById('date').innerHTML += "<br>" + dataR.eventDate + "</br>";
-    document.getElementById('smaller_title_date').innerHTML = dataR.eventDate;
-    document.getElementById('address').innerHTML += "<br><hr><i>" + dataR.eventDescription + "</i>";
+    document.getElementById('date_small').innerHTML = dataR.eventDate;
+    document.getElementById('description_event').innerHTML = dataR.eventDescription;
 
     // fetch information associated with
     getAllStoryData(dataR.id);
@@ -314,6 +310,5 @@ function update_features(dataR) {
             body2.innerHTML = "<img src=\'"+ dataR.eventPhoto +"'></img>";
             body2.innerHTML = "<a href=view_event/" + dataR.id + "><img src=\'"+ dataR.eventPhoto + "'></a>"
         }
-
     }
 }

@@ -15,6 +15,8 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 server.listen(3001);
 
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 // app.get('/', function (req, res) {
 //   res.sendFile(__dirname + '/index.html');
 // });
@@ -36,6 +38,11 @@ io.on('connection', function (socket) {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(session({
+  secret: 'work hard',
+  resave: true,
+  saveUninitialized: false
+}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ limit:'50mb', extended: true }));

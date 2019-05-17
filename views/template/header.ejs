@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="images/main.ico">
+    <link href="/images/icons/icon.png" rel="icon">
+
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -17,10 +18,13 @@
     <!--<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="/databases/database.js"></script>
     <script src="/databases/idb.js"></script>
+    <script src="/scripts/userScripts.js"></script>
 
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"></link>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
 
@@ -28,7 +32,7 @@
     <title>Eventure</title>
 </head>
 
-<body>
+<body onload="checkLoggedIn()">
 
 <header>
     <div class="top-bar"></div>
@@ -43,8 +47,8 @@
                 <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
                 <!--<li class="nav-item"><a class="nav-link active" href="/new_event">New Event</a></li>-->
             </ul>
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link active" href="/login"><i class="fas fa-user"></i> Login</a></li>
+            <ul class="nav navbar-nav ml-auto" id="userInfo" name="userInfo">
+                <li class="nav-item"><a class="nav-link active" href="/login">Login</a></li>
                 <li class="nav-item"><a class="nav-link active" href="/register">New Account</a></li>
             </ul>
         </div>
@@ -55,5 +59,6 @@
 <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
 <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+
 </body>
 </html>
