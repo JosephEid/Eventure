@@ -52,3 +52,26 @@ exports.getAllMongoEvents = function (req, res) {
         res.status(500).send('error ' + e);
     }
 }
+
+exports.getEvent = function (req, res) {
+    var id = req.body.id;
+    console.log(id);
+
+    try {
+        Event.find({},
+            function (err, events) {
+                if (err)
+                    res.status(500).send('Invalid data!');
+                if (events.length >= id) {
+                    var event = {id: id, eventName: events[id - 1].event_name, eventDescription: events[id - 1].description,
+                        line1: events[id - 1].address_1, line2: events[id - 1].address_2, postalCode: events[id - 1].postcode, city: events[id - 1].city,
+                        eventDate: events[id - 1].date, eventPhoto: events[id - 1].photo};
+
+                     res.setHeader('Content-Type', 'application/json');
+                     res.send(JSON.stringify(event));
+                }
+            });
+    } catch (e) {
+        res.status(500).send('error ' + e);
+    }
+}

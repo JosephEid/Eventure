@@ -67,9 +67,10 @@
     <div class="card event-cards">
         <div class="card-body">
             <form id=“xForm" onsubmit="newStory()">
-            <input hidden id="storyDate" name="storyDate">
-            <input hidden id="storyTime" name="storyTime">
-            <input hidden type="text" id="eventId" name="eventId" value="<%= id%>">
+                <input hidden type="text" id="username" name="username" value="<%= window.username%>">
+                <input hidden id="storyDate" name="storyDate">
+                <input hidden id="storyTime" name="storyTime">
+                <input hidden type="text" id="eventId" name="eventId" value="<%= id%>">
             <div class="form-group">
                 <label for="eventId">Event</label><br>
                 <input class="form-control"type="text" id="eventName" name="eventName" value="" disabled>
@@ -79,7 +80,7 @@
                 <input class="form-control" type="text" id="caption" name="caption">
             </div>
             <div class="form-group">
-                <label for="eventPhoto">Event photo</label>
+                <label for="storyPhoto">Story photo</label>
                 <!--                    <input type="file" class="form-control-file" name = "storyPhoto" id="storyPhoto">-->
                 <input type="file" onchange="previewFileSystem()"><br>
 <!--                <img src="images/placeholder_img_prev.jpg" alt="Image preview..." class="eventImagePreview center">-->

@@ -4,10 +4,7 @@ var router = express.Router();
 var story = require('../public/databases/mongostory');
 
 /* GET stories listing. */
-router.get('/list_stories', function(req, res, next) {
-    res.render('list_stories', { title: 'Stories' });
-    //res.send('respond with a resource');
-});
+router.post('/list_stories', story.getAllMongoStories);
 
 router.get('/new_story/:id', function(req, res, next) {
   console.log("here");
