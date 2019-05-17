@@ -55,7 +55,6 @@ body {
 /*}*/
 
 input {
-    border-width: 0px !important;
     border-bottom-width: 1px !important;
     border-radius: 0px !important;
 }
