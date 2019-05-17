@@ -227,7 +227,6 @@ function getAllStoryData(id) {
             if (readingsList && readingsList.length>0){
                 for (var elem of readingsList)
                     addToStoryList(elem);
-
             }
         });
     }
