@@ -11,7 +11,7 @@ function newEvent() {
     console.log(data);
     console.log("testing");
     sendAjaxQuery('/post_event', data);
-    e.preventDefault();
+    event.preventDefault();
 }
 
 /**
