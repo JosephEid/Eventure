@@ -139,7 +139,7 @@ function getAllEventData() {
             return store.getAll();
         }).then(function (readingsList) {
             if (readingsList && readingsList.length>0){
-                for (i = 0; i < 5; i++) {
+                for (i = 0; i < 6; i++) {
                     update_features(readingsList[i])
                 }
                 for (var elem of readingsList)
@@ -190,7 +190,8 @@ function getAllStoryData(id) {
             if (readingsList && readingsList.length>0){
                 for (var elem of readingsList)
                     addToStoryList(elem);
-
+            } else {
+                noStoryResults();
             }
         });
     }

@@ -13,13 +13,14 @@
     <script src="/scripts/database.js"></script>
     <script src="/scripts/idb.js"></script>
     <script src="/scripts/userScripts.js"></script>
+
     <title>Eventure</title>
 
-
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Karla|Press+Start+2P" rel="stylesheet">
 
-
-
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
     <style>
@@ -49,8 +50,9 @@
 
 <!-- Begin page content -->
 <main role="main" class="container">
+
     <div class="card">
-        <div class="card-header">
+        <div class="card-header" style="border-bottom-width: 0px;">
             🔑 Login
         </div>
     </div>
@@ -58,14 +60,14 @@
         <div class="card-body">
             <form id=“xForm" onsubmit="login()">
                 <div class="form-group">
-                    <label for="loginEmail">Login Email</label>
-                    <input type="name" class="form-control" name="loginEmail" id="loginEmail" placeholder="Username" required>
+                    <label for="loginEmail">Email</label>
+                    <input type="name" class="form-control" name="loginEmail" id="loginEmail" placeholder="john@smith.com" required>
                 </div>
                 <div class="form-group">
                     <label for="loginPassword">Password</label>
                     <input type="password" class="form-control" name="loginPassword" id="loginPassword" placeholder="Password" required>
                 </div>
-                <p><input type="submit" name="g" value="Submit" id="g"></p>
+                <p><input type="submit" name="g" id="g" class="btn btn-danger btn-block" value="Submit"></p>
             </form>
         </div>
     </div>
@@ -76,7 +78,9 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>

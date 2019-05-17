@@ -21,7 +21,6 @@
 
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
     <style>
@@ -50,7 +49,7 @@
 <!-- Begin page content -->
 <main role="main" class="container">
     <div class="card">
-        <div class="card-header">
+        <div class="card-header" style="border-bottom-width: 0px">
             ✍️ Create account
         </div>
     </div>
@@ -58,24 +57,25 @@
         <div class="card-body">
             <form id=“xForm" onsubmit="signUp()">
                 <div class="form-group">
-                    <label for="loginFirstName">Name</label>
+                    <label for="loginFirstName">First name</label>
                     <input type="name" class="form-control" name="loginFirstName" id="loginFirstName" placeholder="John" required>
                 </div>
                 <div class="form-group">
-                    <label for="loginLastName">Name</label>
-                    <input type="name" class="form-control" name="loginLastName" id="loginLastName" placeholder="Long" required>
+                    <label for="loginLastName">Last name</label>
+                    <input type="name" class="form-control" name="loginLastName" id="loginLastName" placeholder="Smith" required>
                 </div>
                 <div class="form-group">
                     <label for="loginEmail">Email</label>
                     <input type="email" class="form-control" name="loginEmail" id="loginEmail" placeholder="john@email.com" required>
                 </div>
                 <div class="form-group">
-                    <label for="loginPassword">Password</label>
+                    <label for="loginPassword">Password setup</label>
                     <input type="password" class="form-control" name="loginPassword" id="loginPassword" oninput="setPasswordConfirmValidity();" placeholder="Password" required>
+                    <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" oninput="setPasswordConfirmValidity();" placeholder="Confirm password" required>
                 </div>
                 <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" oninput="setPasswordConfirmValidity();" placeholder="Confirm Password" required>
+                    <!--<label for="confirmPassword">Confirm Password</label>-->
+
                 </div>
                 <script>
                     function setPasswordConfirmValidity(str) {
@@ -89,7 +89,7 @@
                         }
                     }
                 </script>
-                <p><input type="submit" name="g" value="Submit" id="g"></p>
+            <p><input type="submit" name="g" id="g" class="btn btn-danger btn-block" value="Submit"></p>
             </form>
         </div>
     </div>
