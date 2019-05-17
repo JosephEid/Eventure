@@ -11,8 +11,6 @@ var Event = new Schema(
         address_2: {type: String},
         postcode: {type: String, required: true}, //Validate?
         city: {type: String},
-        town: {type: String},
-        country: {type: String},
         date: {type: Date, required: true},
         photo: {type: String}
     }

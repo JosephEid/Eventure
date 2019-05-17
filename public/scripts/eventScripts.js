@@ -9,9 +9,6 @@ function newEvent() {
         data[formArray[index].name] = formArray[index].value;
     }
 
-    //data['city_caps'] = city_caps;
-    //data['event_name_caps'] = event_name_caps;
-    //data['event_desc_short'] = event_desc_short;
     console.log(data);
     console.log("testing");
     sendAjaxQuery('/post_event', data);
