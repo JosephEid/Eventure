@@ -80,7 +80,7 @@ function addToEventList(dataR) {
         row.innerHTML = "        <div class=\"card mb-4 box-shadow\">\n" +
             "          <img class=\"card-img-top\"  alt=\"image\" style=\"height: 225px; object-fit: contain; background-image: url("+dataR.eventPhoto+"); display: block;\" src='"+ dataR.eventPhoto +"' data-holder-rendered=\"true\">\n" +
             "          <div class=\"card-body\">\n" +
-            "            <i><h5 style='marigin-bottom:0px !important; font-size: 12px;' class=\"card-text\"><b> "+ dataR.eventName.toUpperCase() + "</h5></i>\n" +
+            "            <i><h5 style='margin-bottom:0px !important; font-size: 12px;' class=\"card-text\"><b> "+ dataR.eventName.toUpperCase() + "</h5></i>\n" +
             "            <b><h5 style='color: red; margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.city.toUpperCase() + "</h5></b>\n" +
             "            <p class=\"card-text\"> "+ dataR.eventDescription.slice(0, 70) + "</p>\n" +
             "            <div class=\"d-flex justify-content-between align-items-center\">\n" +
@@ -275,10 +275,6 @@ function displayEvent(dataR) {
     if (dataR.eventPhoto != null) {
         // use event header
         document.getElementById("master-image").src = dataR.eventPhoto;
-<<<<<<< HEAD
-
-=======
->>>>>>> d3e192bd4c306d9b90f66df1276cf4a692264cfd
     } else {
         // use placeholder header
         document.getElementById("master-image").src = 'images/1.jpg';
