@@ -181,7 +181,9 @@
         });
         socket.on('chat message', function(msg){
             chatUser = window.username;
-            msg = chatUser + ": " + msg;
+            var today = new Date();
+            var time = today.getHours() + ":" + today.getMinutes();
+            msg = chatUser + "(" + time +  "): " + msg;
             $('#messages').append($('<li>').text(msg));
             var elem = document.getElementById('messages');
             elem.scrollTop = elem.scrollHeight;

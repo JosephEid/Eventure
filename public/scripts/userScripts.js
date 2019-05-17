@@ -67,7 +67,7 @@ function login() {
         success: function (loggedIn) {
             if (loggedIn) {
                 console.log("login successful");
-                window.location.replace("/");
+                history.back();
             }
             else {
                 $('#loginCard').append($('<div class="alert alert-warning" role="alert">').text("Incorrect Username or password"));
