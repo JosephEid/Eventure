@@ -18,10 +18,13 @@
     <!--<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="/databases/database.js"></script>
     <script src="/databases/idb.js"></script>
+    <script src="/scripts/userScripts.js"></script>
 
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"></link>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
 
@@ -29,7 +32,7 @@
     <title>Eventure</title>
 </head>
 
-<body>
+<body onload="checkLoggedIn()">
 
 <header>
     <div class="top-bar"></div>
@@ -44,10 +47,9 @@
                 <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
                 <!--<li class="nav-item"><a class="nav-link active" href="/new_event">New Event</a></li>-->
             </ul>
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link active" href="/login"><i class="fas fa-user"></i> Login</a></li>
-                <li class="nav-item"><a id="new_account_thing" class="nav-link active" href="/register">New Account</a></li>
-
+            <ul class="nav navbar-nav ml-auto" id="userInfo" name="userInfo">
+                <li class="nav-item"><a class="nav-link active" href="/login">Login</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/register">New Account</a></li>
             </ul>
         </div>
 

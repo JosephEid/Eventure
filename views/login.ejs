@@ -7,9 +7,6 @@
     <link rel="icon" href="images/main.ico">
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
-    <script src="/scripts/database.js"></script>
-    <script src="/scripts/idb.js"></script>
     <script src="/scripts/userScripts.js"></script>
 
     <title>Eventure</title>
@@ -56,11 +53,11 @@
         </div>
     </div>
     <div class="card event-cards">
-        <div class="card-body">
-            <form id=“xForm" onsubmit="main()">
+        <div class="card-body" id="loginCard">
+            <form id=“xForm" onsubmit="login()">
                 <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="name" class="form-control" name="loginEmail" id="loginEmail" placeholder="john@smith.com" required>
+                    <label for="loginUsername">Login Username</label>
+                    <input type="name" class="form-control" name="loginUsername" id="loginUsername" placeholder="Username" required>
                 </div>
                 <div class="form-group">
                     <label for="loginPassword">Password</label>
