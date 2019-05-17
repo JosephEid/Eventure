@@ -64,6 +64,8 @@ function storeUserData(userObject) {
             return tx.complete;
         }).then(function () {
             console.log('added user to the store! '+ JSON.stringify(userObject));
+            window.location.replace("/login");
+
         }).catch(function (error) {
             localStorage.setItem(JSON.stringify(userObject));
         });

@@ -6,14 +6,9 @@
 function signUp() {
     var formArray= $("form").serializeArray();
     var data={};
-    //var url="/post_event";
     for (index in formArray){
         if (formArray[index].name == 'loginPassword') {
-            password = formArray[index].value;
             data[formArray[index].name] = formArray[index].value;
-        }
-        else if (formArray[index].name == 'confirmPassword') {
-            confirm_password = formArray[index].value;
         }
         else {
             data[formArray[index].name] = formArray[index].value;
@@ -56,16 +51,62 @@ function sendAjaxQuery(url, data) {
  * Takes the provided email and password and uses the function getLogin to sign in/ reject the user.
  */
 function login() {
+
     var formArray= $("form").serializeArray();
+    var data={};
     for (index in formArray){
-        if (formArray[index].name == 'loginPassword') {
-            password = formArray[index].value;
-        }
-        if (formArray[index].name == 'loginEmail') {
-            email = formArray[index].value;
-        }
+        data[formArray[index].name] = formArray[index].value;
     }
-    // calls getLogin located in database.js
-    getLogin(email, password);
+    console.log(data);
+
+    $.ajax({
+        url: '/post_user',
+        data: data,
+        dataType: 'json',
+        type: 'POST',
+        success: function (loggedIn) {
+            if (loggedIn) {
+                console.log("login successful");
+                window.location.replace("/");
+            }
+            else {
+                $('#loginCard').append($('<div class="alert alert-warning" role="alert">').text("Incorrect Username or password"));
+                console.log("login unsuccessful");
+
+            }
+        },
+        error: function (xhr, status, error) {
+            alert('Error: ' + error.message);
+        }
+    });
     event.preventDefault();
+}
+
+function checkLoggedIn() {
+    var data = {};
+    data["checkLoggedIn"] = 1;
+    $.ajax({
+        url: '/post_user',
+        data: data,
+        dataType: 'json',
+        type: 'POST',
+        success: function (isLoggedIn) {
+            if (isLoggedIn) {
+                console.log("Logged in");
+                $('#userInfo').empty()
+                $('#userInfo').append($('<li class="nav-item">').append($('<a class="nav-link active" href="/login">').text("Logout")));
+                //window.location.replace("/");
+            }
+            else {
+                $('#userInfo').empty();
+                $('#userInfo').append($('<li class="nav-item">').append($('<a class="nav-link active" href="/login">').text("Login")));
+                $('#userInfo').append($('<li class="nav-item">').append($('<a class="nav-link active" href="/register">').text("New Account")));
+                console.log("Not logged in");
+
+            }
+        },
+        error: function (xhr, status, error) {
+            alert('Error: ' + error.message);
+        }
+    });
 }
