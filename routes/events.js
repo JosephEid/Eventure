@@ -16,6 +16,8 @@ router.get('/new_event', function(req, res, next) {
  */
 router.post('/post_event', event.insert);
 
+router.post('/post_id', event.getEvent);
+
 /* GET events nearby page. */
 router.get('/list_nearby_events', function(req, res, next) {
   res.render('list_nearby_events', { title: 'Events Nearby' });

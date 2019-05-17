@@ -214,6 +214,36 @@ function getEventName(id) {
  * @param id
  */
 function getAllStoryData(id) {
+    $.ajax({
+        url: '/list_stories',
+        data: {id: id},
+        dataType: 'json',
+        type: 'POST',
+        success: function(dataR) {
+            // no need to JSON parse the result, as we are using
+            // dataType:json, so JQuery knows it and unpacks the
+            // object for us before returning it
+            console.log(dataR);
+            console.log("testing");
+            if (dataR.length>0) {
+                for (var elem of dataR)
+                    addToStoryList(elem);
+            }
+            else {
+                getIndexedStories(id);
+            }
+            // in order to have the object printed by alert
+            // we need to JSON stringify the object;
+            //document.getElementById('results').innerHTML= JSON.stringify(dataR);
+        },
+        error: function(xhr, status, error) {
+            console.log(error.message);
+            alert('Error, you are offline: ' + error.message);
+        }
+    });
+}
+
+function getIndexedStories(id) {
     console.log('get all stories from indexeddb');
     initialise();
     if (dbPromise) {
@@ -237,6 +267,37 @@ function getAllStoryData(id) {
  * @param id
  */
 function getEvent(id) {
+    console.log("success");
+    $.ajax({
+        url: '/post_id',
+        data: {id: id},
+        dataType: 'json',
+        type: 'POST',
+        success: function(dataR) {
+            // no need to JSON parse the result, as we are using
+            // dataType:json, so JQuery knows it and unpacks the
+            // object for us before returning it
+            console.log("success");
+            console.log(dataR);
+            if (dataR.length>0) {
+                displayEvent(dataR);
+            }
+            else {
+                getIndexedEvent(id)
+            }
+            // in order to have the object printed by alert
+            // we need to JSON stringify the object;
+            //document.getElementById('results').innerHTML= JSON.stringify(dataR);
+        },
+        error: function(xhr, status, error) {
+            console.log("fail");
+            console.log(error.message);
+            alert('Error: ' + error.message);
+        }
+    });
+}
+
+function getIndexedEvent(id) {
     initialise();
 
     if (dbPromise) {
@@ -251,37 +312,6 @@ function getEvent(id) {
         });
     }
 }
-
-/**
- * Given a username and password, queries the database for a user matching them and if found logs them in
- * @param email
- * @param password
- */
-function getLogin(email, password) {
-    initialise();
-    if (dbPromise) {
-        dbPromise.then(function (db) {
-            console.log("Checking: " + email);
-            var tx = db.transaction(USER_STORE_NAME, 'readonly');
-            var store = tx.objectStore(USER_STORE_NAME);
-            return store.getAll();
-        }).then(function (readingsList) {
-            for (var elem of readingsList) {
-                if (elem.loginEmail == email) {
-                    emailFound = elem;
-                }
-            }
-            if (emailFound && emailFound.loginPassword == password) {
-                alert("Logged In");
-            }
-            else {
-                alert("No User Found");
-            }
-
-        });
-    }
-}
-
 
 function checkLoggedIn() {
     var data = {};
