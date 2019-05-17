@@ -275,10 +275,7 @@ function displayEvent(dataR) {
     if (dataR.eventPhoto != null) {
         // use event header
         document.getElementById("master-image").src = dataR.eventPhoto;
-<<<<<<< HEAD
 
-=======
->>>>>>> d3e192bd4c306d9b90f66df1276cf4a692264cfd
     } else {
         // use placeholder header
         document.getElementById("master-image").src = 'images/1.jpg';
