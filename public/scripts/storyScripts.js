@@ -49,22 +49,22 @@ function addToStoryList(dataR) {
     // #main-container-features, #features_id
     var row = document.createElement('div');
 
-    row.classList.add('col-md-4');
+    row.classList.add('col-md-12');
 
     // formatting the row by applying css classes
 
     // row.classList.add('col   -md-4');
-    row.innerHTML = "        <div class=\"card mb-4 box-shadow\">\n" +
+    row.innerHTML = "        <div class=\"card mb-12 box-shadow\" style='margin-bottom: 5em;'>\n" +
         "          <img class=\"card-img-top\"  alt=\"image\" style=\"      width: 100%;\n" +
-        "      height: 17vw;\n" +
-        "      object-fit: cover; height: 225px; width: 100%; display: block;\" src='"+ dataR.photoBlob +"' data-holder-rendered=\"true\">\n" +
+        "      \n" +
+        "      object-fit: cover;  width: 100%; display: block;\" src='"+ dataR.photoBlob +"' data-holder-rendered=\"true\">\n" +
         "          <div class=\"card-body\" style='height: 70px;'>\n" +
-        "            <p style='float: left;color: red; margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.caption + "</p>\n" +
+        "            <h3 style='float: left;color: red; margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.caption + "</h3>\n" +
         "            <div class=\"d-flex justify-content-between align-items-center\" style='float: right'>\n" +
         "            </div>\n" +
         "          </div>\n" +
         "<div class=\"card-footer text-muted\">\n" +
-        " <a href=# role='button' class='btn btn-sm btn-outline-primary btn-block' onclick=document.getElementById('"+dataR.id+"').style.display='block'>View</a>\n" +
+        "<p>" + dataR.storyDate + "</p>";
         "  </div>\n" +
         "        </div>\n" +
         "      </div>\n";

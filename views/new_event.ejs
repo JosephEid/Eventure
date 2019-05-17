@@ -27,6 +27,15 @@
             width: 25em !important;
         }
 
+
+        body {
+            background: url(images/balloon.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
         .center {
             display: block;
             margin-left: auto;
@@ -52,11 +61,11 @@
         <form id=“xForm" onsubmit="newEvent()">
         <div class="form-group">
             <label for="eventName">Name</label>
-            <input type="name" class="form-control" name ="eventName" id="eventName" aria-describedby="eventHelp" placeholder="Event name">
+            <input type="name" class="form-control" maxlength="20"name ="eventName" id="eventName" aria-describedby="eventHelp" placeholder="Event name">
         </div>
         <div class="form-group">
             <label for="eventDescription">Description</label>
-            <input type="name" class="form-control" name = "eventDescription" id="eventDescription" aria-describedby="eventHelp" placeholder="Event description">
+            <input type="name" class="form-control" minlength="40" name = "eventDescription" id="eventDescription" aria-describedby="eventHelp" placeholder="Event description">
         </div>
 
         <div class="form-group">

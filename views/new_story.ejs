@@ -51,6 +51,14 @@
             margin-bottom: 1em;
         }
 
+        body {
+            background: url(/images/purple.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
 
     </style>
 </head>
@@ -78,7 +86,7 @@
             </div>
             <div class = "form-group">
                 <label for="caption">Caption</label>
-                <input class="form-control" type="text" id="caption" name="caption">
+                <input class="form-control" maxlength="30" type="text" id="caption" name="caption">
             </div>
             <div class="form-group">
                 <label for="eventPhoto">Event photo</label>

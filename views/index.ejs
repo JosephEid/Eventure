@@ -24,15 +24,17 @@
 
 
     .thumbnail-story img {
-      width: 4em;
-      height: 4em;
+      width: 5.2em;
+      height: 5.2em;
       border-radius: 50%;
       object-fit: cover;
       display: block;
       margin-left: auto;
       margin-right: auto;
       margin-top: 0em;
-      margin-bottom: 0.3em;
+      border-width: 2px !important;
+      border-color: black !important;
+
       -webkit-box-shadow: 3px 7px 22px -9px rgba(166,0,0,1);
       -moz-box-shadow: 3px 7px 22px -9px rgba(166,0,0,1);
       box-shadow: 3px 7px 22px -9px rgba(166,0,0,1);
@@ -47,6 +49,7 @@
       .thumbnail-story img {
         width: 13em !important;
         height: 13em !important;
+        margin-bottom: 1em;
       }
       .card-img-top {
         width: 100%;
@@ -57,7 +60,7 @@
 
     @media only screen and (min-width: 1000px) {
       #eventList {
-        padding: 60px 65px 0;
+        padding: 20px 65px 0;
       }
     }
 
@@ -169,19 +172,20 @@
 
 <!-- Begin page content -->
 <main role="main" class="container" id="eventList">
-  <div class="card margin-top-featured" id="features_id">
-    <div class="card-header" style="color:red; text-align: center ">
-      <i>⚡ Featured</i>
-      <div class="card event-cards" id="main-container-features" style="background-color: #f7f7f7;border-width: 0 !important;">
+  <div class="card margin-top-featured" id="features_id" style="border-width: 0 !important;">
+    <div class="card-header" style="color:red; background-color: #E9F0F7; border-width: 0 !important;">
+      <div class="card event-cards" id="main-container-features" style="background-color: #E9F0F7;border-width: 0 !important;">
         <div class="card-body" id="featured_photo">
           <div class="container-fluid">
-            <div class="row center" id="feature_thing_1">
+            <div class="row center" id="feature_thing_1" style="">
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+
 
   <!-- Button trigger modal -->
 

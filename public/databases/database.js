@@ -176,7 +176,7 @@ function getIndexedEvents() {
             return store.getAll();
         }).then(function (readingsList) {
             if (readingsList && readingsList.length>0){
-                for (i = 0; i < 6; i++) {
+                for (i = 0; i < 3; i++) {
                     update_features(readingsList[i])
                 }
                 for (var elem of readingsList)

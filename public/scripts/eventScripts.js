@@ -77,25 +77,47 @@ function addToEventList(dataR) {
 
         row.classList.add('col-md-4');
 
-        row.innerHTML = "        <div class=\"card mb-4 box-shadow\">\n" +
-            "          <img class=\"card-img-top\"  alt=\"image\" style=\"height: 225px; object-fit: contain; background-image: url("+dataR.eventPhoto+"); display: block;\" src='"+ dataR.eventPhoto +"' data-holder-rendered=\"true\">\n" +
-            "          <div class=\"card-body\">\n" +
-            "            <i><h5 style='margin-bottom:0px !important; font-size: 12px;' class=\"card-text\"><b> "+ dataR.city.toUpperCase() + "</h5></i>\n" +
-            "            <b><h5 style='color: red; font-size: 15px; margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.eventName.toUpperCase() + "</h5></b>\n" +
-            "            <p class=\"card-text\"> "+ dataR.eventDescription.slice(0, 70) + "</p>\n" +
-            "            <div class=\"d-flex justify-content-between align-items-center\">\n" +
-            "              <div class=\"btn-group\">\n" +
-            "                <a href=view_event/" + dataR.id + " role='button' class='btn btn-sm btn-outline-danger' style='font-size: 12px;'>View event</a>\n" +
-            "                <a href=new_story/" + dataR.id + " role='button' class='btn btn-sm btn-danger btn-block' style='float: right;font-size: 12px;'>Add a story</a>\n" +
-            "              </div>\n" +
-            "            </div>\n" +
-            "          </div>\n" +
-            "<div class=\"card-footer text-muted\">\n" +
-            "    " + dataR.eventDate + "\n" +
-            "  </div>\n" +
-            "        </div>\n" +
-            "      </div>";
-        document.getElementById('main_row').appendChild(row);
+        if (dataR.eventPhoto != "") {
+            row.innerHTML = "        <div class=\"card mb-4 box-shadow\">\n" +
+                "          <img class=\"card-img-top\"  alt=\"image\" style=\"height: 225px; object-fit: contain; background-image: url("+dataR.eventPhoto+"); display: block;\" src='"+ dataR.eventPhoto +"' data-holder-rendered=\"true\">\n" +
+                "          <div class=\"card-body\">\n" +
+                "            <i><h5 style='margin-bottom:0px !important; font-size: 12px;' class=\"card-text\"><b> "+ dataR.city.toUpperCase() + "</h5></i>\n" +
+                "            <b><h5 style='color: red; font-size: 15px; margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.eventName.toUpperCase().slice(0, 20) + "</h5></b>\n" +
+                "            <p class=\"card-text\"> "+ dataR.eventDescription.slice(0, 40)+". . ." + "</p>\n" +
+                "            <div class=\"d-flex justify-content-between align-items-center\">\n" +
+                "              <div class=\"btn-group\">\n" +
+                "                <a href=view_event/" + dataR.id + " role='button' class='btn btn-sm btn-outline-danger' style='font-size: 12px;'>View event</a>\n" +
+                "                <a href=new_story/" + dataR.id + " role='button' class='btn btn-sm btn-danger btn-block' style='float: right;font-size: 12px;'>Add a story</a>\n" +
+                "              </div>\n" +
+                "            </div>\n" +
+                "          </div>\n" +
+                "<div class=\"card-footer text-muted\">\n" +
+                "    " + dataR.eventDate + "\n" +
+                "  </div>\n" +
+                "        </div>\n" +
+                "      </div>";
+            document.getElementById('main_row').appendChild(row);
+        } else {
+            row.innerHTML = "        <div class=\"card mb-4 box-shadow\">\n" +
+                "          <img class=\"card-img-top\"  alt=\"image\" style=\"padding-top:1em;height: 225px; object-fit: contain; background-image: url("+dataR.eventPhoto+"); display: block;\" src='images/Asset 13@288x.png' data-holder-rendered=\"true\">\n" +
+                "          <div class=\"card-body\">\n" +
+                "            <i><h5 style='margin-bottom:0px !important; font-size: 12px;' class=\"card-text\"><b> "+ dataR.city.toUpperCase() + "</h5></i>\n" +
+                "            <b><h5 style='color: red; font-size: 15px; margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.eventName.toUpperCase().slice(0, 20) + "</h5></b>\n" +
+                "            <p class=\"card-text\"> "+ dataR.eventDescription.slice(0, 40) + "</p>\n" +
+                "            <div class=\"d-flex justify-content-between align-items-center\">\n" +
+                "              <div class=\"btn-group\">\n" +
+                "                <a href=view_event/" + dataR.id + " role='button' class='btn btn-sm btn-outline-danger' style='font-size: 12px;'>View event</a>\n" +
+                "                <a href=new_story/" + dataR.id + " role='button' class='btn btn-sm btn-danger btn-block' style='float: right;font-size: 12px;'>Add a story</a>\n" +
+                "              </div>\n" +
+                "            </div>\n" +
+                "          </div>\n" +
+                "<div class=\"card-footer text-muted\">\n" +
+                "    " + dataR.eventDate + "\n" +
+                "  </div>\n" +
+                "        </div>\n" +
+                "      </div>";
+            document.getElementById('main_row').appendChild(row);
+        }
 }
 
 /**
@@ -268,24 +290,26 @@ function displayEvent(dataR) {
 
     if (dataR.eventName != null) {
         document.getElementById('title-event').innerHTML = "<b><h1 style='font-family:initial; font-size: 55px;'> " + dataR.eventName.toUpperCase() + "</h1></b>";
+        document.getElementById('date_small').innerHTML = dataR.eventDate;
+
     } else {
         document.getElementById('title-event').innerHTML = "ERROR: no name chosen";
     }
 
-    if (dataR.eventPhoto != null) {
-        // use event header
+    if (dataR.eventPhoto != "") {
+        document.getElementById('date').innerHTML += "<h5 style='color: white'>" + dataR.eventDate + "</h5>";
         document.getElementById("master-image").src = dataR.eventPhoto;
-
     } else {
         // use placeholder header
-        document.getElementById("master-image").src = 'images/1.jpg';
+        document.getElementById('title-event').innerHTML = "<b><h1 style='font-family:initial; color:black;font-size: 55px;'> " + dataR.eventName.toUpperCase() + "</h1></b>";
+        document.getElementById('date').innerHTML += "<h5 style='color: black'>" + dataR.eventDate + "</h5>";
     }
 
     // fetch story information
     var address = dataR.line1 + ' ' + dataR.line2 + ' ' + dataR.postalCode + ' ' + dataR.city;
     document.getElementById('address').innerHTML = address.toUpperCase();
-    document.getElementById('date').innerHTML += "<br>" + dataR.eventDate + "</br>";
-    document.getElementById('date_small').innerHTML = dataR.eventDate;
+
+
     document.getElementById('description_event').innerHTML = dataR.eventDescription;
 
     // fetch information associated with
@@ -296,7 +320,7 @@ function update_features(dataR) {
     if (dataR != null) {
         var row2 = document.createElement('div');
         var body2 = document.createElement('div');
-        row2.classList.add('col-md-2');
+        row2.classList.add('col-md-4');
         row2.classList.add('thumbnail-story');
         row2.classList.add('padding-override');
         document.getElementById('feature_thing_1').appendChild(row2);

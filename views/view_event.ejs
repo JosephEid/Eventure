@@ -70,6 +70,10 @@
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight:700; font-style: italic;
         }
 
+       body {
+           padding: 66px, 105px, 0px;
+       }
+
         #messages {
             height: 150px;
             overflow: auto;
@@ -175,7 +179,6 @@
             e.preventDefault(); // prevents page reloading
             socket.emit('chat message', 'homeRoom', $('#m').val());
             $('#m').val('');
-
             return false;
         });
         socket.on('chat message', function(msg){
