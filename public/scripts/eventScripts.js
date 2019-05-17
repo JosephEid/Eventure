@@ -82,7 +82,7 @@ function addToEventList(dataR) {
                 "          <img class=\"card-img-top\"  alt=\"image\" style=\"height: 225px; object-fit: contain; background-image: url("+dataR.eventPhoto+"); display: block;\" src='"+ dataR.eventPhoto +"' data-holder-rendered=\"true\">\n" +
                 "          <div class=\"card-body\">\n" +
                 "            <i><h5 style='margin-bottom:0px !important; font-size: 12px;' class=\"card-text\"><b> "+ dataR.city.toUpperCase() + "</h5></i>\n" +
-                "            <b><h5 style='color: red; font-size: 15px; margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.eventName.toUpperCase().slice(0, 20) + "</h5></b>\n" +
+                "            <b><h5 style='color: red; font-size: 15px;git margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.eventName.toUpperCase().slice(0, 20) + "</h5></b>\n" +
                 "            <p class=\"card-text\"> "+ dataR.eventDescription.slice(0, 40)+". . ." + "</p>\n" +
                 "            <div class=\"d-flex justify-content-between align-items-center\">\n" +
                 "              <div class=\"btn-group\">\n" +
