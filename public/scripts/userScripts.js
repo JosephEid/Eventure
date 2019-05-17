@@ -82,34 +82,6 @@ function login() {
     event.preventDefault();
 }
 
-function checkLoggedIn() {
-    var data = {};
-    data["checkLoggedIn"] = 1;
-    $.ajax({
-        url: '/post_user',
-        data: data,
-        dataType: 'json',
-        type: 'POST',
-        success: function (isLoggedIn) {
-            if (isLoggedIn) {
-                console.log("Logged in");
-                $('#userInfo').empty()
-                $('#userInfo').append($('<li class="nav-item">').append($('<a class="nav-link active" onclick="logout()">').text("Logout")));
-            }
-            else {
-                $('#userInfo').empty();
-                $('#userInfo').append($('<li class="nav-item">').append($('<a class="nav-link active" href="/login">').text("Login")));
-                $('#userInfo').append($('<li class="nav-item">').append($('<a class="nav-link active" href="/register">').text("New Account")));
-                console.log("Not logged in");
-
-            }
-        },
-        error: function (xhr, status, error) {
-            alert('Error: ' + error.message);
-        }
-    });
-}
-
 function logout() {
     var data = {};
     data["logout"] = 1;

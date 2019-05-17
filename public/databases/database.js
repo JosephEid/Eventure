@@ -282,20 +282,28 @@ function getLogin(email, password) {
     }
 }
 
-function redirect(url) {
-    console.log("redirecting");
-    $.ajax({
-        url: url,
-        type: 'GET',
-        success: function (message) {
-            // no need to JSON parse the result, as we are using
-            // dataType:json, so JQuery knows it and unpacks the
-            // object for us before returning it
-            console.log("Going to event")
 
-            // in order to have the object printed by alert
-            // we need to JSON stringify the object;
-            //document.getElementById('results').innerHTML= JSON.stringify(dataR);
+function checkLoggedIn() {
+    var data = {};
+    data["checkLoggedIn"] = 1;
+    $.ajax({
+        url: '/post_user',
+        data: data,
+        dataType: 'json',
+        type: 'POST',
+        success: function (isLoggedIn) {
+            if (isLoggedIn) {
+                console.log("Logged in");
+                $('#userInfo').empty()
+                $('#userInfo').append($('<li class="nav-item">').append($('<a class="nav-link active" onclick="logout()">').text("Logout")));
+            }
+            else {
+                $('#userInfo').empty();
+                $('#userInfo').append($('<li class="nav-item">').append($('<a class="nav-link active" href="/login">').text("Login")));
+                $('#userInfo').append($('<li class="nav-item">').append($('<a class="nav-link active" href="/register">').text("New Account")));
+                console.log("Not logged in");
+
+            }
         },
         error: function (xhr, status, error) {
             alert('Error: ' + error.message);
