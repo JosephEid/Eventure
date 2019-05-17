@@ -21,6 +21,9 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="/databases/database.js"></script>
     <script src="/databases/idb.js"></script>
+    <script type='text/javascript'>
+        checkLoggedIn();
+    </script>
 
 
 
@@ -46,9 +49,9 @@
                 <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
                 <!--<li class="nav-item"><a class="nav-link active" href="/new_event">New Event</a></li>-->
             </ul>
-            <ul class="nav navbar-nav ml-auto" id="userInfo" name="userInfo">
-                <li class="nav-item"><a class="nav-link active" href="/login">Login</a></li>
-                <li class="nav-item"><a class="nav-link active" href="/register">New Account</a></li>
+            <ul class="nav navbar-nav ml-auto" id="userInfo" name="userInfo" onload="checkLoggedIn()">
+<!--                <li class="nav-item"><a class="nav-link active" href="/login">Login</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link active" href="/register">New Account</a></li>-->
             </ul>
         </div>
 

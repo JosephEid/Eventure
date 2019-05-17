@@ -67,7 +67,7 @@ function login() {
         success: function (loggedIn) {
             if (loggedIn) {
                 console.log("login successful");
-                window.location.replace("/");
+                history.back();
             }
             else {
                 $('#loginCard').append($('<div class="alert alert-warning" role="alert">').text("Incorrect Username or password"));
@@ -82,26 +82,22 @@ function login() {
     event.preventDefault();
 }
 
-function checkLoggedIn() {
+function logout() {
     var data = {};
-    data["checkLoggedIn"] = 1;
+    data["logout"] = 1;
     $.ajax({
         url: '/post_user',
         data: data,
         dataType: 'json',
         type: 'POST',
-        success: function (isLoggedIn) {
-            if (isLoggedIn) {
-                console.log("Logged in");
-                $('#userInfo').empty()
-                $('#userInfo').append($('<li class="nav-item">').append($('<a class="nav-link active" href="/login">').text("Logout")));
-                //window.location.replace("/");
+        success: function (loggedOut) {
+            if (loggedOut) {
+                console.log("log out successful");
+                window.location.replace("/");
             }
             else {
-                $('#userInfo').empty();
-                $('#userInfo').append($('<li class="nav-item">').append($('<a class="nav-link active" href="/login">').text("Login")));
-                $('#userInfo').append($('<li class="nav-item">').append($('<a class="nav-link active" href="/register">').text("New Account")));
-                console.log("Not logged in");
+
+                console.log("logout failed");
 
             }
         },
