@@ -75,10 +75,13 @@
     <div class="card event-cards">
         <div class="card-body">
             <form id=“xForm" onsubmit="newStory()">
-                <input hidden type="text" id="username" name="username" value="<%= username%>">
+                <input hidden id="username" name="username" value="anon">
                 <input hidden id="storyDate" name="storyDate">
                 <input hidden id="storyTime" name="storyTime">
                 <input hidden type="text" id="eventId" name="eventId" value="<%= id%>">
+                <script>
+                    console.log(window.username);
+                </script>
             <div class="form-group">
                 <label for="eventId">Event</label><br>
                 <input class="form-control"type="text" id="eventName" name="eventName" value="" disabled>

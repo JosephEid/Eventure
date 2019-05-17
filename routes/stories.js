@@ -7,8 +7,9 @@ var story = require('../public/databases/mongostory');
 router.post('/list_stories', story.getAllMongoStories);
 
 router.get('/new_story/:id', function(req, res, next) {
-  console.log("here");
-  res.render('new_story', {id: req.params.id, username: "adam"});
+  //var username = window.username;
+  //console.log(window.username);
+  res.render('new_story', {id: req.params.id/*, username: username*/});
 });
 
 /**

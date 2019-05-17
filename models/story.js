@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 
 var Story = new Schema(
     {
+        username: {type: String, required: true},
         date: {type: String, required: true},
         time: {type: String, required: true},
         eventId: {type: Number, required: true},
