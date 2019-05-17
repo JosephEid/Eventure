@@ -2,15 +2,6 @@
  * When a new event is submitted, will serialise the data and pass it to an ajax request
  */
 function newEvent() {
-    var city_caps = document.getElementById('city').value;
-    city_caps = city_caps.toUpperCase();
-
-    var event_desc_short = document.getElementById('eventDescription').value;
-    event_desc_short = event_desc_short.slice(0, 70);
-
-    var event_name_caps = document.getElementById('eventName').value;
-    event_name_caps = event_name_caps.toUpperCase();
-
     var formArray = $("form").serializeArray();
     var data = {};
 
@@ -18,9 +9,6 @@ function newEvent() {
         data[formArray[index].name] = formArray[index].value;
     }
 
-    //data['city_caps'] = city_caps;
-    //data['event_name_caps'] = event_name_caps;
-    //data['event_desc_short'] = event_desc_short;
     console.log(data);
     console.log("testing");
     sendAjaxQuery('/post_event', data);
@@ -95,8 +83,8 @@ function addToEventList(dataR) {
         row.innerHTML = "        <div class=\"card mb-4 box-shadow\">\n" +
             "          <img class=\"card-img-top\"  alt=\"image\" style=\"height: 225px; width: 100%; display: block;\" src='"+ dataR.eventPhoto +"' data-holder-rendered=\"true\">\n" +
             "          <div class=\"card-body\">\n" +
-            "            <i><h5 style='marigin-bottom:0px !important; font-size: 12px;' class=\"card-text\"><b> "+ dataR.event_name_caps + "</h5></i>\n" +
-            "            <b><h3 style='color: red; margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.city_caps + "</h3></b>\n" +
+            "            <i><h5 style='marigin-bottom:0px !important; font-size: 12px;' class=\"card-text\"><b> "+ dataR.eventName.toUpperCase() + "</h5></i>\n" +
+            "            <b><h3 style='color: red; margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.city.toUpperCase() + "</h3></b>\n" +
             "            <p class=\"card-text\"> "+ dataR.event_desc_short + "</p>\n" +
             "            <div class=\"d-flex justify-content-between align-items-center\">\n" +
             "              <div class=\"btn-group\">\n" +
@@ -147,7 +135,7 @@ function updateMap(dataR, original_data) {
     var i;
     for (i = 0; i < original_data.length; i++) {
         ev = original_data[i];
-        var address = ev.line1 + ' ' + ev.line2 + ' ' + ev.postalCode + ' ' +  ev.town + ' ' + ev.city + ' ' + ev.country;
+        var address = ev.line1 + ' ' + ev.line2 + ' ' + ev.postalCode + ' ' + ev.city;
         address_array.push(address);
         name_array.push(original_data[i].eventName);
         index_array.push(original_data[i].id);
@@ -305,7 +293,7 @@ function displayEvent(dataR) {
 
 
     // fetch story information
-    var address = dataR.line1 + ' ' + dataR.line2 + ' ' + dataR.postalCode + ' ' + ' ' + dataR.city;
+    var address = dataR.line1 + ' ' + dataR.line2 + ' ' + dataR.postalCode + ' ' + dataR.city;
     document.getElementById('address').innerHTML = address;
     document.getElementById('date').innerHTML += "<br>" + dataR.eventDate + "</br>";
     document.getElementById('smaller_title_date').innerHTML = dataR.eventDate;
