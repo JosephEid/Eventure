@@ -8,6 +8,7 @@ function newStory() {
     for (index in formArray){
         data[formArray[index].name] = formArray[index].value;
     }
+    data['username'] = window.username;
     console.log(data);
     sendAjaxQuery('/post_story', data);
     event.preventDefault();
@@ -64,7 +65,8 @@ function addToStoryList(dataR) {
         "            </div>\n" +
         "          </div>\n" +
         "<div class=\"card-footer text-muted\">\n" +
-        "<p>" + dataR.storyDate + "</p>";
+        "<p>" + dataR.storyDate + "</p>\n" +
+        "<p>" + dataR.username + "</p>\n" +
         "  </div>\n" +
         "        </div>\n" +
         "      </div>\n";
