@@ -23,7 +23,6 @@ exports.insert = function (req, res) {
             if (err) {
                 console.log("error THROWN" + err)
                 res.status(500).send('Invalid data!' + err);
-
             }
             res.setHeader('Content-Type', 'application/json');
             res.send(JSON.stringify(eventData));
