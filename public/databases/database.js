@@ -291,18 +291,21 @@ function checkLoggedIn() {
         data: data,
         dataType: 'json',
         type: 'POST',
-        success: function (isLoggedIn) {
-            if (isLoggedIn) {
+        success: function (dataR) {
+            if (dataR.loggedIn) {
                 console.log("Logged in");
-                $('#userInfo').empty()
-                $('#userInfo').append($('<li class="nav-item">').append($('<a class="nav-link active" onclick="logout()">').text("Logout")));
+                $('#userInfo').empty();
+                $('#userInfo').append($('<li class="nav-item">').append($('<a class="nav-link active" onclick="logout()">').text(dataR.username + " ")));
+                $('#userInfo').append($('<li class="nav-item">').append($('<a class="nav-link active" onclick="logout()">').text("| Logout")));
+                window.username = dataR.username;
+
             }
             else {
                 $('#userInfo').empty();
                 $('#userInfo').append($('<li class="nav-item">').append($('<a class="nav-link active" href="/login">').text("Login")));
                 $('#userInfo').append($('<li class="nav-item">').append($('<a class="nav-link active" href="/register">').text("New Account")));
                 console.log("Not logged in");
-
+                window.username = dataR.username;
             }
         },
         error: function (xhr, status, error) {
