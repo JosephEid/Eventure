@@ -1,5 +1,6 @@
 var Story = require('../../models/story');
 
+//Saves a new user to the mongo db
 exports.insert = function (req, res) {
     var storyData = req.body;
     if (storyData == null) {
@@ -29,6 +30,7 @@ exports.insert = function (req, res) {
     }
 }
 
+//Returns all stories stored in the mongodb
 exports.getAllMongoStories = function (req, res) {
     var eventId = req.body.id;
 

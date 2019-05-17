@@ -48,7 +48,7 @@ function initDatabase(){
 }
 
 /**
- * Takes a record containing new user data puts it in the database
+ * Takes a record containing new user data puts it in the indexed database
  * @param userObject
  */
 function storeUserData(userObject) {
@@ -74,7 +74,7 @@ function storeUserData(userObject) {
 }
 
 /**
- * Takes a record containing new event data puts it in the database
+ * Takes a record containing new event data puts it in the indexed database
  * @param eventObject
  */
 function storeEventData(eventObject) {
@@ -96,7 +96,7 @@ function storeEventData(eventObject) {
 }
 
 /**
- * Takes a record containing new story data puts it in the database
+ * Takes a record containing new story data puts it in the indexed database
  * @param storyObject
  */
 function storeStoryData(storyObject) {
@@ -121,7 +121,9 @@ function storeStoryData(storyObject) {
 
 /**
  * (This is the first function called when the home page is loaded)
- * Queries the database to get all events and passes them one by one to a script which adds them to the results list
+ * It will send an ajax request to the server to query the mongodb
+ * and get all events.
+ * It then passes them one by one to a script which adds them to the results list
  */
 function getAllEventData() {
     $.ajax({
@@ -143,6 +145,7 @@ function getAllEventData() {
 
                 updateMap(dataR);
             }
+            //If there are no results returned from the mongodb, use the indexed db instead
             else {
                 getIndexedEvents();
             }
@@ -152,11 +155,14 @@ function getAllEventData() {
         },
         error: function(xhr, status, error) {
             console.log(error.message);
-            alert('Error, you are offline: ' + error.message);
+            //alert('Error, you are offline: ' + error.message);
         }
     });
 }
 
+/**
+ * Queries the indexed database if the mongo db fails
+ */
 function getIndexedEvents() {
     console.log("got from indexed instead")
     initialise();
@@ -192,7 +198,7 @@ function getIndexedEvents() {
 }
 
 /**
- * Queries the database to get all events and passes them one by one to a script which adds them to the new story dropdown box
+ * Queries the indexed database to get all events and passes them one by one to a script which adds them to the new story dropdown box
  */
 function getEventName(id) {
     initialise();
@@ -210,7 +216,9 @@ function getEventName(id) {
 }
 
 /**
- * Given an event id, will return all stories with that particular event id and pass them to a script which adds them to the stories results
+ * Given an event id, will send an ajax request to the server to query the mongodb
+ * and return all stories with that particular event id.
+ * Then it will pass them to a script which adds them to the stories results
  * @param id
  */
 function getAllStoryData(id) {
@@ -238,11 +246,16 @@ function getAllStoryData(id) {
         },
         error: function(xhr, status, error) {
             console.log(error.message);
-            alert('Error, you are offline: ' + error.message);
+            //alert('Error, you are offline: ' + error.message);
         }
     });
 }
 
+/**
+ * Failing the mongoDB search, will return all stories with that particular event id in the indexed db and pass them to a script which
+ * adds them to the stories results
+ * @param id
+ */
 function getIndexedStories(id) {
     console.log('get all stories from indexeddb');
     initialise();
@@ -263,7 +276,7 @@ function getIndexedStories(id) {
 }
 
 /**
- * Given an event id, will query the database for the event matching this id, and pass it to a script to display it
+ * Given an event id, will send an ajax request to the server to query the mongodb for an event matching the given id
  * @param id
  */
 function getEvent(id) {
@@ -297,6 +310,10 @@ function getEvent(id) {
     });
 }
 
+/**
+ * Failing the mongoDB search, will query the database for the event matching this id, and pass it to a script to display it
+ * @param id
+ */
 function getIndexedEvent(id) {
     initialise();
 
@@ -313,6 +330,9 @@ function getIndexedEvent(id) {
     }
 }
 
+/**
+ * Checks that the user is logged in and if so modifies the nav bar.
+ */
 function checkLoggedIn() {
     var data = {};
     data["checkLoggedIn"] = 1;

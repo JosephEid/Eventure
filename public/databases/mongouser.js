@@ -1,12 +1,13 @@
 var User = require('../../models/user');
 
-
+//Function to handle all types of user post data
 exports.insert = function (req, res) {
     var userData = req.body;
     console.log(userData);
     if (userData == null) {
         res.status(403).send('No data sent!')
     }
+    //If a new user is being inserted, insert it in the mongodb
     if (userData.loginFirstName && userData.loginLastName && userData.loginUsername && userData.loginEmail && userData.loginPassword) {
         try {
             var user = new User({
@@ -33,6 +34,7 @@ exports.insert = function (req, res) {
             res.status(500).send('error ' + e);
         }
     }
+    //If the posted data is a username and a password authenticate them and attempt to log them in
     else if (userData.loginUsername && userData.loginPassword) {
         console.log("log in check");
         User.authenticate(userData.loginUsername, userData.loginPassword, function (error, user) {
@@ -49,6 +51,7 @@ exports.insert = function (req, res) {
             }
         });
     }
+    //If the posted data is the variable check logged in, then check if the current user is logged in
     else if (userData.checkLoggedIn) {
         if (req.session.loggedIn) {
             data = {};

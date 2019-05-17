@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
+//Define story schema
 var Story = new Schema(
     {
         username: {type: String, required: true},

@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
+//Define event schema
 var Event = new Schema(
     {
         event_name: {type: String, required: true, max: 100},

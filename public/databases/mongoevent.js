@@ -1,5 +1,6 @@
 var Event = require('../../models/event');
 
+//Saves a new event to the mongo db
 exports.insert = function (req, res) {
     var eventData = req.body;
     if (eventData == null) {
@@ -32,6 +33,7 @@ exports.insert = function (req, res) {
     }
 }
 
+//Returns all events stored in the mongodb
 exports.getAllMongoEvents = function (req, res) {
     try {
         Event.find({},
@@ -53,6 +55,7 @@ exports.getAllMongoEvents = function (req, res) {
     }
 }
 
+//Returns then event with the given id from the mongodb
 exports.getEvent = function (req, res) {
     var id = req.body.id;
     console.log(id);
