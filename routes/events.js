@@ -4,10 +4,7 @@ var router = express.Router();
 var event = require('../public/databases/mongoevent');
 
 /* GET events listing. */
-router.get('/list_events', function(req, res, next) {
-  res.render('list_events', { title: 'Events' });
-  //res.send('respond with a resource');
-});
+router.get('/list_events', event.getAllMongoEvents);
 
 router.get('/new_event', function(req, res, next) {
   res.render('new_event', { title: 'New Event' });
