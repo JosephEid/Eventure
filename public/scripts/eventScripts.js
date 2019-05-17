@@ -85,7 +85,7 @@ function addToEventList(dataR) {
             "          <div class=\"card-body\">\n" +
             "            <i><h5 style='marigin-bottom:0px !important; font-size: 12px;' class=\"card-text\"><b> "+ dataR.eventName.toUpperCase() + "</h5></i>\n" +
             "            <b><h3 style='color: red; margin-top:0px !important; padding-top: 0px !important;'> "+ dataR.city.toUpperCase() + "</h3></b>\n" +
-            "            <p class=\"card-text\"> "+ dataR.event_desc_short + "</p>\n" +
+            "            <p class=\"card-text\"> "+ dataR.eventDescription.slice(0, 70) + "</p>\n" +
             "            <div class=\"d-flex justify-content-between align-items-center\">\n" +
             "              <div class=\"btn-group\">\n" +
             "                <a href=view_event/" + dataR.id + " role='button' class='btn btn-sm btn-outline-danger' style='font-size: 12px;'>View event</a>\n" +
@@ -121,7 +121,7 @@ var address_array = [];
 /**
  * Update the google map with new events
  */
-function updateMap(dataR, original_data) {
+function updateMap(original_data) {
     var dataJ = original_data;
     var name_array = [];
     var index_array = [];
@@ -277,13 +277,9 @@ function displayEvent(dataR) {
         document.getElementById('title-event').innerHTML = "ERROR: no name chosen";
     }
 
-    var header = document.getElementById('masthead_id2');
-
-
     if (dataR.eventPhoto != null) {
         // use event header
         document.getElementById("master-image").src = dataR.eventPhoto;
-
 
     } else {
         // use placeholder header
