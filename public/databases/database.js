@@ -137,7 +137,7 @@ function getAllEventData() {
             console.log("testing");
             if (dataR.length>0) {
                 for (i = 0; i < 6; i++) {
-                    update_features(dataR[i])
+                    updateFeatures(dataR[i])
                 }
 
                 for (var elem of dataR)
@@ -183,7 +183,7 @@ function getIndexedEvents() {
         }).then(function (readingsList) {
             if (readingsList && readingsList.length>0){
                 for (i = 0; i < 3; i++) {
-                    update_features(readingsList[i])
+                    updateFeatures(readingsList[i])
                 }
                 for (var elem of readingsList)
 

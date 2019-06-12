@@ -17,6 +17,7 @@ var storiesRouter = require('./routes/stories');
  * Start the application server and the socket io server.
  */
 var app = express();
+var session = require('express-session');
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 server.listen(3001);
